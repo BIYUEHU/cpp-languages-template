@@ -96,14 +96,7 @@ class IndexController extends Controller
     }
 
 
-    /* 个人资料 */
-    public function person()
-    {
-        self::$data['VERIFY']['opgroup'] == 4 || location(APP_USER_PATH . '/login');
-        self::loadView('admin/person.php');
-    }
-
-
+    /* 文件上传 */
     public function fileupload()
     {
         self::$data['VERIFY']['opgroup'] == 4 || location(APP_USER_PATH . '/login');

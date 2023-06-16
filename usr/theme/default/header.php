@@ -48,15 +48,15 @@ $DAT['visitor'] = Controller::visitorWebData();
     <link rel="stylesheet" href="/index.php/assets/css/site.min.css">
     <link rel="stylesheet" href="/index.php/assets/css/oneui.css">
     <link rel="stylesheet" href="/index.php/assets/css/index.css">
-    <link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/dracula.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/layui/2.8.7/css/layui.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/highlight.js/11.8.0/styles/base16/dracula.min.css">
     <script src="/index.php/assets/js/index.js"></script>
     <script src="//cdn.staticfile.org/bootstrap/5.2.3/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="//cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
     <script
-        src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
-    <script src="//unpkg.com/layui@2.6.8/dist/layui.js"></script>
-    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        src="//cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="//cdn.staticfile.org/layui/2.8.7/layui.js"></script>
+    <script src="//cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
     <script>
         hljs.highlightAll();
         hljs.initLineNumbersOnLoad({
@@ -113,7 +113,7 @@ $DAT['visitor'] = Controller::visitorWebData();
                     <?php echo $DAT['numApi']['total']; ?>
                 </strong> interfaces</h3><br>
                 URL ->
-                <?php echo $WEB_INFO['weburl']; ?><img width="13" height="13" src="/images/zb.png" alt="正版认证">
+                <?php echo $WEB_INFO['weburl']; ?><img width="13" height="13" src="/images/ico.png" alt="正版认证">
                 <br>
             </span>
             <span id=localtime></span>

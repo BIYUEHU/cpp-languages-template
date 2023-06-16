@@ -965,3 +965,84 @@ function pluginssendemail() {
         });
     });
 }
+
+
+/* fileupload */
+function fileupload() {
+    const uploadInst = upload.render({
+        elem: '#uploadfile',
+        url: './fileupload',
+        accept: 'file',
+        exts: 'php',
+        done: function (res) {
+            //如果上传失败
+            console.log(res)
+            switch (res.code) {
+                case 500:
+                    layer.msg('上传完毕', { icon: 1 });
+                    setTimeout(() => {
+                        window.location.href = '';
+                    }, 1000)
+                    break;
+                case 510:
+                    layer.msg('只支持上传PHP文件', { icon: 0 });
+                    break;
+                case 511:
+                    layer.msg('上传失败', { icon: 2 });
+                    break;
+            }
+            //上传成功的一些操作
+            //……
+            $('#demoText').html(''); //置空上传失败的状态
+        },
+        error: function () {
+            //演示失败状态，并实现重传
+            var demoText = $('#demoText');
+            demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            demoText.find('.demo-reload').on('click', function () {
+                uploadInst.upload();
+            });
+        },
+        //进度条
+        progress: function (n, elem, e) {
+            element.progress('demo', n + '%'); //可配合 layui 进度条元素使用
+            if (n == 500) {
+                layer.msg('上传完毕', { icon: 1 });
+            }
+        }
+    });
+
+
+    const select = $('#fileslist');
+    select.change(function () {
+        sendPostRequest('./fileuploadget', {
+            filename: select.val()
+        }, (res) => {
+            switch (res.code) {
+                case 500:
+                    $('#filecontent').val(res.data.content);
+                    break;
+                case 511:
+                    layer.msg('获取文件失败', { icon: 2 });
+                    break;
+            }
+        })
+    });
+}
+
+function fileupload_save() {
+    sendPostRequest('./fileuploadsave', {
+        filename: $('#fileslist').val(),
+        content: $('#filecontent').val()
+    }, (res) => {
+        console.log(res);
+        switch (res.code) {
+            case 500:
+                layer.msg('保存成功', { icon: 1 });
+                break;
+            case 511:
+                layer.msg('保存失败', { icon: 2 });
+                break;
+        }
+    })
+}

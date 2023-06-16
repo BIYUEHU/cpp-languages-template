@@ -250,7 +250,8 @@ class HandleController extends Controller
         self::printResult();
     }
 
-    public function websafelog() {
+    public function websafelog()
+    {
         self::$data['VERIFY']['opgroup'] == 4 || self::printResult(509);
         $page = $_POST['page'] ?? 1;
         $limit = $_POST['limit'] ?? 20;
@@ -275,7 +276,23 @@ class HandleController extends Controller
         }
 
         self::printResult(500, [$count, $data]);
-        
+    }
+
+
+    public function personupload()
+    {
+        self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);
+
+        $file = $_FILES['file'];
+        $type = $file['type'];
+        $size = $file['size'];
+
+        (($type == 'image/png' || $type == 'image/jpeg') && $size <= 1024 * 1024) || self::printResult(510, [$size, $type, $_FILES]);
+
+        $newPath = HULICORE_DATA_PATH . '/account/' . self::$data['VERIFY']['id'] . '.png'; //新路径
+        $isok = move_uploaded_file($file['tmp_name'], $newPath);
+        $code = $isok ? 500 : 511;
+        self::printResult($code, [$size, $type, $_FILES, $newPath, $isok]);
     }
 
 
@@ -311,7 +328,7 @@ class HandleController extends Controller
         $title = $_POST['title'];
         $message = $_POST['message'];
         !empty($reveuser) && !empty($title) && !empty($message) || self::printResult(501);
-        
+
         // 获取邮箱插件配置数据并引入插件本体文件
         $config = self::getSetData('plugins_email');
         require_once(HULICORE_USR_PATH . '/plugins/email/index.php');
@@ -319,4 +336,45 @@ class HandleController extends Controller
         self::printResult($result);
     }
 
+
+    /* 文件上传 */
+    public function fileupload()
+    {
+        self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);
+
+        $file = $_FILES['file'];
+
+        substr($file['name'], -3) == 'php' || self::printResult(510);
+
+        $newPath = HULICORE_DATA_PATH . '/api/' . $file['name']; //新路径
+        $isok = move_uploaded_file($file['tmp_name'], $newPath);
+        $code = $isok ? 500 : 511;
+        self::printResult($code);
+    }
+
+    public function fileupload_get()
+    {
+        $filename = $_POST['filename'];
+        empty($filename) && self::printResult(501);
+
+        $path = HULICORE_DATA_PATH . '/api/' . $filename;
+        file_exists($path) || self::printResult(502);
+        $content = file_get_contents($path);
+        self::printResult($content ? 500 : 511, ['content' => $content]);
+    }
+
+    public function fileupload_save()
+    {
+        $filename = $_POST['filename'];
+        $content = $_POST['content'];
+        empty($filename) && self::printResult(501);
+
+        $path = HULICORE_DATA_PATH . '/api/' . $filename;
+        if (empty($content)) {
+            $result = @unlink($path);
+        } else {
+            $result = file_put_contents($path, $content);
+        }
+        self::printResult($result ? 500 : 511);
+    }
 }

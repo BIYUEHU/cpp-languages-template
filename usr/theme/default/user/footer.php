@@ -6,7 +6,7 @@
     </div>
 </div>
 </main>
-<script src="//unpkg.com/layui@2.6.8/dist/layui.js"></script>
+<script src="//cdn.staticfile.org/layui/2.8.7/layui.js"></script>
 <script src="/index.php/assets/js/user/jquery.min.js"></script>
 <script src="/index.php/assets/js/user/popper.min.js"></script>
 <script src="/index.php/assets/js/user/bootstrap.min.js"></script>

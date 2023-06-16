@@ -140,6 +140,12 @@ Route::post(APP_ADMIN_PATH . '/plugins', 'Admin/HandleController@plugins');
 
 Route::post(APP_ADMIN_PATH . '/pluginssendemail', 'Admin/HandleController@pluginssendemail', false);
 
+/* 文件上传 */
+Route::post(APP_ADMIN_PATH . '/fileupload', 'Admin/HandleController@fileupload');
+
+Route::post(APP_ADMIN_PATH . '/fileuploadget', 'Admin/HandleController@fileupload_get');
+
+Route::post(APP_ADMIN_PATH . '/fileuploadsave', 'Admin/HandleController@fileupload_save');
 
 
 /* 系统级API */

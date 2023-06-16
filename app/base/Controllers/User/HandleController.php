@@ -175,11 +175,12 @@ class HandleController extends Controller
         $type = $file['type'];
         $size = $file['size'];
 
-        (($type == 'image/png' || $type == 'image/jpeg') && $size <= 1024 * 1024) || self::printResult(510, [$size, $type, $_FILES]);
+        (($type == 'image/png' || $type == 'image/jpeg') && $size <= 1024 * 1024) || self::printResult(510);
 
         $newPath = HULICORE_DATA_PATH . '/account/' . self::$data['VERIFY']['id'] . '.png';//新路径
         $isok = move_uploaded_file($file['tmp_name'], $newPath);
         $code = $isok ? 500 : 511;
-        self::printResult($code, [$size, $type, $_FILES, $newPath, $isok]);
+        // self::printResult($code, [$size, $type, $_FILES, $newPath, $isok]);
+        self::printResult($code);
     }
 }
