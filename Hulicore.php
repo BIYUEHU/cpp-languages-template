@@ -76,7 +76,7 @@ final class Hulicore
 
     private function _use_config()
     {
-        $config = loadConfig('config.php');
+        $config = \Core\Func\loadConfig('config.php');
         /* Debug */
         define('HULICORE_SET_DEBUG', $config['debug'] === true ? 'ON' : 'OFF');
         define('HULICORE_SET_DEBUG_MODE', $config['debug_mode']);

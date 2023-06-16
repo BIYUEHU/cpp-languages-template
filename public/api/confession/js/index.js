@@ -38,7 +38,7 @@ if (_REQUEST['name'] == '' || _REQUEST['name'] == null) { //允许标题为空
     document.title = '我喜欢你❤' + _REQUEST['name'];
 }
 
-_REQUEST['img'] = _REQUEST['img'] == '' ? './images/1.gif' : _REQUEST['img']; 
+_REQUEST['img'] = _REQUEST['img'] == '' ? './images/1.gif' : _REQUEST['img'];
 
 var theme = 'pure_words';
 
@@ -77,46 +77,46 @@ var height_div_pw = $(".div_pure_words_height").height();
 function init_pure_words() {
     $(".div_pure_words_height").html(pure_words_content + '22222'); //初始化复制内容，撑开文档高度            
     // 初始化设置div的bg图片 初始化设置div的bg图片
-    if (typeof(theme_content['bg_style_pure_words']) != 'undefined' && theme_content['bg_style_pure_words'] == 'bg_opacity') {
-        if (typeof(theme_content['bg_img']) != 'undefined' && theme_content['bg_img'] != '') {
+    if (typeof (theme_content['bg_style_pure_words']) != 'undefined' && theme_content['bg_style_pure_words'] == 'bg_opacity') {
+        if (typeof (theme_content['bg_img']) != 'undefined' && theme_content['bg_img'] != '') {
             $(".div_pure_words_bg").css({
                 "background-image": "url(" + theme_content['bg_img'] + ")"
             });
         }
     }
     //以下是打字效果的js 
-    if (typeof(theme_content['cursor_char']) != 'undefined' && theme_content['cursor_char'] != '') {
+    if (typeof (theme_content['cursor_char']) != 'undefined' && theme_content['cursor_char'] != '') {
         switch (theme_content['cursor_char']) { //设置打字光标的样式
-        case 'cursor_heart':
-            str_cursorChar = '<um style="color: #F44336;">❤</um>';
-            break;
-        case 'cursor_sub':
-            str_cursorChar = '_';
-            break;
-        case 'cursor_music':
-            str_cursorChar = '♫';
-            break;
-        case 'cursor_star':
-            str_cursorChar = '★';
-            break;
-        case 'cursor_sun':
-            str_cursorChar = '☀';
-            break;
-        default:
-            str_cursorChar = '|';
+            case 'cursor_heart':
+                str_cursorChar = '<um style="color: #F44336;">❤</um>';
+                break;
+            case 'cursor_sub':
+                str_cursorChar = '_';
+                break;
+            case 'cursor_music':
+                str_cursorChar = '♫';
+                break;
+            case 'cursor_star':
+                str_cursorChar = '★';
+                break;
+            case 'cursor_sun':
+                str_cursorChar = '☀';
+                break;
+            default:
+                str_cursorChar = '|';
         }
     } else { //处理全新作品，默认显示打字效果
         str_cursorChar = '❤';
     }
     //判断用户有没有选择打字效果
-    if (typeof(theme_content['typed_bool']) != 'undefined' && theme_content['typed_bool'] != '') {
+    if (typeof (theme_content['typed_bool']) != 'undefined' && theme_content['typed_bool'] != '') {
         typed_bool = theme_content['typed_bool'] == 'typed_y' ? true : false;
     } else {
         typed_bool = false; //默认显示打字效果
     }
     display_pure_words();
     $(".div_pure_words").fadeIn();
-    interval_pw_height = setInterval(function() {
+    interval_pw_height = setInterval(function () {
         var least_height_div_pw = $('.div_pure_words_height').height();
         if (least_height_div_pw > height_div_pw) {
             height_div_pw = least_height_div_pw;
@@ -141,7 +141,7 @@ function display_pure_words() {
             //替换光标的样式
             contentType: 'html',
             //值为html时，将打印的文本标签直接解析html标签
-            onComplete: function(abc) {
+            onComplete: function (abc) {
                 // console.log(abc); 
                 // console.log($('#span_pw_typed').height()-$(".div_pure_words_height").height());
             },
@@ -162,39 +162,39 @@ var start_content = {
     img_src: _REQUEST['img']
 }; //可能为null
 var start_id;
-$(function() {
+$(function () {
     //此事件为触发互动创意
     start_id = 'onlyyou'; //可能为null
     init_start(start_id);
 });
 function init_start(start_id) {
     switch (start_id) {
-    case 'loveformat':
-        $('.div_loveformat').show();
-        init_loveformat();
-        break;
-    case 'hearttree':
-        $('#div_hearttree').show();
-        init_hearttree();
-        break;
-    case 'courage':
-        $('#div_courage').show();
-        init_courage();
-        break;
-    case 'birthdaycake':
-        $('#div_dbcake').show();
-        init_birthdaycake();
-        break;
-    case 'intersect':
-        $('#div_intersect').show();
-        init_intersect();
-        break;
-    case 'onlyyou':
-        $('#div_onlyyou').show();
-        init_onlyyou();
-        break;
-    default:
-        init_theme();
+        case 'loveformat':
+            $('.div_loveformat').show();
+            init_loveformat();
+            break;
+        case 'hearttree':
+            $('#div_hearttree').show();
+            init_hearttree();
+            break;
+        case 'courage':
+            $('#div_courage').show();
+            init_courage();
+            break;
+        case 'birthdaycake':
+            $('#div_dbcake').show();
+            init_birthdaycake();
+            break;
+        case 'intersect':
+            $('#div_intersect').show();
+            init_intersect();
+            break;
+        case 'onlyyou':
+            $('#div_onlyyou').show();
+            init_onlyyou();
+            break;
+        default:
+            init_theme();
     }
 }
 
@@ -210,10 +210,10 @@ var attached_content = {
 
 function init_attachment() { //开始attachment
     switch (attachment) {
-    case 'timer':
-        init_at_timer();
-        break;
-    default:
-        return;
+        case 'timer':
+            init_at_timer();
+            break;
+        default:
+            return;
     }
 }

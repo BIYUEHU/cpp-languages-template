@@ -33,7 +33,7 @@ function initAnimate() {
     if (blessStyle.fontSize) con.style.fontSize = blessStyle.fontSize + "rem";
     if (blessStyle.blod && blessStyle.blod == 1) {
         con.style.fontWeight = 700
-    }else {
+    } else {
         con.style.fontWeight = 400
     }
 

@@ -5,6 +5,14 @@
  * @Date: 2023-01-17 13:36:45
  */
 
+namespace Core;
+
+use function Core\Func\printDebug;
+use function Core\Func\loadConfig;
+use function Core\Func\location;
+use Base\Controllers\Controller;
+use Base\Controllers\IndexController;
+
 class Route
 {
     // 地址参数
@@ -259,6 +267,7 @@ class Route
         if (file_exists($path)) {
             // 引入控制器文件并逐一判断Class与方法是否存在
             require($path);
+            $controllerName = '\\Base\\Controllers\\' . ($controllerDir ? substr($controllerDir, 0, -1) . '\\' : '') . $controllerName;
             if (class_exists($controllerName)) {
                 if (method_exists($controllerName, $actionName)) {
                     // 实例化并执行

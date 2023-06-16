@@ -1,4 +1,5 @@
 <?php
+/* 状态码-说明信息  */
 return [
     500 => "success",
     501 => "fail:parameter cannot be empty",

@@ -1,4 +1,15 @@
 <?php
+/*
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2023-06-16 14:20:19
+ */
+
+namespace Base\Controllers;
+
+use Lib\Stat;
+use function Core\Func\loadConfig;
+use function Core\Func\loadView;
 
 class IndexController extends Controller
 {

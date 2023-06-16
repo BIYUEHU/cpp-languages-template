@@ -7,6 +7,7 @@ if ($_POST['msg'] != null) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,8 +29,8 @@ if ($_POST['msg'] != null) {
     <div id="header">
         <h1>HSocial Engineering Data</h1>
     </div>
-    <br/><br/>
-        
+    <br /><br />
+
     <form name="from" action="/api/sed" method="post">
         <div id="content">
             <div id="create_form">

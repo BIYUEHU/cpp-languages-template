@@ -5,6 +5,16 @@
  * @Date: 2023-01-17 13:36:45
  */
 
+namespace Base\Controllers;
+
+use Core\Route;
+use Core\Common;
+use Lib\Stat;
+use function Core\Func\loadConfig;
+use function Core\Func\loadView;
+use function Core\Func\getUserIp;
+use function Core\Func\printJson;
+
 class Controller
 {
     // 数据库实体

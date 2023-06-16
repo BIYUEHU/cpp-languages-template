@@ -4,7 +4,9 @@
  * @Blog: http://imlolicon.tk
  * @Date: 2023-01-17 13:48:12
  */
+namespace App;
 
+use Core\Route;
 
 /* 页面 */
 /* 主页相关 */

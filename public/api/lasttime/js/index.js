@@ -34,9 +34,9 @@ document.title = title;
 const goodMsg = ((hour, named = '') => {
     if (!hour) {
         now = new Date(),
-        hour = now.getHours()
+            hour = now.getHours()
     }
-    
+
     if (hour < 6) {
         return `凌晨好！${named}`;
     } else if (hour < 9) {
@@ -98,7 +98,7 @@ const timer = ((timeStr, item) => {
  * @param i 数字
  * @return i
  */
-function checkTime(i) { 
+function checkTime(i) {
     if (i < 10) {
         i = "0" + i;
     }

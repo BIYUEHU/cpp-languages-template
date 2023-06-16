@@ -10,7 +10,7 @@ $op = trim($_REQUEST['op']);
 $par2 = trim($_REQUEST['par2']);
 
 /* 来自核心库:stat.class.php */
-$StatDemo = new Stat();
+$StatDemo = new Lib\Stat();
 
 switch ($op) {
     case 'query':

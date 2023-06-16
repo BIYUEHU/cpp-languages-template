@@ -1,4 +1,8 @@
 <?php
+
+use Base\Controllers\Controller;
+use Lib\Stat;
+
 $title = '仪表盘';
 include(__DIR__ . '/header.php');
 include(__DIR__ . '/nav.php');

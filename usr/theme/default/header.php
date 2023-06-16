@@ -4,6 +4,7 @@
  * @Blog: http://imlolicon.tk
  * @Date: 2023-01-15 16:23:32
  */
+use Base\Controllers\Controller;
 
 !isset($_GET['open']) || setcookie('open', 'ok', time() + 60 * 60 * 24);
 

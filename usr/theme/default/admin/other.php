@@ -1,4 +1,7 @@
 <?php
+
+use Lib\Stat;
+
 $title = '扩展 - IAL';
 include(__DIR__ . '/header.php');
 include(__DIR__ . '/nav.php');

@@ -5,6 +5,11 @@
  * @Date: 2023-01-17 13:36:45
  */
 
+namespace Base\Controllers;
+
+use function Core\Func\matchSearch;
+use function Core\Func\consolelog;
+use function Core\Func\getAllDirs;
 
 /**
  * 处理返回类型(doc页面)

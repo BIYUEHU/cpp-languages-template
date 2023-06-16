@@ -1,5 +1,7 @@
 <?php
 
+namespace Lib;
+
 class CaptchaImg
 {
     public static $num = 4;

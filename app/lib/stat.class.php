@@ -1,4 +1,14 @@
 <?php
+/*
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2023-06-16 14:20:19
+ */
+
+namespace Lib;
+
+use Core\Common;
+use function Core\Func\loadConfig;
 
 class Stat {
     private static $result = null;

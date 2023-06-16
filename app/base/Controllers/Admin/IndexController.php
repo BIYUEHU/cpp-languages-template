@@ -1,5 +1,11 @@
 <?php
 
+namespace Base\Controllers\Admin;
+
+use Base\Controllers\Controller;
+use function Core\Func\location;
+use function Base\Controllers\getAllThemes;
+
 class IndexController extends Controller
 {
     public function index()

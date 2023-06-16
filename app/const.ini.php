@@ -5,6 +5,7 @@
  * @Date: 2023-01-17 13:36:45
  */
 
+namespace App;
 
 /* 文档路径名 */
 define('APP_DOC_PATH', '/iluh');

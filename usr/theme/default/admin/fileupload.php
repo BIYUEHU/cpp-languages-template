@@ -1,4 +1,7 @@
 <?php
+
+use function Core\Func\getAllFiles;
+
 $title = '文件上传';
 include(__DIR__ . '/header.php');
 include(__DIR__ . '/nav.php');

@@ -1,5 +1,9 @@
 <?php
 
+namespace Base\Controllers\Other;
+
+use Base\Controllers\Controller;
+
 class HandleController extends Controller
 {
     /* 模型Models */
@@ -20,7 +24,7 @@ class HandleController extends Controller
     private static function _content()
     {
         $config = require(__DIR__ . '/Config.php');
-        self::$db_other = new mysqli($config['host'], $config['userName'], $config['passWord'], $config['dbName'], $config['port']);
+        self::$db_other = new \mysqli($config['host'], $config['userName'], $config['passWord'], $config['dbName'], $config['port']);
 
         if (self::$db_other->connect_error) {
             die("fail:database content failed" . self::$db_other->connect_error);

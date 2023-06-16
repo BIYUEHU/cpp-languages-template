@@ -4,6 +4,11 @@
  * @Blog: http://imlolicon.tk
  * @Date: 2023-01-17 13:36:45
  */
+
+namespace Base\Models;
+
+use function Core\Func\loadConfig;
+
 $prefix = loadConfig('database.php')['prefix'];
 
 define('ControllerSetModel', "SELECT * FROM {$prefix}set WHERE set_type = ?");

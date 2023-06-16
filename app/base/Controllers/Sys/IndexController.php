@@ -1,5 +1,12 @@
 <?php
 
+namespace Base\Controllers\Sys;
+
+use Base\Controllers\Controller;
+use Lib\CaptchaImg;
+use function Core\Func\location;
+use function Base\Controllers\getAllThemes;
+
 class IndexController extends Controller
 {
     /**

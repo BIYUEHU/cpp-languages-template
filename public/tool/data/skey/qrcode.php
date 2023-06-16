@@ -25,5 +25,3 @@ if($arr['code']==1) {
 }else{
 	exit('{"code":-1,"msg":"'.$data.'"}');
 }
-
-?>

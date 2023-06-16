@@ -5,6 +5,9 @@
  * @Date: 2023-01-17 13:36:45
  */
 
+namespace Core\Func;
+
+use function Base\Controllers\statement;
 
 /**
  * 加载视图

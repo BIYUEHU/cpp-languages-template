@@ -6,7 +6,7 @@ error_reporting(0);
 
 /**
  * Get real ip from $_SERVER
- * @return String
+ * @return string
  * 
  */
 function getRealIp()
@@ -48,7 +48,7 @@ function hasEmpty(...$a)
 /**
  * Get Address By IP
  * @param string|boolean $ip
- * @return String
+ * @return string
  * 
  */
 function getLocation($ip = false)

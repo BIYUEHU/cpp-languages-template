@@ -1,4 +1,7 @@
 <?php
+
+use Lib\Stat;
+
 include(__DIR__ . '/header.php');
 ?>
 

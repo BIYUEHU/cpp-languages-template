@@ -31,7 +31,7 @@
 
         <div class="panel-body">
             <div class="alert alert-success" style="text-align: center;">
-                <a href="/" >
+                <a href="/">
                     <img class="img-circle m-b-xs" style="border: 2px solid #1281FF; margin-left:3px; margin-right:3px;" src="/favicon.ico" ; width="60px" height="60px" alt="HULIAPI短信洪渣鸡">
                 </a>
             </div>

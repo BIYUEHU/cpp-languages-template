@@ -1,5 +1,9 @@
 <?php
 
+namespace Lib;
+
+use function Core\Func\deleteDir;
+
 class Stat {
     private static $filePath;
     private static $fileDayPath;

@@ -1,3 +1,8 @@
+/*** 
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2023-06-16 14:20:19
+ */
 
 layui.use('form', 'table');
 const form = layui.form,
@@ -11,34 +16,34 @@ const form = layui.form,
 function printError(back, data) {
     switch (back.code) {
         case 500:
-            layer.msg("操作成功", {icon: 1 });
+            layer.msg("操作成功", { icon: 1 });
             setTimeout(() => {
                 window.location.reload();
             }, 1000);
             break;
         case 501:
-            layer.msg("参数不能为空", {icon: 5 });
+            layer.msg("参数不能为空", { icon: 5 });
             break;
         case 502:
-            layer.msg("参数错误", {icon: 5 });
+            layer.msg("参数错误", { icon: 5 });
             break;
         case 507:
-            layer.msg("非法字符串", {icon: 5 });
+            layer.msg("非法字符串", { icon: 5 });
             break;
         case 508:
-            layer.msg("数据库拒绝", {icon: 2 });
+            layer.msg("数据库拒绝", { icon: 2 });
             break;
         case 509:
-            layer.msg("拒绝请求", {icon: 2 });
+            layer.msg("拒绝请求", { icon: 2 });
             break;
         case 510:
-            layer.msg("服务器拒绝", {icon: 2 });
+            layer.msg("服务器拒绝", { icon: 2 });
             break;
         case undefined:
-            layer.msg('SQL错误', {icon: 4 });
+            layer.msg('SQL错误', { icon: 4 });
             break;
         default:
-            layer.msg(`错误:${back.message}`, {icon: 0 });
+            layer.msg(`错误:${back.message}`, { icon: 0 });
     }
 
     back.code == 500 || console.log(data, back);
@@ -62,7 +67,7 @@ function doLogin() {
     const password = $('#password').val();
     const captchaimg = $('#captchaimg').val();
     if (account == '' || password == '' || captchaimg == '') {
-        layer.msg('账号密码或验证码不能为空', {icon: 5 });
+        layer.msg('账号密码或验证码不能为空', { icon: 5 });
         return;
     }
 
@@ -75,20 +80,20 @@ function doLogin() {
     sendPostRequest(location.href, data, d => {
         switch (d.code) {
             case 500:
-                layer.msg(`欢迎登录User:${d.data.name}`, {icon: 6 });
+                layer.msg(`欢迎登录User:${d.data.name}`, { icon: 6 });
                 setTimeout(() => {
                     window.location.href = './';
                 }, 1000)
                 break;
             case 501:
-                layer.msg('账号或密码不能为空', {icon: 5 });
+                layer.msg('账号或密码不能为空', { icon: 5 });
                 break;
             case 502:
-                layer.msg('账号或密码错误', {icon: 2 });
+                layer.msg('账号或密码错误', { icon: 2 });
                 $('#captchaimgImg').attr('src', '/sys/captchaimg');
                 break;
             case 510:
-                layer.msg('验证码错误', {icon: 0 });
+                layer.msg('验证码错误', { icon: 0 });
                 $('#captchaimgImg').attr('src', '/sys/captchaimg');
                 break;
             default:
@@ -161,7 +166,7 @@ function apilist_user() {
                             case 500:
                                 layer.close(index);
                                 tableDemo.reload();
-                                layer.msg('重置成功', {icon: 1 });
+                                layer.msg('重置成功', { icon: 1 });
                                 break;
                             default:
                                 printError(d, data);
@@ -171,9 +176,9 @@ function apilist_user() {
                 break;
             case 'copy':
                 navigator.clipboard.writeText(obj.data.apikey).then(() => {
-                    layer.msg('复制成功', {icon: 1 });
+                    layer.msg('复制成功', { icon: 1 });
                 }, () => {
-                    layer.msg('复制失败', {icon: 5 });
+                    layer.msg('复制失败', { icon: 5 });
                 });
                 break;
             case 'continue':
@@ -186,10 +191,10 @@ function apilist_user() {
                     switch (d.code) {
                         case 500:
                             tableDemo.reload();
-                            layer.msg('续费成功', {icon: 1 });
+                            layer.msg('续费成功', { icon: 1 });
                             break;
                         case 510:
-                            layer.msg('接口尚未到期或金额不足', {icon: 5})
+                            layer.msg('接口尚未到期或金额不足', { icon: 5 })
                             break;
                         default:
                             printError(d, data);
@@ -259,7 +264,7 @@ function apishop() {
                                 break;
                             case 502:
                                 layer.close(index);
-                                layer.msg('购买失败:已购买或金额不足', {icon: 2 });
+                                layer.msg('购买失败:已购买或金额不足', { icon: 2 });
                                 break;
                             default:
                                 printError(d, data);
@@ -281,12 +286,12 @@ function person() {
     const passwordnewago = $('#passwordnewago').val();
 
     if (!(password && passwordnew && passwordnewago)) {
-        layer.msg('密码不可为空', {icon: 5 });
+        layer.msg('密码不可为空', { icon: 5 });
         return;
     }
 
     if (passwordnew != passwordnewago) {
-        layer.msg('两次密码输入不一致', {icon: 2 });
+        layer.msg('两次密码输入不一致', { icon: 2 });
         return;
     }
 
@@ -298,13 +303,13 @@ function person() {
     sendPostRequest('./person', data, d => {
         switch (d.code) {
             case 500:
-                layer.msg('设置成功', {icon: 1 });
+                layer.msg('设置成功', { icon: 1 });
                 setTimeout(() => {
                     window.location.href = '';
                 }, 1000)
                 break;
             case 502:
-                layer.msg('密码错误', {icon: 2 });
+                layer.msg('密码错误', { icon: 2 });
                 break;
             default:
                 printError(d, data);
@@ -316,36 +321,36 @@ function person_upload() {
     const uploadInst = upload.render({
         elem: '#uploadavatar',
         url: './personupload',
-        done: function(res) {
+        done: function (res) {
             //如果上传失败
             switch (res.code) {
                 case 500:
-                    layer.msg('上传完毕', {icon: 1 });
+                    layer.msg('上传完毕', { icon: 1 });
                     setTimeout(() => {
                         window.location.href = '';
                     }, 1000)
                     break;
                 case 510:
-                    layer.msg('只支持上传PNG与JPG图片且小于1MB', {icon: 0 });
+                    layer.msg('只支持上传PNG与JPG图片且小于1MB', { icon: 0 });
                     break;
                 case 511:
-                    layer.msg('上传失败', {icon: 2 });
+                    layer.msg('上传失败', { icon: 2 });
                     break;
             }
             //上传成功的一些操作
             //……
             $('#demoText').html(''); //置空上传失败的状态
         },
-        error: function() {
+        error: function () {
             //演示失败状态，并实现重传
             var demoText = $('#demoText');
             demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-            demoText.find('.demo-reload').on('click', function() {
+            demoText.find('.demo-reload').on('click', function () {
                 uploadInst.upload();
             });
         },
         //进度条
-        progress: function(n, elem, e) {
+        progress: function (n, elem, e) {
             element.progress('demo', n + '%'); //可配合 layui 进度条元素使用
             if (n == 500) {
                 layer.msg('上传完毕', { icon: 1 });
@@ -381,7 +386,7 @@ function apiadd() {
         objData = obj.field;
 
         if (objData.title == '' || objData.subtitle == '' || objData.idstr == '') {
-            layer.msg('必填项不能为空', {icon: 5 });
+            layer.msg('必填项不能为空', { icon: 5 });
             return;
         }
 
@@ -445,7 +450,7 @@ function apiadd() {
             };
             sendPostRequest('./apiadd', data);
         } catch (err) {
-            layer.msg(`错误:${err}`, {icon: 0 });
+            layer.msg(`错误:${err}`, { icon: 0 });
             return;
         }
     });
@@ -492,7 +497,7 @@ function apiedit() {
         })(location.href)['id'];
 
         if (objData.id == '' || objData.name == '' || objData.email == '' || objData.opgroup == '') {
-            layer.msg('必填项不能为空', {icon: 5 });
+            layer.msg('必填项不能为空', { icon: 5 });
             return;
         }
 
@@ -502,7 +507,7 @@ function apiedit() {
 
             const coin = Number(objData.coin);
             if (coin < 0) {
-                layer.msg('金额不能小于0', {icon: 5 });
+                layer.msg('金额不能小于0', { icon: 5 });
                 return;
             }
 
@@ -526,14 +531,14 @@ function apiedit() {
                 switch (d.code) {
                     case 500:
                         layer.closeAll();
-                        layer.msg('编辑成功', {icon: 1 });
+                        layer.msg('编辑成功', { icon: 1 });
                         break;
                     default:
                         printError(d, data);
                 }
             });
         } catch (err) {
-            layer.msg(`错误:${err}`, {icon: 0 });
+            layer.msg(`错误:${err}`, { icon: 0 });
             return;
         }
     });
@@ -648,7 +653,7 @@ function apilist() {
                             case 500:
                                 obj.del();
                                 layer.close(index);
-                                layer.msg('删除成功', {icon: 1 });
+                                layer.msg('删除成功', { icon: 1 });
                                 break;
                             default:
                                 printError(d, data);
@@ -744,7 +749,7 @@ function account() {
                             case 500:
                                 obj.del();
                                 layer.close(index);
-                                layer.msg('删除成功', {icon: 1 });
+                                layer.msg('删除成功', { icon: 1 });
                                 break;
                             default:
                                 printError(d, data);
@@ -790,7 +795,7 @@ function accountadd() {
         objData = obj.field;
 
         if (objData.name == '' || objData.email == '' || objData.password == '') {
-            layer.msg('必填项不能为空', {icon: 5 });
+            layer.msg('必填项不能为空', { icon: 5 });
             return;
         }
 
@@ -823,7 +828,7 @@ function accountedit() {
         })(location.href)['id'];
 
         if (objData.id == '' || objData.name == '' || objData.email == '') {
-            layer.msg('必填项不能为空', {icon: 5 });
+            layer.msg('必填项不能为空', { icon: 5 });
             return;
         }
 
@@ -840,7 +845,7 @@ function accountedit() {
             switch (d.code) {
                 case 500:
                     layer.closeAll();
-                    layer.msg('编辑成功', {icon: 1 });
+                    layer.msg('编辑成功', { icon: 1 });
                     break;
                 default:
                     printError(d, data);
@@ -933,7 +938,7 @@ function pluginssendemail() {
             message = $('#message').val();
 
         if (reveuser == '' || title == '' || message == '') {
-            layer.msg('必填项不能为空', {icon: 5 });
+            layer.msg('必填项不能为空', { icon: 5 });
             return;
         }
 
@@ -946,13 +951,13 @@ function pluginssendemail() {
             switch (d.code) {
                 case 500:
                     layer.closeAll();
-                    layer.msg('发送成功', {icon: 6 });
+                    layer.msg('发送成功', { icon: 6 });
                     $('#reveuser').val('')
                     $('#title').val('')
                     $('#message').val('')
                     break;
                 case 502:
-                    layer.msg('发送失败', {icon: 5 });
+                    layer.msg('发送失败', { icon: 5 });
                     break;
                 default:
                     printError(d, data);

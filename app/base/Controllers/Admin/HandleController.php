@@ -1,5 +1,12 @@
 <?php
 
+namespace Base\Controllers\Admin;
+
+use Base\Controllers\Controller;
+use Lib\Stat;
+use function Base\Controllers\handleParStr;
+use function Core\Func\loadConfig;
+
 class HandleController extends Controller
 {
 

@@ -1,5 +1,11 @@
 <?php
 
+namespace Base\Controllers\User;
+
+use Base\Controllers\Controller;
+use Lib\Stat;
+use function Core\Func\getKey;
+
 class HandleController extends Controller
 {
     /* 登录 */

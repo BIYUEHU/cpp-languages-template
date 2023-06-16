@@ -1,9 +1,14 @@
 <?php
-/*
- * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
- * @Date: 2022-12-18 15:05:18
+/**
+ *
+ * HULICore框架 - 入口
+ *
+ * @author   Biyuehu <biyuehu@gmail.com>
+ * @link     https://github.com/BIYUEHU/hulicore
+ * @version  1.0.0
+ * @license  GPL-2.0
  */
+
 
 /* 引入入口文件 */
 require(__DIR__ . '../../Hulicore.php');

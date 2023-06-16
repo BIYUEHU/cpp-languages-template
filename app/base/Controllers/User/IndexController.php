@@ -1,5 +1,12 @@
 <?php
 
+namespace Base\Controllers\User;
+
+use Base\Controllers\Controller;
+use Lib\Stat;
+use function Core\Func\location;
+
+
 class IndexController extends Controller
 {
     public function index()

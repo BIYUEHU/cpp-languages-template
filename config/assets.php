@@ -1,4 +1,5 @@
 <?php
+/* 文件-格式对照 */
 return [
     'html' => 'text/html',
     'xhtml' => 'text/html',

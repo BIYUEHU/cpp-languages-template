@@ -5,6 +5,11 @@
  * @Date: 2023-01-17 13:36:45
  */
 
+namespace Core;
+
+use function Core\Func\printDebug;
+use function Core\Func\loadConfig;
+
 class Common
 {
     // 数据库实体(明明原本那↑么↓大的~现在却小小的一个 真卡哇伊的说~)
@@ -40,14 +45,14 @@ class Common
         $dsn = "{$type}:host={$host};port={$port};dbname={$dbName};charset={$charset}";
         $userName = $config['userName'] ?? 'root';
         $passWord = $config['passWord'] ?? 'root';
-        self::$fetch_mode = $config['fetchMode'] ?? PDO::FETCH_ASSOC;
+        self::$fetch_mode = $config['fetchMode'] ?? \PDO::FETCH_ASSOC;
 
-        $drivers[PDO::ATTR_ERRMODE] = $drivers[PDO::ATTR_ERRMODE] ?? PDO::ERRMODE_EXCEPTION;
+        $drivers[\PDO::ATTR_ERRMODE] = $drivers[\PDO::ATTR_ERRMODE] ?? \PDO::ERRMODE_EXCEPTION;
 
         // 错误侦测
         try {
-            self::$db = @new PDO($dsn, $userName, $passWord, $drivers);
-        } catch (PDOException $error) {
+            self::$db = @new \PDO($dsn, $userName, $passWord, $drivers);
+        } catch (\PDOException $error) {
             self::exception($error);
         }
     }
@@ -55,9 +60,9 @@ class Common
 
     /**
      * 错误抛出
-     * @param PDOException
+     * @param \PDOException
      */
-    private static function exception(PDOException $error)
+    private static function exception(\PDOException $error)
     {
         printDebug('Core Common Error <br/>');
         printDebug('File: ' . $error->getFile() . '<br/>');
@@ -80,7 +85,7 @@ class Common
             $stmt->setFetchMode(self::$fetch_mode);
 
             return $stmt;
-        } catch (PDOException $error) {
+        } catch (\PDOException $error) {
             self::exception($error);
         }
     }
