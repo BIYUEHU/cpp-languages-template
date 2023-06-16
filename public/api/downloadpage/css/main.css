@@ -1,0 +1,34 @@
+.gxnr {
+	font-size: 12px;
+}
+.gx {
+	font-size: 14px;
+}
+.pc {
+	font-family: "华文新魏";
+	font-size: 15px;
+}
+.kkbk {
+	font-family: "华文新魏";
+	font-size: 30px;
+}
+.js {
+	font-family: "华文新魏";
+	font-size: 16px;
+}
+body {
+	background-color: #FFF;
+}
+a:link {
+	text-decoration: none;
+	color: #000;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}

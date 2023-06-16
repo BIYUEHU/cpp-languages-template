@@ -1,0 +1,83 @@
+body {
+     background: #050801;
+
+}
+.all  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #050801;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+    #timer {
+        font-size: 100px;
+        font-weight: bold;
+        z-index:2;
+        text-align: center;
+        color: #ed3333;
+        margin: 80px 80px;
+        
+    }
+    .brinks {
+        display:flex;
+        z-index:1;
+        position: relative;
+        justify-content:center;
+        font-weight: bold;
+        background-image: linear-gradient( to left, orangered, orange, gold, lightgreen, cyan, dodgerblue, mediumpurple, hotpink, orangered);
+        background-size: 110vw;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-animation: rainbowan 60s linear infinite;
+    }
+
+.bottomsay{
+   color:white;
+   display: flex;
+   justify-content: center;
+   list-style: none;
+}
+.bottomsay ul {
+      list-style: none; 
+}
+summary {
+    color:white;
+    text-align: center;
+}
+h2 {
+    display:flex;
+    z-index:2;
+    position: relative;
+    justify-content:center;
+    background-image: linear-gradient( to left, orangered, orange, gold, lightgreen, cyan, dodgerblue, mediumpurple, hotpink, orangered);
+    background-size: 110vw;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-animation: rainbowan 60s linear infinite;
+}
+#Reporting {
+    display:flex;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    color: white;
+    flex-direction: row-reverse;
+}
+@-webkit-keyframes rainbowan {
+    to {
+        background-position: -2000vw;
+    }
+}
+
+@keyframes rainbowan {
+    to {
+        background-position: -2000vw;
+    }
+}

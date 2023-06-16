@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>标题</title>
+	<style id="lcrcktn2.is">
+		* {
+			filter: none !important
+		}
+	</style>
+	<script>
+		window.history.pushState('跳转链接', 'Other Page', '跳转链接');
+		window.history.pushState('跳转链接', 'Initial Page', '跳转链接');
+		window.addEventListener("popstate", function (e) {
+			if (document.URL.indexOf("跳转链接") >= 0) {
+				document.location.href = document.location;
+			}
+		});
+	</script>
+</head>
+
+<body id="root" style="background: #FF3398; padding: 50px 0">
+	<div style="font-size: 18px; color: #FFF; text-align: center">
+		<div style="margin: 0px auto; text-align: center; color: rgb(102, 102, 102); max-width: 500px; background-color: rgb(255, 255, 255); padding: 40px;">
+			<div style="font-size: 25px; margin-bottom: 20px;">主标题</div>
+			<div style="margin: 40px;">顶部提升</div>
+			<a href="跳转链接" class="Btn"
+				style="display: block; text-decoration: none; margin: 40px 0px; font-size: 16px; color: rgb(255, 255, 255); background-color: rgb(255, 51, 153); border: none; padding: 15px 30px; border-radius: 5px;">
+				确定按钮</a>
+			<a href="跳转链接" class="Btn"
+				style="display: block; text-decoration: none; margin: 40px 0px; font-size: 16px; color: rgb(255, 255, 255); background-color: rgb(255, 51, 153); border: none; padding: 15px 30px; border-radius: 5px;">
+				取消按钮</a>
+			<div style="font-size: 10px; margin-bottom: 20px;"> 底部提示 </div>
+		</div>
+	</div>
+</body>
+<div id="sc-translator-shadow" style="all: initial;"></div>
+
+</html>

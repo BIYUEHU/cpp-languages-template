@@ -1,0 +1,72 @@
+<!--
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2022-12-22 16:32:01
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="http://www.bootcss.com/p/buttons/css/buttons.css">
+    <link rel="stylesheet" id="patternfly-adjusted-css" href="./css/app.css">
+    <link rel="stylesheet" id="patternfly-adjusted-css" href="./css/index.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="./js/jquery-2.0.3.min.js"></script>
+</head>
+
+<body class="home page page-id-194 page-template page-template-page-homepage page-template-page-homepage-php custom-background"
+    ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false"
+    onselectstart="event.returnValue=false">
+    <header role="banner">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" id="logo" title="HY-PHP" href="">
+                        <span id="_name"></span>个人主页
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="splash">
+                <div class="content">
+                    <img alt="PatternFly logo" id="img" src="" class="wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"/>
+                    <h1 id="descr" class="wow fadeIn animated" data-wow-delay="750ms" style="visibility: visible; animation-delay: 750ms; animation-name: fadeIn;"></h1>
+                    <p class="description wow fadeIn animated" data-wow-delay="1250ms"style="visibility: visible; animation-delay: 1250ms; animation-name: fadeIn;"></p>
+                    <a target="_blank" id="url" href="" class="button button-glow button-border button-rounded button-primary">
+                        <i class="fa fa-cloud"><span id="ua"></span></i>
+                    </a>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <div style="width: 100%;bottom: 30px;box-sizing: border-box;left: 100;">
+                        <div>Copyright © 2021-2023 <a style="color:#00FFFF" href="http://imlolicon.tk">BIYUEHU</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvas" width="200%" height="200%"></canvas>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/hovertreewelcome.js"></script>
+    <script src="./js/app.js"></script>
+
+    <audio autoplay="autoplay" loop>
+        <source src="http://boscdn.djduoduo.com/dj/580/sujicha.aac" type="audio/mpeg">
+    </audio>
+
+</body>
+
+</html>

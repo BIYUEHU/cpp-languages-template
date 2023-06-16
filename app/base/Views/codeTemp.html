@@ -1,0 +1,163 @@
+PHP:
+<code class="php">&lt;?php
+$result = file_get_contents("<?php echo $url; ?>");
+var_dump($result);
+?>
+</code>
+JavaScript:
+<code class="javascript">let httpRequest = new XMLHttpRequest();
+let url = "<?php echo $url; ?>";
+httpRequest.open('GET', url, true);
+httpRequest.send();
+httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+        let result = httpRequest.responseText;
+        console.log(result);
+    }
+}
+</code>
+Python:
+<code class="python">import requests
+
+url="<?php echo $url; ?>"
+payload={}
+r = requests.get(url,params=payload)
+print(r);
+</code>
+lua:
+<code class="lua">local httputil = HttpUtil()
+local url = "<?php echo $url; ?>"
+local resStr
+local res,code = httputil.httpPost(url,str)
+    if code ~= 200 then
+        ngx.log(ngx.WARN,"code:"..code)
+            return resStr
+    end
+resStr = res
+</code>
+C/C++:
+<code class="C">#include &lt;iostream>  
+#include &lt;string>  
+#include "curl/curl.h"  
+using namespace std;  
+
+#pragma comment(lib, "ws2_32.lib")  
+#pragma comment(lib, "wldap32.lib")  
+#pragma comment(lib, "libcurl.lib")  
+
+size_t req_reply(void *ptr, size_t size, size_t nmemb, void *stream)  
+{  
+    cout << "----->reply" << endl;  
+    string *str = (string*)stream;  
+    cout << *str << endl;  
+    (*str).append((char*)ptr, size*nmemb);  
+    return size * nmemb;  
+}  
+
+CURLcode curl_get_req(const std::string &url, std::string &response)  
+{  
+    CURL *curl = curl_easy_init();  
+    CURLcode res;  
+    if (curl)  
+    {  
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1);  
+        curl_easy_setopt(curl, CURLOPT_READFUNCTION, NULL);  
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, req_reply);  
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&response);  
+        curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);  
+        curl_easy_setopt(curl, CURLOPT_HEADER, 1);  
+        curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_easy_setopt(curl, CURLOPT_TIMEOUT, 3);  
+        res = curl_easy_perform(curl);  
+    }  
+    curl_easy_cleanup(curl);  
+    return res;  
+}  
+
+
+int main()  
+{  
+    curl_global_init(CURL_GLOBAL_ALL);  
+
+    string getUrlStr = "<?php echo $url; ?>";  
+    string getResponseStr;  
+    auto res = curl_get_req(getUrlStr, getResponseStr);  
+    if (res != CURLE_OK)  
+        cerr << "curl_easy_perform() failed: " + string(curl_easy_strerror(res)) << endl;  
+    else  
+        cout << getResponseStr << endl;  
+
+    curl_global_cleanup();  
+    system("pause");  
+    return 0;  
+}  
+</code>
+Java:
+<code class="java">package com.jl.chromeTest;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+
+public class Test {
+
+    @org.junit.Test
+    public void test() throws Exception{
+        String result = get("<?php echo $url; ?>");
+        System.out.println("result====="+result);
+    }
+    
+    public  String get(String url) throws Exception {
+        String content = null;
+        URLConnection urlConnection = new URL(url).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) urlConnection;
+        connection.setRequestMethod("GET");
+        connection.connect();
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader
+                (connection.getInputStream(), StandardCharsets.UTF_8));
+            StringBuilder bs = new StringBuilder();
+            String l;
+            while ((l = bufferedReader.readLine()) != null) {
+                bs.append(l).append("\n");
+            }
+            content = bs.toString();
+        }
+        return content;
+    }
+}
+</code>
+CS:
+<code class="cs">HttpWebRequest request = (HttpWebRequest)WebRequest.Create("<?php echo $url; ?>");
+HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+String result = new StreamReader(response.GetResponseStream()).ReadToEnd();
+</code>
+Golang:
+<code class="go">func httpGet() {
+    resp, err :=   http.Get("<?php echo $url; ?>")
+    if err != nil {
+    }
+
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+    }
+
+    fmt.Println(string(body))
+}
+
+</code>
+EPL:
+<code class="epl">.版本 2
+
+.局部变量 待返回, 文本型
+
+待返回 ＝ 编码_utf8到gb2312 (到文本 (网页_访问_对象 (“<?php echo $url; ?>”)))
+</code>
