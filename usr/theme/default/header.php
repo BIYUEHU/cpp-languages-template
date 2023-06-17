@@ -44,7 +44,7 @@ $DAT['visitor'] = Controller::visitorWebData();
             --set-accent-color: <?php echo $THEME_SET['accentColor'] ?>;
         }
     </style>
-    <link rel="stylesheet" href="/index.php/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/index.php/assets/css/user/main.css">
     <link rel="stylesheet" href="/index.php/assets/css/site.min.css">
     <link rel="stylesheet" href="/index.php/assets/css/oneui.css">
     <link rel="stylesheet" href="/index.php/assets/css/index.css">

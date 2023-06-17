@@ -193,8 +193,7 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
     include(__DIR__ . '.../../user/footer.php');
     ?>
 
-    <!-- <script src="/index.php/assets/js/user/echarts.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js"></script>
+    <script src="//cdn.staticfile.org/echarts/5.4.2/echarts.min.js"></script>
     <script>
         echartsRender1('maincall', ['7日前', '6日前', '5日前', '4日前', '3日前', '2日前', '昨日', '今日'], <?php echo '[' . Stat::QueryDayTag('api_call_' . Stat::StatName, 7) . ', ' . Stat::QueryDayTag('api_call_' . Stat::StatName, 6) . ', ' . Stat::QueryDayTag('api_call_' . Stat::StatName, 5) . ', ' . Stat::QueryDayTag('api_call_' . Stat::StatName, 4) . ', ' . Stat::QueryDayTag('api_call_' . Stat::StatName, 3) . ', ' . Stat::QueryDayTag('api_call_' . Stat::StatName, 2) . ', ' . $DAT['call']['yesterday'] . ', ' . $DAT['call']['today'] . ']'; ?>)
         echartsRender1('mainvisitWeb', ['7日前', '6日前', '5日前', '4日前', '3日前', '2日前', '昨日', '今日'], <?php echo '[' . Stat::QueryDayTag('web_visit_' . Stat::StatName, 7) . ', ' . Stat::QueryDayTag('web_visit_' . Stat::StatName, 6) . ', ' . Stat::QueryDayTag('web_visit_' . Stat::StatName, 5) . ', ' . Stat::QueryDayTag('web_visit_' . Stat::StatName, 4) . ', ' . Stat::QueryDayTag('web_visit_' . Stat::StatName, 3) . ', ' . Stat::QueryDayTag('web_visit_' . Stat::StatName, 2) . ', ' . $DAT['visitWeb']['yesterday'] . ', ' . $DAT['visitWeb']['today'] . ']'; ?>)

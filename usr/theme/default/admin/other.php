@@ -108,7 +108,7 @@ include(__DIR__ . '/nav.php');
     include(__DIR__ . '.../../user/footer.php');
     ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js"></script>
+    <script src="//cdn.staticfile.org/echarts/5.4.2/echarts.min.js"></script>
     <script>
         const tableDemo = table.render({
             elem: '#demo',
