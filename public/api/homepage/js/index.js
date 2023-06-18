@@ -1,20 +1,3 @@
-/*** 
- * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
- * @Date: 2022-12-22 15:57:09
- */
-
-
-const getQuery = (url) => {
-    const str = url.substr(url.indexOf('?') + 1);
-    const arr = str.split('&');
-    const result = {}
-    for (let i = 0; i < arr.length; i++) {
-        const item = arr[i].split('=')
-        result[item[0]] = item[1]
-    }
-    return result;
-};
 const _REQUEST = getQuery(decodeURI(location.href));
 
 _name = _REQUEST["name"];
