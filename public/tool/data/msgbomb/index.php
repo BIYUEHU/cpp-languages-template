@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//css.letvcdn.com/lc04_yinyue/201612/19/20/00/bootstrap.min.css">
     <style>
         body {
@@ -19,8 +19,8 @@
             background-size: 100% 100%
         }
     </style>
-    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
+    <script src="//cdn.staticfile.org/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>

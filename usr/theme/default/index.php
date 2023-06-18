@@ -8,6 +8,7 @@ include(__DIR__ . '/header.php');
 <section class="content content-boxed">
     <div class="row row_jsxs" id="listApi">
         <?php
+        $back = '';
         // 还是foreach好使（汗
         foreach ($DATA as $value) {
             $title = $value['title'];

@@ -9,7 +9,7 @@ include(__DIR__ . '/nav.php');
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href=""><?php echo $title;?></a></li>
+            <li class="breadcrumb-item"><a href=""><?php echo $title; ?></a></li>
         </ul>
     </div>
     <div class="row">
@@ -17,7 +17,7 @@ include(__DIR__ . '/nav.php');
             <div class="widget-small danger coloured-icon"><i class="icon fa fa-signal fa-3x"></i>
                 <div class="info">
                     <h4>累计调用</h4>
-                    <p><b><?php echo $DATA['call']; ?>次</b></p>
+                    <p><b><?php echo empty($DATA['call']) ? 0 : $DATA['call']; ?>次</b></p>
                 </div>
             </div>
         </div>
@@ -40,23 +40,13 @@ include(__DIR__ . '/nav.php');
     </div>
 
     <div class="row" style="margin-bottom: 30px;">
-        <!--         <div class="col-md-7 ptch-index-info">
-            <div class="layui-card ptch-overflow-y" style="height: auto">
-                <div class="layui-card-header" style="color:#FFCC00">
-                    使用须知
-                    <i class="layui-icon layui-icon-tips" lay-offset="5"></i>
-                </div>
-                <div class="layui-card-body layui-text layadmin-text">
-                </div>
-            </div>
-        </div> -->
-
         <div class="col-md-7 ptch-index-info">
             <div class="layui-card">
                 <div class="layui-card-header" style="color:chartreuse">
                     用户公告
                 </div>
                 <div class="layui-card-body layui-text layadmin-text">
+                    <?php echo $WEB_INFO['useropen']; ?>
                 </div>
             </div>
         </div>

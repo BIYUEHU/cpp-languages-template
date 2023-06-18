@@ -17,7 +17,7 @@ include(__DIR__ . '/head.php');
         <div class="login-box layui-form">
             <form class="login-form" id="admin-login">
                 <h3 class="login-head">
-                    <i class="fa fa-lg fa-fw fa-user"></i>管理员
+                    <i class="fa fa-lg fa-fw fa-user"></i>用户 - <?php echo $title; ?>
                 </h3>
                 <div class="form-group">
                     <label class="control-label">账号</label>
@@ -36,6 +36,7 @@ include(__DIR__ . '/head.php');
                 </div>
                 <div class="form-group">
                     <input type="checkbox" class="form-control" name="like1[write]" lay-skin="primary" title="记住密码">
+                    <span>没有账号?<a href="./register">点击注册</a></span>
                 </div>
 <!--                 <div class="form-group">
                     <div id="embed-captcha">

@@ -38,6 +38,7 @@ class Component {
         self::$captor = $tempData[0];
         self::$defaultTag = $tempData[1];
         self::$TEXT = file_get_contents('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
+        // self::$TEXT = \Core\Func\get_url('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
         return self::handel();
     }
 
@@ -201,6 +202,6 @@ class Component {
 }
 
 
-$uid = $_GET['uid'];
-$format = $_GET['format'];
+$uid = $_REQUEST['uid'];
+$format = $_REQUEST['format'];
 (new Component($uid, $format));

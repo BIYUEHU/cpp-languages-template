@@ -9,6 +9,43 @@ namespace Core\Func;
 
 use function Base\Controllers\statement;
 
+function get_url($url, $cookie = false)
+{
+    $url = parse_url($url);
+    $query = $url['path'] . "?" . $url['query'];
+    echo "Query:" . $query;
+    $fp = fsockopen($url['host'], $url['port'] ? $url['port'] : 80, $errno, $errstr, 30);
+    if (!$fp) {
+        return false;
+    } else {
+        $request = "GET $query HTTP/1.1rn";
+        $request .= "Host: $url[host]rn";
+        $request .= "Connection: Closern";
+        if ($cookie) $request .= "Cookie:  $cookie";
+        $request .= "rn";
+        fwrite($fp, $request);
+        $result = '';
+        while (!@feof($fp)) {
+            $result .= @fgets($fp, 1024);
+        }
+        fclose($fp);
+        return $result;
+    }
+}
+
+//获取url的html部分，去掉header
+function GetUrlHTML($url, $cookie = false)
+{
+    $rowdata = get_url($url, $cookie);
+    if ($rowdata) {
+        $body = stristr($rowdata, "rnrn");
+        $body = substr($body, 4, strlen($body));
+        return $body;
+    }
+
+    return false;
+}
+
 /**
  * 加载视图
  * @param string $file 文件名

@@ -31,6 +31,47 @@ class HandleController extends Controller
     }
 
 
+    /* 注册 */
+    public function register()
+    {
+        // 验证是否登录
+        !self::$data['VERIFY'] || self::printResult(509);
+
+        // 根据记录的SESSION判断图片验证码是否正确
+        $_SESSION['captchaimg_num'] == $_POST['captchaimg'] || self::printResult(510);
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        !empty($name) && !empty($email) || self::printResult(501);
+
+        preg_match_all('/(.*?)@(.*)/', $email, $match);
+        !empty($match[1]) || self::printResult(502);
+
+        $rows = self::$db->fetchAll(HandleAdminAccountaddCheckModel, [$name, $email]);
+        count($rows) < 1 || self::printResult(508);
+
+        $password = substr(\Core\Func\getKey(), 0, 10);
+        $ip = \Core\Func\getUserIp();
+
+        $rowCount = self::$db->exec(HandleAdminAccountaddExecModel, [
+            $name, $email, $password, 3,
+            $ip, self::$data['WEB_INFO']['startcoin']
+        ]);
+
+        
+        $title = '恭喜您成功注册 ' . self::$data['WEB_INFO']['webtitle'] . ' !';
+        $url = self::$data['WEB_INFO']['weburl'] . APP_USER_PATH . '/login';
+        $message = "您的登录密码是: <strong>$password</strong><br>请凭借本密码登录并修改为您自己的密码<br>登录地址: <a href=\"$url\">$url</a><br>如若非您本人操作请忽略该邮件";
+        // 获取邮箱插件配置数据并引入插件本体文件
+        $config = self::getSetData('plugins_email');
+        require_once(HULICORE_USR_PATH . '/plugins/email/index.php');
+        $result = sendMail($email, $title, $message, true, $config);
+        self::printResult($result);
+
+        $rowCount > 0 ? self::printResult() : self::printResult(502);
+    }
+
+
     public function apilist()
     {
         self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);

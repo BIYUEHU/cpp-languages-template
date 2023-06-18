@@ -14,7 +14,7 @@ class IndexController extends Controller
         self::$data['VERIFY'] || location(APP_USER_PATH . '/login');
         $data = [
             'numApi' => count(self::$db->fetchAll(PageUserIndexModel, [self::$data['VERIFY']['id']])),
-            'call' => Stat::QueryTag('user_' . self::$data['VERIFY']['id'] . ':total') 
+            'call' => Stat::QueryTag('user_' . self::$data['VERIFY']['id'] . ':total')
         ];
         self::setViewCustomData($data);
         self::loadView('user/index.php');
@@ -28,10 +28,17 @@ class IndexController extends Controller
         $tempSet = 'de';
         if (isset($_GET['sp']) || (!isset($_GET['sp']) && $tempSet == 'sp')) {
             self::loadView('user/loginsp.php');
-
-        } else if (isset($_GET['de']) || (!isset($_GET['de']) && $tempSet == 'de')){
+        } else if (isset($_GET['de']) || (!isset($_GET['de']) && $tempSet == 'de')) {
             self::loadView('user/login.php');
         }
+    }
+
+
+    /* 注册 */
+    public function register()
+    {
+        !self::$data['VERIFY'] || location(APP_USER_PATH . '/');
+        self::loadView('user/register.php');
     }
 
 
@@ -44,21 +51,21 @@ class IndexController extends Controller
 
 
     public function apilist()
-    {        
+    {
         self::$data['VERIFY']['opgroup'] >= 3 || location(APP_USER_PATH . '/login');
         self::loadView('user/apilist.php');
     }
 
 
     public function apishop()
-    {        
+    {
         self::$data['VERIFY']['opgroup'] >= 3 || location(APP_USER_PATH . '/login');
         self::loadView('user/apishop.php');
     }
 
 
     public function coinpay()
-    {        
+    {
         self::$data['VERIFY']['opgroup'] >= 3 || location(APP_USER_PATH . '/login');
         self::loadView('user/coinpay.php');
     }

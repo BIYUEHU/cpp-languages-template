@@ -96,7 +96,8 @@ class IndexController extends Controller
     public function api()
     {
         //调用限制
-        self::$data['VERIFY']['opgroup'] == 4 || self::callLimit();
+        $opgroup = self::$data['VERIFY']['opgroup'];
+        $opgroup == 4 || self::callLimit();
 
         $row = self::$db->fetch(PageDocModel, [self::$val]);
 
@@ -111,13 +112,15 @@ class IndexController extends Controller
             Stat::WriteTag($row['idstr'] . '_' . Stat::StatName);
 
             // apikey相关操作
-            $apikey = $_REQUEST['apikey'];
-            $verifyApikey = self::verifyApikey($row['idstr'], $apikey);
-            if ($verifyApikey) {
-                Stat::WriteTag('user_' . $verifyApikey['account'] . ':total', 1, false);
-                Stat::WriteTag('user_' . $verifyApikey['account'] . ':' . $row['idstr'] . '_' . Stat::StatName, 1, false);
-            } else if (($row['coin'] > 0 && !$verifyApikey) || ($row['coin'] <= 0 && !empty($apikey))) {
-                self::printResult(611);
+            if ($opgroup != 4) {
+                $apikey = $_REQUEST['apikey'];
+                $verifyApikey = self::verifyApikey($row['idstr'], $apikey);
+                if ($verifyApikey) {
+                    Stat::WriteTag('user_' . $verifyApikey['account'] . ':total', 1, false);
+                    Stat::WriteTag('user_' . $verifyApikey['account'] . ':' . $row['idstr'] . '_' . Stat::StatName, 1, false);
+                } else if (($row['coin'] > 0 && !$verifyApikey) || ($row['coin'] <= 0 && !empty($apikey))) {
+                    self::printResult(611);
+                }
             }
 
             // 加载接口本体文件

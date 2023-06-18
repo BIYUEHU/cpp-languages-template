@@ -58,6 +58,18 @@ include(__DIR__ . '/nav.php');
                                 <input class="form-control createtime" id="sets" setval="createtime" type="text" value="<?php echo $WEB_INFO['createTime']; ?>" autocomplete="off">
                             </div>
                             <div class="form-group">
+                                <label>用户初始金额</label>
+                                <input class="form-control createtime" id="sets" setval="startcoin" type="text" value="<?php echo $WEB_INFO['startcoin']; ?>" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label>用户公告</label>
+                                <textarea class="form-control" id="sets" setval="useropen" rows='4' autocomplete="off"><?php echo $WEB_INFO['useropen']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>用户日志</label>
+                                <textarea class="form-control" id="sets" setval="log" rows="4" autocomplete="off"><?php echo $WEB_INFO['log']; ?></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>网站主题</label>
                                 <select id="sets" setval="theme">
                                     <?php

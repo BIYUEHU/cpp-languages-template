@@ -39,6 +39,9 @@ Route::get(APP_USER_PATH . '/login', 'User/IndexController@login');
 
 Route::any(APP_USER_PATH . '/loginout', 'User/IndexController@loginout');
 
+/* 注册 */
+Route::get(APP_USER_PATH . '/register', 'User/IndexController@register');
+
 /* 仪表盘 */
 Route::get(APP_USER_PATH . '/', 'User/IndexController@index');
 
@@ -93,6 +96,9 @@ Route::get(APP_ADMIN_PATH . '/fileupload', 'Admin/IndexController@fileupload');
 Route::post(APP_USER_PATH . '/login', 'User/HandleController@login');
 // Route::post(APP_ADMIN_PATH . '/login/{val}', 'Admin/HandleController@login');
 
+/* 注册 */
+Route::post(APP_USER_PATH . '/register', 'User/HandleController@register');
+
 /* 接口列表(拥有) */
 Route::post(APP_USER_PATH . '/apilist', 'User/HandleController@apilist');
 Route::post(APP_USER_PATH . '/apilistreset', 'User/HandleController@apilistreset');
@@ -107,7 +113,7 @@ Route::post(APP_USER_PATH . '/person', 'User/HandleController@person');
 Route::post(APP_USER_PATH . '/personupload', 'User/HandleController@personupload');
 
 /* 网站设置 */
-Route::post(APP_ADMIN_PATH . '/webset', 'Admin/HandleController@webset');
+Route::post(APP_ADMIN_PATH . '/webset', 'Admin/HandleController@webset', false);
 
 /* 接口四套 */
 Route::post(APP_ADMIN_PATH . '/apiadd', 'Admin/HandleController@apiadd');

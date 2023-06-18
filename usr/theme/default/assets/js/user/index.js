@@ -103,6 +103,63 @@ function doLogin() {
 }
 
 
+/* register */
+function tryRegister() {
+    event.preventDefault();
+    layer.confirm('确定注册？', { icon: 3 }, doRegister)
+}
+
+function doRegister() {
+    const name = $('#name').val();
+    const account = $('#account').val();
+    const captchaimg = $('#captchaimg').val();
+    if (account == '' || name == '' || captchaimg == '') {
+        layer.msg('账号名字或验证码不能为空', { icon: 5 });
+        return;
+    }
+
+    const data = {
+        email: account,
+        name: name,
+        captchaimg: captchaimg
+    };
+
+    sendPostRequest(location.href, data, d => {
+        switch (d.code) {
+            case 500:
+                layer.alert('请查看您的邮箱信件获取登录密码,如若找不邮件请查看垃圾邮箱或检查邮箱是否正确', {
+                    icon: 6,
+                    shadeClose: true,
+                    title: '注册成功'
+                });
+                $('#name').val('');
+                $('#account').val('');
+                $('#captchaimgImg').attr('src', '/sys/captchaimg');
+                break;
+            case 501:
+                layer.msg('名字或账号不能为空', { icon: 5 });
+                break;
+            case 502:
+                layer.msg('邮箱格式错误', { icon: 2 });
+                $('#captchaimgImg').attr('src', '/sys/captchaimg');
+                break;
+            case 510:
+                layer.msg('验证码错误', { icon: 0 });
+                $('#captchaimgImg').attr('src', '/sys/captchaimg');
+                break;
+            case 508:
+                layer.msg('该名字或邮箱已被注册', { icon: 0 });
+                $('#name').val('');
+                $('#account').val('');
+                $('#captchaimgImg').attr('src', '/sys/captchaimg');
+                break;
+            default:
+                printError(d, data);
+        }
+    });
+}
+
+
 /* apilist */
 function apilist_user() {
     tableDemo = table.render({
@@ -274,6 +331,22 @@ function apishop() {
                 break;
         }
     })
+}
+
+
+/* coinpay */
+function trypay() {
+    event.preventDefault();
+    layer.confirm('确定支付？', { icon: 3 }, doPay)
+}
+
+function doPay() {
+    setTimeout(() => layer.alert('暂未开通支付功能!\n请联系站长支付', {
+        icon: 4,
+        shadeClose: true,
+        title: '支付失败'
+    }), 500)
+    /* 形式主义↑ */
 }
 
 
