@@ -61,39 +61,7 @@ include(__DIR__ . '/nav.php');
                 </div>
                 <div class="layui-card-body layui-text layadmin-text">
                     <ul class="layui-timeline">
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <h3 class="layui-timeline-title">
-                                    09月28日</h3>
-                                <p>
-                                    二维码生成 <br>
-                                    快速将URL或者文字生成二维码 <i class="layui-icon"></i>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <h3 class="layui-timeline-title">
-                                    07月15日</h3>
-                                <p>
-                                    ICP备案查询 <br>
-                                    快速查询域名备案信息 <i class="layui-icon"></i>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <h3 class="layui-timeline-title">
-                                    04月28日</h3>
-                                <p>
-                                    历史今日 <br>
-                                    回顾历史的长河，历史是生活的一面镜子 <i class="layui-icon"></i>
-                                </p>
-                            </div>
-                        </li>
+                        <div id="content"></div>
                     </ul>
                 </div>
             </div>
@@ -103,6 +71,13 @@ include(__DIR__ . '/nav.php');
     <?php
     include(__DIR__ . '/footer.php');
     ?>
+    <script src="//cdn.staticfile.org/marked/5.1.0/marked.min.js"></script>
+    <script>
+        let value = `<? echo $WEB_INFO['log']; ?>`;
+        value = marked.parse(value);
+        value = value.split('\n');
+        $('#content').html(value);
+    </script>
     </body>
 
     </html>
