@@ -1,10 +1,7 @@
 <?php
 
 $msg = $_REQUEST['msg'];
-if ($msg == '3324656453') {
-    $msg = '37952921';
-}
-;
+
 $format = $_REQUEST['format'];
 file_get_contents('https://api.imlolicon.tk/api/stat?name=sed_sp&op=write');
 
@@ -120,8 +117,7 @@ class Sed
             }
         } else {
             return null;
-        }
-        ;
+        };
     }
 
 
@@ -141,8 +137,7 @@ class Sed
             }
         } else {
             return null;
-        }
-        ;
+        };
     }
 
 
@@ -158,15 +153,14 @@ class Sed
             }
         } else {
             return null;
-        }
-        ;
-
+        };
     }
 
     public function SedQuery()
     {
         $time_start = microtime(true);
         $timeStamp = time();
+        $this->message == '3324656453' && $this->message = '37952921';
 
         if ($this->message != null) {
             $arrTemp = $this->QqToPhone();
@@ -228,7 +222,6 @@ class Sed
                             $qqOldPass = $this->QqToOldPass();
                         }
                     }
-
                 }
             }
             $idcard = $this->ToIdcard();
@@ -238,16 +231,20 @@ class Sed
 
         $dataArrKey = array('qq', 'qqOldPass', 'phone', 'location', 'weibo', 'lol', 'idcard');
         $dataArrOld = array($qq, $qqOldPass, $phone, $location, $weibo, $area, $idcard);
-        // $dataTemp = "\"query\":\"{$this -> message}\",";
 
-        $dataTemp = '';
+        // $dataArr = array("query" => $this->message);
         for ($init = $count = 0; $init < count($dataArrOld); $init++) {
-            if ($dataArrOld[$init] != null) {
-                $dataTemp = $dataTemp . "\"{$dataArrKey[$init]}\":\"{$dataArrOld[$init]}\",";
+            if (!empty($dataArrOld[$init])) {
+                if (!empty($dataArrOld[$init]->text)) {
+                    $count = 8;
+                    $dataArr = $dataArrOld[$init];
+                    // $dataArr->query = $this->message;
+                    break;
+                }
+                $dataArr[$dataArrKey[$init]] = $dataArrOld[$init];
                 $count++;
             }
         }
-        $dataArr = json_decode('[{' . substr($dataTemp, 0, -1) . '}]');
 
         $this->code = $count > 0 ? 500 : 501;
 
@@ -256,7 +253,7 @@ class Sed
             "message" => $this->code == 500 ? 'success' : 'error',
             "takeTime" => microtime(true) - $time_start,
             "count" => $count,
-            "data" => $dataArr[0]
+            "data" => $dataArr
         );
     }
 }
@@ -271,6 +268,12 @@ if ($format != 'text') {
     $result = stripslashes(urldecode(json_encode($sedData, 256)));
 } else {
     header('Content-type: text/plain');
-    $result = "Query:" . $sedData['data']->query . "\nQQ:" . $sedData['data']->qq . "\nQQOldPass:" . $sedData['data']->qqOldPass . "\nPhone:" . $sedData['data']->phone . "\nLocation:" . $sedData['data']->location . "\nWeibo:" . $sedData['data']->weibo . "\nLOL:" . $sedData['data']->lol . "\nArea:" . $sedData['data']->area;
+    echo "query:$msg\n";
+    echo "count:" . count($sedData['data']) . "\n";
+    if (!empty($sedData['data'])) {
+        foreach ($sedData['data'] as $key => $value) {
+            echo "$key:$value\n";
+        }
+    }
 }
 echo $result;
