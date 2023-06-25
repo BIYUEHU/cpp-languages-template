@@ -1,6 +1,7 @@
 <?php
+$_POST['view'] = true;
 if ($_POST['msg'] != null) {
-    include('./api/index.php');
+    include(__DIR__ . '../../../../../data/api/sed.php');
     header('content-type:text/html');
 }
 
@@ -31,7 +32,7 @@ if ($_POST['msg'] != null) {
     </div>
     <br /><br />
 
-    <form name="from" action="/api/sed" method="post">
+    <form name="from" action="" method="post">
         <div id="content">
             <div id="create_form">
                 <label>Please input Keyword:

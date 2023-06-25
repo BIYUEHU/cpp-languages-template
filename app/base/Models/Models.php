@@ -63,7 +63,7 @@ define('HandleAdminWebsetAddModel', "INSERT INTO {$prefix}set(set_key, set_val, 
 /* APP添加 */
 define('HandleAdminApiaddCheckModel', "SELECT * FROM {$prefix}api WHERE title = ? OR idstr = ?");
 
-define('HandleAdminApiaddExecModel', "INSERT INTO {$prefix}api(title, subtitle, idstr, state, returnTemp, returnType, returnPar, requestTemp, requestType, requestPar, codeTemp, codePar) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+define('HandleAdminApiaddExecModel', "INSERT INTO {$prefix}api(title, subtitle, idstr, state, returnTemp, returnType, returnPar, requestTemp, requestType, requestPar, codeTemp, codePar, coin) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)");
 
 /* API列表 */
 define('HandleAdminApilistDelModel', "DELETE FROM {$prefix}api WHERE idstr = ?");

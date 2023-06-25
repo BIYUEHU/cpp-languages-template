@@ -83,13 +83,13 @@ if (!hasEmpty($_REQUEST['ip'], $_REQUEST['port'])) {
 					'status' => 'online',
 					'ip' => $ip,
 					'real' => $real,
-					'port' => $port,
+					'port' => intval($port),
 					'location' => getLocation($real),
 					'motd' => $data['1'],
-					'agreement' => $data['2'],
+					'agreement' => intval($data['2']),
 					'version' => $data['3'],
-					'online' => $data['4'],
-					'max' => $data['5'],
+					'online' => intval($data['4']),
+					'max' => intval($data['5']),
 					'gamemode' => $data['8'],
 					'delay' => round($t2 - $t1, 3) * 1000
 				)

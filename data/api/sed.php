@@ -276,4 +276,4 @@ if ($format != 'text') {
         }
     }
 }
-echo $result;
+if (empty($_POST['view'])) echo $result;
