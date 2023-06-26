@@ -1,4 +1,9 @@
 <?php
+/*
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2023-06-26 11:43:06
+ */
 function getBrowser()
 {
     $sys = $_SERVER['HTTP_USER_AGENT'];  //获取用户代理字符串
@@ -123,8 +128,19 @@ $imgList = ['', 'Nagisa', 'Chino', 'Kanade', 'Atri', 'Kotori', 'Mashiro', 'Miku'
 ];
 $img = imagecreatefromjpeg(__DIR__ . '/res/ipcard/' . $imgList[$imgNum] . ".jpg");
 
-$ip = $_SERVER["REMOTE_ADDR"];
+$ip = $_GET['ip'] ?? $_SERVER["REMOTE_ADDR"];
 $city = json_decode(file_get_contents("http://opendata.baidu.com/api.php?query={$ip}&co=&resource_id=6006&oe=utf8"), 256)['data'][0]['location'];
+
+// 独立什么的最好きです了
+// 小pink们别急🤣🤣🤣🤣
+if ($city == '台湾省' || strstr($city, '台湾')) $city = '中华民国';
+if ($city == '香港特别行政区' || strstr($city, '香港')) $city = '英属香港';
+if ($city == '澳门特别行政区' || strstr($city, '澳门')) $city = '葡属澳门';
+if (strstr($city, '新疆')) $city = '东突厥斯坦伊斯兰共和国';
+if (strstr($city, '内蒙古')) $city = '南蒙古国';
+if (strstr($city, '西藏')) $city = '西藏喜乐宫胜十方政府';
+// 这个面子必须给
+if ($city == '日本') $city = '家乡';
 
 $weekArray = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
