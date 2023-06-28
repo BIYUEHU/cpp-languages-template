@@ -4,6 +4,12 @@ namespace Curl;
 
 use Curl\ArrayUtil;
 use Curl\Decoder;
+require(__DIR__ . '/ArrayUtil.php');
+require(__DIR__ . '/CaseInsensitiveArray.php');
+require(__DIR__ . '/Decoder.php');
+require(__DIR__ . '/MultiCurl.php');
+require(__DIR__ . '/StrUtil.php');
+require(__DIR__ . '/Url.php');
 
 class Curl
 {

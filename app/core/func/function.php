@@ -9,6 +9,16 @@ namespace Core\Func;
 
 use function Base\Controllers\statement;
 
+function send_post($url, $data = null)
+{
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($curl);
+    return $response;
+}
+
 function get_url($url, $cookie = false)
 {
     $url = parse_url($url);
