@@ -1,6 +1,6 @@
 <?php
 return [
-    'host' => 'localhost',
+    'host' => 'api.imlolicon.tk',
     'port' => 3306,
     'dbName' => 'ialcore',
     'userName' => 'ialcore',

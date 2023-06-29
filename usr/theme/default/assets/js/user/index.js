@@ -497,7 +497,7 @@ function apiadd() {
                 let pars2Id = 1;
                 while (objData[`pars2_${pars2Id}_name`] != '' && typeof (objData[`pars2_${pars2Id}_name`]) == 'string') {
                     if (objData[`pars2_${pars2Id}_name`] != '' && objData[`pars2_${pars2Id}_descr`] != '') {
-                        codepar += `${objData['pars2_0_name']}&${objData['pars2_0_descr']}`;
+                        codepar += `|${objData[`pars2_${pars2Id}_name`]}&${objData[`pars2_${pars2Id}_descr`]}`;
                     }
                     pars2Id++;
                 }
