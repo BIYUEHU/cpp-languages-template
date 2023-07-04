@@ -4,6 +4,95 @@
  * @Blog: http://imlolicon.tk
  * @Date: 2023-02-16 16:12:33
  */
+
+require(__dir__ . './src/Curl/Curl.php');
+
+function curlSuper($args = [])
+{
+    $default = [
+        'method'     => 'GET',
+        'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36',
+        'url'        => null,
+        'referer'    => null,
+        'headers'    => null,
+        'body'       => null,
+        'proxy'      => false
+    ];
+    $args         = array_merge($default, $args);
+    $method       = mb_strtolower($args['method']);
+    $method_allow = ['get', 'post'];
+    if (null === $args['url'] || !in_array($method, $method_allow, true)) {
+        return;
+    }
+    $curl = new \Curl\Curl();
+    $curl->setUserAgent($args['user-agent']);
+    $curl->setReferrer($args['referer']);
+    $curl->setTimeout(15);
+    $curl->setHeader('X-Requested-With', 'XMLHttpRequest');
+    $curl->setOpt(CURLOPT_FOLLOWLOCATION, true);
+    $curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
+    $curl->setOpt(CURLOPT_SSL_VERIFYHOST, false);
+    if (strpos($args['url'], 'service.5sing.kugou.com') === false) {
+        $curl->setOpt(CURLOPT_ENCODING, 'gzip');
+    }
+    if ($args['proxy'] && MC_PROXY) {
+        $curl->setOpt(CURLOPT_HTTPPROXYTUNNEL, 1);
+        $curl->setOpt(CURLOPT_PROXY, MC_PROXY);
+        $curl->setOpt(CURLOPT_PROXYUSERPWD, MC_PROXYUSERPWD);
+    }
+    if (!empty($args['headers'])) {
+        $curl->setHeaders($args['headers']);
+    }
+    $curl->$method($args['url'], $args['body']);
+    $curl->close();
+    // var_dump($curl);
+    if (!$curl->error) {
+        return $curl->rawResponse;
+    }
+}
+function get_curl($url, $post = 0, $referer = 0, $cookie = 0, $header = 0, $ua = 0, $nobaody = 0)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $httpheader[] = "Accept:*/*";
+        $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
+        $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
+        $httpheader[] = "Connection:close";
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+        if ($post) {
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+        }
+        if ($header) {
+            curl_setopt($ch, CURLOPT_HEADER, true);
+        }
+        if ($cookie) {
+            curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+        }
+        if ($referer) {
+            if ($referer == 1) {
+                curl_setopt($ch, CURLOPT_REFERER, 'http://bilibili.com/');
+            } else {
+                curl_setopt($ch, CURLOPT_REFERER, $referer);
+            }
+        }
+        if ($ua) {
+            curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+        } else {
+            curl_setopt($ch, CURLOPT_USERAGENT, "MQQBrowser/Mini3.1 (Nokia3050/MIDP2.0)");
+        }
+        if ($nobaody) {
+            curl_setopt($ch, CURLOPT_NOBODY, 1);
+        }
+        curl_setopt($ch, CURLOPT_ENCODING, "gzip");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $ret = curl_exec($ch);
+        curl_close($ch);
+        return $ret;
+    }
+
+
 class Component {
     private static $UID;
     private static $FORMAT;
@@ -37,9 +126,12 @@ class Component {
         $tempData = self::definedData();
         self::$captor = $tempData[0];
         self::$defaultTag = $tempData[1];
-        self::$TEXT = file_get_contents('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
+        // self::$TEXT = file_get_contents('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
+        echo get_curl('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?offset=&host_mid=293767574&timezone_offset=-480&features=itemOpusStyle');
+        
         // self::$TEXT = \Core\Func\get_url('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
-        return self::handel();
+        exit();
+        // return self::handel();
     }
 
     private static function searchStr($rule)

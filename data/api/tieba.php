@@ -15,17 +15,23 @@ class Tieba
         preg_match_all('!<div class="i">(.*?)</div>!is', $data, $matchs);
         $data = [];
         foreach ($matchs[1] as $val) {
+            $val = str_replace('<br />', '<br/>', $val);
             $valex = explode("<br/>", $val);
+            $length = count($valex);
             preg_match('/"(.*)?"/', $valex[0], $match1);
             preg_match('/>(.*)?</', $valex[0], $match2);
-            preg_match('/(.*)?">(.*)?<\/a>/', $valex[2], $match3);
-            preg_match('/;<span class="b">(.*)?<\/span>/', $valex[2], $match4);
+            preg_match('/(.*)?">(.*)?<\/a>/', $valex[$length - 1], $match3);
+            preg_match('/;<span class="b">(.*)?<\/span>/', $valex[$length - 1], $match4);
+            $title = explode('.', $match2[1], 2)[1];
+            $content = $length == 2 ? $title : $valex[1];
             array_push($data, array(
-                "title" => $match2[1],
-                "content" => $valex[1],
+                "title" => $title,
+                "content" => $content,
                 "group" => $match3[2] . "吧",
                 "time" => $match4[1],
-                "url" => "https://tieba.baidu.com" . $match1[1]
+                "url" => "https://tieba.baidu.com" . $match1[1],
+                // "source" => $valex[$init],
+                // "source" => $valex
             ));
         }
         return $data;

@@ -7,8 +7,8 @@ if ($_REQUEST['qq']) {
     $get_info = mb_convert_encoding($get_info, "UTF-8", "GBK");
     $name = json_decode(substr($get_info,17,-1),true);
     
-    if ($name && $qq) { 
-        $txUrl = 'https://q.qlogo.cn/headimg_dl?dst_uin='.$qq.'&spec=100';
+    // if ($name) { 
+        $txUrl = 'https://q.qlogo.cn/headimg_dl?spec=100&dst_uin='.$qq.'';
         $arr = array(
             'code' => 500,
             'message' => 'success',
@@ -16,13 +16,13 @@ if ($_REQUEST['qq']) {
                 'imgurl' => $txUrl,
                 'name' => urlencode($name[$qq][6])
         ));
-    } else {
+    /* } else {
         $arr = array(
             'code' => 501,
             'message' => 'error',
             'data' => []
         );
-    }
+    }*/
 } else {
     $arr = array(
         'code' => 501,
