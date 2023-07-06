@@ -84,6 +84,7 @@ class Mcskin
     }
 }
 
+header('Content-type: application/json');
 $playerName = $_REQUEST['name'];
 $data = new Mcskin($playerName);
 echo json_encode($data->result);
