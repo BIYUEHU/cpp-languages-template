@@ -15,7 +15,7 @@ class Mcskin
     public $result;
     private const API_UUID = "https://api.mojang.com/users/profiles/minecraft/";
     private const API_SKIN = "https://sessionserver.mojang.com/session/minecraft/profile/";
-    private const TEMP_AVATAR = __DIR__ . './temp/avatar.png';
+    private const TEMP_AVATAR = __DIR__ . '/temp/avatar.png';
     public function __construct($playerName)
     {
         $code = 501;
