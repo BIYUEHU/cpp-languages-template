@@ -30,4 +30,4 @@ Apache
 RewriteRule '^(.*)$$' /index.php; [L] 
 ```
 - 根据地址访问/user/login目录
-- 默认管理员账号: `Admin` 密码:`123456`
+- 默认管理员账号: `admin@qq.com` 密码:`123456`
