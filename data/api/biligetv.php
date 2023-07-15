@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+error_reporting(0);
 
 $msg = $_REQUEST['msg'];
 if (!empty($msg)) {
