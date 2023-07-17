@@ -9,7 +9,7 @@ $requesttemp = $requesturl . $DATA['requestTemp'];
 $apikey = $DATA['apikey'] ?? '请先购买接口后使用';
 ?>
 
-<link rel="stylesheet" href="/index.php/assets/css/doc.css">
+<link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/doc.css">
 <div class="layui-container">
     <div class="layui-row">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">

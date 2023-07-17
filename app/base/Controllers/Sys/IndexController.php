@@ -6,6 +6,7 @@ use Base\Controllers\Controller;
 use Lib\CaptchaImg;
 use function Core\Func\location;
 use function Base\Controllers\getAllThemes;
+use function Core\Func\loadConfig;
 
 class IndexController extends Controller
 {
@@ -38,7 +39,7 @@ class IndexController extends Controller
     public function getaccountavatar()
     {
         $val = $_REQUEST['id'] ?? self::$data['VERIFY']['id'];
-        $filePath = HULICORE_DATA_PATH . "/account/{$val}.png"; 
+        $filePath = HULICORE_DATA_PATH . "/account/{$val}.png";
         if (file_exists($filePath) == true) {
             header('Content-type: image/png');
             echo file_get_contents($filePath);
@@ -97,6 +98,16 @@ class IndexController extends Controller
             $result .= "\n总计：{$data['visitor']['total']}";
             $result .= "\n今日：{$data['visitor']['today']}";
             $result .= "\n昨日：{$data['visitor']['yesterday']}";
+            if (loadConfig('theme.php')['type'] == 'HotaruCore') {
+                $siteData = self::$db->fetchALL(PageSiteNumModel);
+                $result .= "\n子站信息";
+                $result .= "\n数量：" . count($siteData);
+                $result .= "\n列表：";
+                foreach ($$siteData as $value) {
+                    $result .= "\n" . $value['website'];
+                }
+            };
+
 
             header('Content-type: text/plain');
             echo $result;

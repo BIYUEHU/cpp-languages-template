@@ -171,7 +171,7 @@ class HandleController extends Controller
         foreach ($rows as $key => $val) {
             $count++;
             if ((($page - 1) * $limit) <= $key && $key < ($page * $limit)) {
-                array_push($data, array(
+                $arr = array(
                     'id' => $val['id'],
                     'name' => $val['name'],
                     'email' => $val['email'],
@@ -179,7 +179,13 @@ class HandleController extends Controller
                     'ip' => $val['ip'],
                     'coin' => intval($val['coin']),
                     'reg_date' => $val['reg_date']
-                ));
+                );
+                $arr = loadConfig('theme.php')['type'] == 'HotaruCore' ? array_merge($arr, [
+                    'website' => $val['website'],
+                    'nums' => count(self::$db->fetchAll(PageUserIndexModel, [$val['id']])),
+                    'call' => intval(Stat::QueryTag('user_' . $val['id'] . ':total')),
+                ]) : $arr;
+                array_push($data, $arr);
             }
         }
 

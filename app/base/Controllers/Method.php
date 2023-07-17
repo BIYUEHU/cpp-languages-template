@@ -86,7 +86,7 @@ function renderParTable($parArray, $col = 2)
  */
 function statement()
 {
-    consolelog('`%c欢迎访问HULIAPI %chttp://imlolicon.tk`, `color:yellow; background:RGB(45,238,241); font-size:25px;`, `background:RGB(247,247,247); font-size:25px`');
+    consolelog('`%c欢迎访问HULIAPI %chttp://api.imlolicon.tk`, `color:yellow; background:RGB(45,238,241); font-size:25px;`, `background:RGB(247,247,247); font-size:25px`');
     consolelog('`
     _______                   _______   ______  __      __  __    __  ________  __    __  __    __ 
     /       \                 /       \ /      |/  \    /  |/  |  /  |/        |/  |  /  |/  |  /  |

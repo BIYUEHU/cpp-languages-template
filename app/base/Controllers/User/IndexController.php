@@ -4,6 +4,8 @@ namespace Base\Controllers\User;
 
 use Base\Controllers\Controller;
 use Lib\Stat;
+
+use function Core\Func\loadConfig;
 use function Core\Func\location;
 
 
@@ -14,8 +16,9 @@ class IndexController extends Controller
         self::$data['VERIFY'] || location(APP_USER_PATH . '/login');
         $data = [
             'numApi' => count(self::$db->fetchAll(PageUserIndexModel, [self::$data['VERIFY']['id']])),
-            'call' => Stat::QueryTag('user_' . self::$data['VERIFY']['id'] . ':total')
+            'call' => Stat::QueryTag('user_' . self::$data['VERIFY']['id'] . ':total'),
         ];
+        $data = loadConfig('theme.php')['type'] == 'HotaruCore' ? array_merge($data, ['num' => count(self::$db->fetchALL(PageSiteNumModel))]) : $data;
         self::setViewCustomData($data);
         self::loadView('user/index.php');
     }
@@ -68,6 +71,13 @@ class IndexController extends Controller
     {
         self::$data['VERIFY']['opgroup'] >= 3 || location(APP_USER_PATH . '/login');
         self::loadView('user/coinpay.php');
+    }
+
+
+    public function website()
+    {
+        self::$data['VERIFY']['opgroup'] >= 3 || location(APP_USER_PATH . '/login');
+        self::loadView('user/website.php');
     }
 
 

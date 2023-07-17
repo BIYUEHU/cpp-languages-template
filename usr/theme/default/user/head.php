@@ -1,3 +1,8 @@
+<?php
+// 引入函数
+require_once(__DIR__ . '../../function.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +24,7 @@
     </style>
     <link rel="stylesheet" href="//cdn.staticfile.org/layui/2.8.7/css/layui.css">
     <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="/index.php/assets/css/user/font_1332398_z4m8t7izbwk.css">
-    <link rel="stylesheet" href="/index.php/assets/css/index.css">
-    <link rel="stylesheet" href="/index.php/assets/css/user/main.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/user/font_1332398_z4m8t7izbwk.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/index.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/user/main.css">
 </head>

@@ -12,8 +12,8 @@ $navList = [
     ['./themes', '主题设置', 'fa-paint-brush'],
     ['./plugins', '插件设置', 'fa-asterisk'],
     [APP_USER_PATH .'/', '返回前台', 'fa-home'],
-    ['./other', '扩展设置', 'fa-gears']
 ];
+$CONFIG['type'] === 'HotaruCore' && array_push($navList, ['./other', '扩展设置', 'fa-gears']);
 
 include(__DIR__ . '../../user/nav.php');
 ?>

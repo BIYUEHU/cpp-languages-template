@@ -174,6 +174,19 @@ Route::any('/demo', function () {
 });
 
 
+/* D */
+/* 站点接入 */
+Route::get(APP_USER_PATH . '/website', 'User/IndexController@website');
+
+Route::post(APP_USER_PATH . '/website', 'User/HandleController@website');
+
+/* Site */
+Route::any(APP_SITE_PATH . '/api/{val}', 'Site/IndexController@api');
+
+Route::any(APP_SITE_PATH . '/info', 'Site/IndexController@info');
+
+Route::any(APP_SITE_PATH . '/update', 'Site/IndexController@update');
+
 /* 扩展Other */
 Route::get(APP_ADMIN_PATH . '/other', 'Other/IndexController@index');
 

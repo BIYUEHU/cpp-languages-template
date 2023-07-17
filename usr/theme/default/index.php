@@ -46,7 +46,7 @@ include(__DIR__ . '/footer.php');
         const layer = layui.layer;
         layer.open({
             title: 'Open',
-            content: '<?php echo $THEME_SET['openEjct'] ?>',
+            content: `<?php echo $THEME_SET['openEjct'] ?>`,
             yes: function(index, layero) {
                 $.get("/?open");
                 layer.close(index);

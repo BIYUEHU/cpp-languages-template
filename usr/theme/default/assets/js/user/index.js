@@ -195,7 +195,10 @@ function apilist_user() {
                     field: 'stat', title: '调用次数', sort: true
                 },
                 {
-                    field: 'ctime', title: '到期时间', width: 160, sort: true
+                    field: 'ctime', title: '到期时间', width: 160, sort: true, templet: d => {
+                        color = (new Date(d.ctime)) > (new Date) ? 'lightgreen' : 'red';
+                        return `<span style="color:${color}">${d.ctime}</span>`
+                    }
                 },
                 {
                     title: '操作', width: 180, templet: () => {
@@ -224,6 +227,9 @@ function apilist_user() {
                                 layer.close(index);
                                 tableDemo.reload();
                                 layer.msg('重置成功', { icon: 1 });
+                                break;
+                            case 510:
+                                layer.msg('接口已到期请先续费', { icon: 5 })
                                 break;
                             default:
                                 printError(d, data);
@@ -258,6 +264,29 @@ function apilist_user() {
                     }
                 })
                 break;
+        }
+    })
+}
+
+
+/* website */
+function website_set() {
+    event.preventDefault();
+
+    const data = {
+        website: $('#website').val()
+    }
+
+    sendPostRequest('./website', data, d => {
+        switch (d.code) {
+            case 500:
+                layer.msg('设置成功', { icon: 1 });
+                setTimeout(() => {
+                    window.location.href = '';
+                }, 1000)
+                break;
+            default:
+                printError(d, data);
         }
     })
 }

@@ -1,5 +1,10 @@
 <?php
 
+use function Core\Func\loadConfig;
+
+$CONFIG = loadConfig("theme.php");
+// $SITE = loadConfig("website.php");
+
 function spawnViewOpgroup($code)
 {
     $data = [

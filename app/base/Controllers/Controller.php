@@ -25,6 +25,7 @@ class Controller
     protected static $val;
     // 统一状态码列表
     protected static $errorCode;
+    protected static $URL = 'http://api.imlolicon.tk/';
 
     public function __construct()
     {

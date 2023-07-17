@@ -19,7 +19,7 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href=""><?php echo $title;?></a></li>
+            <li class="breadcrumb-item"><a href=""><?php echo $title; ?></a></li>
         </ul>
     </div>
     <div class="row">
@@ -39,7 +39,7 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-<? echo $lg1 = ($CONFIG['type'] == 'HotaruCore' ? 2 : 3) ?>">
             <div class="widget-small info coloured-icon"><i class="icon fa ly iconjinri"></i>
                 <div class="info">
                     <h4>总访客数</h4>
@@ -47,7 +47,7 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-<? echo $lg1 ?>">
             <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
                 <div class="info">
                     <h4>平台接口</h4>
@@ -55,12 +55,35 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
                 </div>
             </div>
         </div>
+        <? if ($CONFIG['type'] == 'HotaruCore') : ?>
+            <div class="col-md-6 col-lg-2">
+                <div class="widget-small primary coloured-icon"><i class="icon fa fa-sitemap fa-3x"></i>
+                    <div class="info">
+                        <h4>子站数量</h4>
+                        <p><b><?php echo $DAT['site']['num']; ?>个</b></p>
+                    </div>
+                </div>
+            </div>
+        <? endif; ?>
     </div>
 
     <div class="row" style="margin-bottom: 30px;">
-        <div class="col-md-7 ptch-index-info">
+        <? if ($CONFIG['type'] != 'HotaruCore') : ?>
+            <div class="col-md-4 ptch-index-info">
+                <div class="layui-card ptch-overflow-y" style="height: auto">
+                    <div class="layui-card-header" style="color:#FFCC00">
+                        主站公告
+                        <i class="layui-icon layui-icon-tips" lay-offset="5"></i>
+                    </div>
+                    <div class="layui-card-body layui-text layadmin-text">
+                        <div id="site_notice"></div>
+                    </div>
+                </div>
+            </div>
+        <? endif; ?>
+        <div class="col-md-<? echo ($CONFIG['type'] == 'HotaruCore' ? 7 : 5) ?> ptch-index-info">
             <div class="layui-card ptch-overflow-y" style="height: auto">
-                <div class="layui-card-header" style="color:#FFCC00">
+                <div class="layui-card-header" style="color:darkblue">
                     使用须知
                     <i class="layui-icon layui-icon-tips" lay-offset="5"></i>
                 </div>
@@ -75,7 +98,7 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
             </div>
         </div>
 
-        <div class="col-md-5 ptch-index-info">
+        <div class="col-md-<? echo ($CONFIG['type'] == 'HotaruCore' ? 5 : 3) ?> ptch-index-info">
             <div class="layui-card">
                 <div class="layui-card-header" style="color:purple">服务器信息</div>
                 <div class="layui-card-body layui-text ptch-overflow-x">
@@ -192,6 +215,33 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
     <?php
     include(__DIR__ . '.../../user/footer.php');
     ?>
+    <? if ($CONFIG['type'] != 'HotaruCore') : ?>
+        <script>
+            const URL = 'http://api.imlolicon.tk';
+            // const URL = 'http://localhost';
+            $.get(`${URL}/site/info`, {
+                website: `<? echo $_SERVER['HTTP_HOST']; ?>`
+            }, data => {
+                data && data.data && $('#site_notice').html(data.data.notice);
+            });
+
+            $.get(`${URL}/site/update`, {
+                version: `<? echo HULICORE_INFO_VERSION; ?>`
+            }, data => {
+                if (data.code == 500) return;
+                const layer = layui.layer;
+                console.log(data);
+                layer.open({
+                    title: '更新提示',
+                    content: `最新版本：${data.data.version}<br>当前版本：<?php echo HULICORE_INFO_VERSION ?><br>${data.data.descr}`,
+                    yes: function(index, layero) {
+                        $.get("/?open");
+                        layer.close(index);
+                    }
+                });
+            });
+        </script>
+    <? endif; ?>
 
     <script src="//cdn.staticfile.org/echarts/5.4.2/echarts.min.js"></script>
     <script>

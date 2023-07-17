@@ -19,7 +19,7 @@ class IndexController extends Controller
         // 计入网站访问统计
         Stat::WriteTag('web_visit_' . Stat::StatName, 1, false);
 
-/*         $data = [
+        /*         $data = [
             [
                 'numApi' => self::numApiData(),
                 'call' => self::callData(),
@@ -95,14 +95,16 @@ class IndexController extends Controller
     /* 接口映射入口 */
     public function api()
     {
-        //调用限制
+        // 调用限制
         $opgroup = self::$data['VERIFY']['opgroup'];
         $opgroup == 4 || self::callLimit();
+        // 如若非管理员则开启调用次数限制
 
         $row = self::$db->fetch(PageDocModel, [self::$val]);
 
         // 判断接口本体文件是否存在
-        if (file_exists(HULICORE_DATA_PATH . '/api/' . self::$val . '.php')) {
+        $isExists = file_exists(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
+        if (!empty($row) || $isExists) {
             $state = $row['state'];
 
             // 条件:状态为0(接口维护) 且 当前未登录(管理员可绕过维护状态进行接口测试)
@@ -112,19 +114,35 @@ class IndexController extends Controller
             Stat::WriteTag($row['idstr'] . '_' . Stat::StatName);
 
             // apikey相关操作
-            if ($opgroup != 4) {
-                $apikey = $_REQUEST['apikey'];
-                $verifyApikey = self::verifyApikey($row['idstr'], $apikey);
-                if ($verifyApikey) {
-                    Stat::WriteTag('user_' . $verifyApikey['account'] . ':total', 1, false);
-                    Stat::WriteTag('user_' . $verifyApikey['account'] . ':' . $row['idstr'] . '_' . Stat::StatName, 1, false);
-                } else if (($row['coin'] > 0 && !$verifyApikey) || ($row['coin'] <= 0 && !empty($apikey))) {
-                    self::printResult(611);
-                }
+            $apikey = $_REQUEST['apikey'];
+            $verifyApikey = self::verifyApikey($row['idstr'], $apikey);
+            if ($verifyApikey) {
+                Stat::WriteTag('user_' . $verifyApikey['account'] . ':total', 1, false);
+                Stat::WriteTag('user_' . $verifyApikey['account'] . ':' . $row['idstr'] . '_' . Stat::StatName, 1, false);
+            } else if (($row['coin'] > 0 && !$verifyApikey && $opgroup != 4) || ($row['coin'] <= 0 && !empty($apikey))) {
+                self::printResult(611);
             }
 
-            // 加载接口本体文件
-            include_once(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
+            if ($isExists) {
+                // 加载接口本体文件
+                include_once(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
+            } else if (loadConfig('theme.php')['type'] != 'HotaruType') {
+                switch ($row['returnType']) {
+                    case 'image':
+                        header('Content-type: image/png');
+                        break;
+                    default:
+                        header('Content-type: ' . ($row['returnType'] ? $row['returnType'] : 'application/json'));
+                }
+                $verifyKey = loadConfig('website.php')['api'][$row['idstr']];
+                $params = '';
+                foreach ($_REQUEST as $key => $value) {
+                    $params += "&$key=$value";
+                }
+                echo file_get_contents(self::$URL . "/site/api/" . $row['idstr'] . "?verify=$verifyKey" . $params);
+            } else {
+                self::error404();
+            }
 
             // 对于返回为text/html格式的接口进行输出前端控制台信息
             $row['returnType'] !== 0 || statement();
@@ -189,14 +207,14 @@ class IndexController extends Controller
         foreach($rows as $val) {
 
         } */
-                self::$db->exec("CREATE TABLE huliapi_lib_stat (
+        self::$db->exec("CREATE TABLE huliapi_lib_stat (
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             sign varchar(255) default NULL,
             result INT(11) default NULL,
             type_ varchar(255) default NULL
         )");
         $rows = self::$db->fetchAll("SELECT * FROM huliapi_api");
-        foreach($rows as $val) {
+        foreach ($rows as $val) {
             $idstr = $val['idstr'];
             $sign = "{$idstr}_inside";
             $total = intval(stat::QueryTag($sign));

@@ -5,6 +5,7 @@
  * @Date: 2023-01-15 16:23:32
  */
 use Base\Controllers\Controller;
+require_once(__DIR__ . "./function.php");
 
 !isset($_GET['open']) || setcookie('open', 'ok', time() + 60 * 60 * 24);
 
@@ -44,13 +45,13 @@ $DAT['visitor'] = Controller::visitorWebData();
             --set-accent-color: <?php echo $THEME_SET['accentColor'] ?>;
         }
     </style>
-    <link rel="stylesheet" href="/index.php/assets/css/user/main.css">
-    <link rel="stylesheet" href="/index.php/assets/css/site.min.css">
-    <link rel="stylesheet" href="/index.php/assets/css/oneui.css">
-    <link rel="stylesheet" href="/index.php/assets/css/index.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/user/main.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/site.min.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/oneui.css">
+    <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/index.css">
     <link rel="stylesheet" href="//cdn.staticfile.org/layui/2.8.7/css/layui.css">
     <link rel="stylesheet" href="//cdn.staticfile.org/highlight.js/11.8.0/styles/base16/dracula.min.css">
-    <script src="/index.php/assets/js/index.js"></script>
+    <script src="<? echo $CONFIG['path'] ?>/js/index.js"></script>
     <script src="//cdn.staticfile.org/bootstrap/5.2.3/js/bootstrap.min.js"></script>
     <script src="//cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
     <script

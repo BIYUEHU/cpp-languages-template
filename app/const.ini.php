@@ -19,5 +19,8 @@ define('APP_ADMIN_PATH', '/admin');
 /* USER路径 */
 define('APP_USER_PATH', '/user');
 
+/* SITE路径 */
+define('APP_SITE_PATH', '/site');
+
 /* 版权 */
 define('APP_COPYRIGHT', 'Copyright © 2021-2023 <a style="color:#00FFFF" href="http://imlolicon.tk">Biyuehu</a>');

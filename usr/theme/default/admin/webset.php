@@ -11,7 +11,7 @@ include(__DIR__ . '/nav.php');
             <li class="breadcrumb-item">
                 <i class="fa fa-home fa-lg"></i>
             </li>
-            <li class="breadcrumb-item"><a href=""><?php echo $title;?></a></li>
+            <li class="breadcrumb-item"><a href=""><?php echo $title; ?></a></li>
         </ul>
     </div>
     <div class="row">
@@ -59,7 +59,7 @@ include(__DIR__ . '/nav.php');
                             </div>
                             <div class="form-group">
                                 <label>用户初始金额</label>
-                                <input class="form-control createtime" id="sets" setval="startcoin" type="text" value="<?php echo $WEB_INFO['startcoin']; ?>" autocomplete="off">
+                                <input class="form-control" id="sets" setval="startcoin" type="text" value="<?php echo $WEB_INFO['startcoin']; ?>" autocomplete="off">
                             </div>
                             <div class="form-group">
                                 <label>用户公告</label>
@@ -69,6 +69,16 @@ include(__DIR__ . '/nav.php');
                                 <label>用户日志</label>
                                 <textarea class="form-control" id="sets" setval="log" rows="4" autocomplete="off"><?php echo $WEB_INFO['log']; ?></textarea>
                             </div>
+                            <? if ($CONFIG['type'] == 'HotaruCore') : ?>
+                                <div class="form-group">
+                                    <label>子站公告</label>
+                                    <textarea class="form-control" id="sets" setval="site_notice" rows='4' autocomplete="off"><?php echo $WEB_INFO['site_notice']; ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>更新描述</label>
+                                    <textarea class="form-control" id="sets" setval="site_update" rows='4' autocomplete="off"><?php echo $WEB_INFO['site_update']; ?></textarea>
+                                </div>
+                            <? endif; ?>
                             <div class="form-group">
                                 <label>网站主题</label>
                                 <select id="sets" setval="theme">

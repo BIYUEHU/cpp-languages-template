@@ -5,12 +5,18 @@ namespace Base\Controllers\Admin;
 use Base\Controllers\Controller;
 use function Core\Func\location;
 use function Base\Controllers\getAllThemes;
+use function Core\Func\loadConfig;
 
 class IndexController extends Controller
 {
     public function index()
     {
         self::$data['VERIFY']['opgroup'] == 4 || location(APP_USER_PATH . '/login');
+        
+        if (loadConfig('theme.php')['type'] != 'HotaruCsore') {
+            $data = file_get_contents(self::$URL . 'site/info?website=' . $_SERVER['HTTP_HOST']);
+            json_decode($data)->code == 500 || location('/help.html');
+        }
         self::loadView('admin/index.php');
     }
 

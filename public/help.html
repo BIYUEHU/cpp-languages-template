@@ -1,0 +1,82 @@
+<!--
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2023-07-17 14:28:05
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>使用帮助</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <style>
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            font-family: system-ui;
+            font-size: 1.125rem;
+            line-height: 1.5;
+        }
+
+        .main {
+            width: min(70ch, 100% - 4rem);
+            margin-inline: auto;
+        }
+
+        img,
+        svg,
+        video {
+            max-width: 100%;
+            display: block;
+        }
+
+        .f-warning {
+            color: orange
+        }
+        .f-error {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2 class="f-error">您的站点目前未通过<strong>HULI验证</strong>！！！</h2>
+        <div class="f-warning">请通过下列教程进行进行站点接入</div>
+        <h3>API接口站点接入教程</h3>
+        <h4>0.搭建子站点</h4>
+        <span>搭建教程：<mark><a href="https://www.bilibili.com/video/BV1Cj411d7Ju"
+                    target="_blank">BV1Cj411d7Ju</a></mark></span><br>
+        <span>一定要配置好伪静态和正确的PHP版本！宝塔搭建时运行目录设置为/public，网站目录为根目录即可！如果有报错请检查您的数据库配置以及用户名密码是否正确！</span>
+        <h4>1.账号注册</h4>
+        <span>首先前往<mark><a href="http://api.imlolicon.tk/user/register" target="_blank">此处</a></mark>注册账号</span>
+        <img src="https://pic.imgdb.cn/item/64b4d6fe1ddac507ccda1492.png">
+        <span>打开邮箱获取默认的登录密码，如若找不到相关邮件请检查您的邮箱地址或垃圾邮箱</span>
+        <h4>2.更改密码</h4>
+        <li>该步骤可跳过</li>
+        <span>在登录页面通过您填写的邮箱和默认密码登录，通过默认密码重新设置为您自己的密码</span>
+        <span>用户中心→右上角的头像→个人→更改密码</span>
+        <h4>3.站点接入</h4>
+        <span>用户中心→站点接入</span>
+        <span>输入您的接口站点的域名，请不要加<strong>http://</strong>或<strong>https://</strong>!!</span>
+        <span>示例：<mark>api.hotaru.com</mark></span>
+        <h4>4.使用接口并填写APIKEY</h4>
+        <span>用户中心→接口商店</span>
+        <span>购买您所需要的接口(大部分均为免费的)，默认每个账号有<strong>100 Coins</strong>(1¥=50 Coins) 稍后会添加一系列的Coins免费获取方法请关注用户中心的公告</span><br>
+        <span>用户中心→接口列表</span>
+        <span>此处可查看您所拥有的接口列表并续费和重置APIKEY，先复制对应接口的APIKEY</span><br>
+        <span>找到您网站根目录/config/website.php的文件，用文本编辑器打开(记事本)</span>
+        <img src="https://pic.imgdb.cn/item/64b4dc391ddac507ccebef40.png">
+        <span>编辑<mark>api</mark>字段里面的内容(其他的不要动),以<mark>'接口ID' => '您的APIKEY',</mark>格式添加代码</span><br>
+        <span>接口ID在接口列表可查看，ID和APIKEY需要一一对应，末尾一定要加英文逗号，引号和冒号请使用英文的而不是中文的！</span>
+        <hr>
+        <span>接口购买后(无论是否免费)仅有一个月的有效期限，请务必记得及时登录活跃并续费(免费接口续费仍为免费)</span><br>
+        <span>此外您可以将自己的接口的PHP源码文件放置在根目录/data/api下(默认提供了几个接口源码可直接使用)，然后在管理页面添加接口即可，对于本地已有接口，将不再需要从主站接入该接口(即不需要填写website.php文件的对应配置)，但仍需要接入站点以使用相关服务</span>
+    </div>
+</body>
+
+</html>

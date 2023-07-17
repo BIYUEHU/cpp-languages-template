@@ -110,15 +110,18 @@ class HandleController extends Controller
         self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);
 
         $idstr = $_POST['idstr'];
-        $idstr || self::printResult(501);
-        
+        $row = self::$db->fetch(PageDocApikeyModel, [self::$data['VERIFY']['id'], $idstr]);
+        $idstr && $row || self::printResult(501);
+        strtotime($row['ctime']) > time() || self::printResult(510);
+
         self::$db->exec(HandleUserApilistResetModel, [getKey(), self::$data['VERIFY']['id'], $idstr]);
         self::printResult(500);
     }
 
     public function apilistcontinue()
     {
-        self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);
+        $opgroup = self::$data['VERIFY']['opgroup'];
+        $opgroup >= 3 || self::printResult(509);
 
         $idstr = $_POST['idstr'];
         $idstr || self::printResult(501);
@@ -128,7 +131,7 @@ class HandleController extends Controller
 
         $data = self::$db->fetch(PageDocModel, [$idstr]);
         $coinAfter = self::$data['VERIFY']['coin'] - $data['coin'];
-        (strtotime($row['ctime']) > time() || $coinAfter < 0) && self::printResult(510);
+        (strtotime($row['ctime']) > time() || $coinAfter < 0) && $opgroup != 4 && self::printResult(510);
         self::$db->exec(HandleUserApishopBuyExec2Model, [$coinAfter, self::$data['VERIFY']['id']]);
         $ctime = date("Y-m-d h:i:s", time() + (30 * 24 * 60 * 60));
         self::$db->exec(HandleUserApilistContinueModel, [$ctime, self::$data['VERIFY']['id'], $idstr]);
@@ -188,7 +191,18 @@ class HandleController extends Controller
         self::$db->exec(HandleUserApishopBuyExecModel, [self::$data['VERIFY']['id'], $idstr, getKey(), $ctime]);
         Stat::AddTag('user_' . self::$data['VERIFY']['id'] .':' . $idstr . '_' . Stat::StatName);
         Stat::AddTag('user_' . self::$data['VERIFY']['id'] . ':total');
-        self::printResult(500);
+        self::printResult();
+    }
+
+
+    /* 站点接入 */
+    public function website()
+    {
+        self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);
+
+        $website = $_POST['website'];
+        self::$db->exec(HandleUserWebsiteModel, [$website, self::$data['VERIFY']['id']]);
+        self::printResult();
     }
 
 

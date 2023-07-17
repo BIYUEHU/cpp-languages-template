@@ -3,7 +3,7 @@ $title = '友情链接';
 include(__DIR__ . '/header.php');
 ?>
 
-<link rel="stylesheet" href="/index.php/assets/css/friends.css">
+<link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/friends.css">
 <section>
     <div class="centent">
         <div class="mian">

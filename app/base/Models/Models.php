@@ -35,9 +35,16 @@ define('PageAdminAccounteditModel', "SELECT * FROM {$prefix}account WHERE id = ?
 
 define('PageAdminWebsafelogModel', "SELECT * FROM {$prefix}log ORDER BY id DESC");
 
+define('PageSiteInfoModel', "SELECT * FROM {$prefix}account WHERE website = ?");
+
+define('PageSiteNumModel', "SELECT * FROM {$prefix}account WHERE website != NULL");
+
 
 /* 登录 */
 define('HandleUserLoginModel', "SELECT * FROM {$prefix}account WHERE email = ? AND password = ?");
+
+/* 站点接入 */
+define('HandleUserWebsiteModel', "UPDATE {$prefix}account SET website = ? WHERE id = ?");
 
 /* 个人资料 */
 define('HandleUserPersonPasswordModel', "UPDATE {$prefix}account SET password = ? WHERE email = ?");
@@ -87,3 +94,4 @@ define('HandleAdminAccountaddExecModel', "INSERT INTO {$prefix}account(name, ema
 define('HandleAdminAccounteditCheckModel', "SELECT * FROM {$prefix}account WHERE (name = ? OR email = ?) AND id != ?");
 
 define('HandleAdminAccounteditExecModel', "UPDATE {$prefix}account SET name = ?, email = ?, opgroup = ?, coin = ? WHERE id = ?");
+
