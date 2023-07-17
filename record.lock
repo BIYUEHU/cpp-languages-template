@@ -16,6 +16,7 @@ C:
 /config/apicode.php
 /config/article.php
 /app/base/Views/article/
+/app/base/Views/about.html
 
 S:
 /usr/theme/default/header.php

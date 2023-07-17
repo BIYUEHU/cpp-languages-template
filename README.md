@@ -57,6 +57,9 @@ RewriteRule '^(.*)$$' /index.php; [L]
                 - article 文章目录
                   ...html
                 - ...html
+        - lib 库目录
+        - app.php 全局路由
+        - const.ini.php 全局用户常量
     - config 配置目录
         - config.php 总配置
         - database.php 数据库配置
