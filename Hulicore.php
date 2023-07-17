@@ -86,7 +86,7 @@ final class Hulicore
     private function _set_const_usr()
     {
         /* Version */
-        define('HULICORE_INFO_VERSION', '3.1.0');
+        define('HULICORE_INFO_VERSION', '3.1.1');
     }
 
 

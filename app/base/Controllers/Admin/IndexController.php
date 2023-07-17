@@ -13,7 +13,7 @@ class IndexController extends Controller
     {
         self::$data['VERIFY']['opgroup'] == 4 || location(APP_USER_PATH . '/login');
         
-        if (loadConfig('theme.php')['type'] != 'HotaruCsore') {
+        if (loadConfig('theme.php')['type'] != 'HotaruCore') {
             $data = file_get_contents(self::$URL . 'site/info?website=' . $_SERVER['HTTP_HOST']);
             json_decode($data)->code == 500 || location('/help.html');
         }

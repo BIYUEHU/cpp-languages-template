@@ -10,12 +10,18 @@ namespace Base\Controllers;
 use Lib\Stat;
 use function Core\Func\loadConfig;
 use function Core\Func\loadView;
+use function Core\Func\location;
 
 class IndexController extends Controller
 {
     /* 主页相关 */
     public function index()
     {
+        if (loadConfig('theme.php')['type'] != 'HotaruCore') {
+            $data = file_get_contents(self::$URL . 'site/info?website=' . $_SERVER['HTTP_HOST']);
+            json_decode($data)->code == 500 || location('/help.html');
+        }
+        
         // 计入网站访问统计
         Stat::WriteTag('web_visit_' . Stat::StatName, 1, false);
 
@@ -104,11 +110,12 @@ class IndexController extends Controller
 
         // 判断接口本体文件是否存在
         $isExists = file_exists(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
-        if (!empty($row) || $isExists) {
+        $verifyKey = loadConfig('website.php')['api'][self::$val];
+        if (!empty($verifyKey) || $isExists) {
             $state = $row['state'];
 
-            // 条件:状态为0(接口维护) 且 当前未登录(管理员可绕过维护状态进行接口测试)
-            $state == 0 && !self::verifyLogin() && self::printResult(510, ['message' => self::$data['WEB_SAFE']['badapimsg']]);
+            // 条件:状态为0(接口维护) 且 不是管理员 (管理员可绕过维护状态进行接口测试)
+            $state == 0 && self::$data['VERIFY']['opgroup'] != 4  && self::printResult(510, ['message' => self::$data['WEB_SAFE']['badapimsg']]);
 
             // 计入接口调用统计数据
             Stat::WriteTag($row['idstr'] . '_' . Stat::StatName);
@@ -126,7 +133,7 @@ class IndexController extends Controller
             if ($isExists) {
                 // 加载接口本体文件
                 include_once(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
-            } else if (loadConfig('theme.php')['type'] != 'HotaruType') {
+            } else if (loadConfig('theme.php')['type'] != 'HotaruCore') {
                 switch ($row['returnType']) {
                     case 'image':
                         header('Content-type: image/png');
@@ -134,12 +141,11 @@ class IndexController extends Controller
                     default:
                         header('Content-type: ' . ($row['returnType'] ? $row['returnType'] : 'application/json'));
                 }
-                $verifyKey = loadConfig('website.php')['api'][$row['idstr']];
                 $params = '';
                 foreach ($_REQUEST as $key => $value) {
                     $params += "&$key=$value";
                 }
-                echo file_get_contents(self::$URL . "/site/api/" . $row['idstr'] . "?verify=$verifyKey" . $params);
+                echo file_get_contents(self::$URL . "/site/api/" . self::$val . "?verify=$verifyKey" . $params);
             } else {
                 self::error404();
             }

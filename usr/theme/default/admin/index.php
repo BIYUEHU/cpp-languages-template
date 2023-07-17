@@ -13,6 +13,7 @@ $DAT['call'] = Controller::callData();
 $DAT['callAvg'] = Controller::callDataAvg($WEB_INFO['createTime']);
 $DAT['visitWeb'] = Controller::visitWebData();
 $DAT['visitorWeb'] = Controller::visitorWebData();
+$DAT['childSite'] = Controller::childSiteData();
 ?>
 
 <main class="app-content">
@@ -60,7 +61,7 @@ $DAT['visitorWeb'] = Controller::visitorWebData();
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-sitemap fa-3x"></i>
                     <div class="info">
                         <h4>子站数量</h4>
-                        <p><b><?php echo $DAT['site']['num']; ?>个</b></p>
+                        <p><b><?php echo $DAT['childSite']['num']; ?>个</b></p>
                     </div>
                 </div>
             </div>

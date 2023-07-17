@@ -110,16 +110,15 @@ $DAT['visitor'] = Controller::visitorWebData();
             <h3>
                 <?php echo $WEB_INFO['webdescr']; ?>
             </h3><br>
-            <span style="font-size:16px">This station provides a total of <strong>
+            <span style="font-size:16px">总计<strong>
                     <?php echo $DAT['numApi']['total']; ?>
-                </strong> interfaces</h3><br>
-                URL ->
+                </strong> 个接口</h3><br>
+                本站链接：
                 <?php echo $WEB_INFO['weburl']; ?><img width="13" height="13" src="/images/ico.png" alt="正版认证">
                 <br>
             </span>
             <span id=localtime></span>
             <script type="text/javascript">
-                tick();
             </script>
             <marquee scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()">
                 <?php echo $THEME_SET['openRoll']; ?>

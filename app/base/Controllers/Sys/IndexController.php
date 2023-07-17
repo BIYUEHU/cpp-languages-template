@@ -66,6 +66,8 @@ class IndexController extends Controller
      */
     public function datastat()
     {
+        $childSite = self::childSiteData();
+
         $data = array(
             'numapi' => self::numApiData(),
             'call' => self::callData(),
@@ -73,6 +75,7 @@ class IndexController extends Controller
             'visit' => self::visitWebData(),
             'visitor' => self::visitorWebData()
         );
+        $childSite && $data = array_merge($data, ['child' => $childSite]);
 
         if ($_REQUEST['format'] == 'text') {
             $result = '接口数据';
@@ -98,13 +101,12 @@ class IndexController extends Controller
             $result .= "\n总计：{$data['visitor']['total']}";
             $result .= "\n今日：{$data['visitor']['today']}";
             $result .= "\n昨日：{$data['visitor']['yesterday']}";
-            if (loadConfig('theme.php')['type'] == 'HotaruCore') {
-                $siteData = self::$db->fetchALL(PageSiteNumModel);
+            if ($data['child']) {
                 $result .= "\n子站信息";
-                $result .= "\n数量：" . count($siteData);
+                $result .= "\n数量：" . $data['child']['num'];
                 $result .= "\n列表：";
-                foreach ($$siteData as $value) {
-                    $result .= "\n" . $value['website'];
+                foreach ($data['child']['list'] as $val) {
+                    $result .= "\n" . $val;
                 }
             };
 

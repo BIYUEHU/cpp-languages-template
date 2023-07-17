@@ -18,7 +18,6 @@ class IndexController extends Controller
             'numApi' => count(self::$db->fetchAll(PageUserIndexModel, [self::$data['VERIFY']['id']])),
             'call' => Stat::QueryTag('user_' . self::$data['VERIFY']['id'] . ':total'),
         ];
-        $data = loadConfig('theme.php')['type'] == 'HotaruCore' ? array_merge($data, ['num' => count(self::$db->fetchALL(PageSiteNumModel))]) : $data;
         self::setViewCustomData($data);
         self::loadView('user/index.php');
     }

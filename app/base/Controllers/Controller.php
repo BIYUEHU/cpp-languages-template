@@ -304,4 +304,25 @@ class Controller
         );
     }
 
+
+    /**
+     * 获取子站数据
+     *
+     */
+    public static function childSiteData()
+    {
+        if (loadConfig('theme.php')['type'] == 'HotaruCore') {
+            $siteData = self::$db->fetchAll(HandleAdminAccountModel);
+            $website = [];
+            foreach($siteData as $val) {
+                empty($val['website']) || array_push($website, $val['website']);
+            }
+            return array(
+                "num" => count($website),
+                "list" => $website
+            );
+        }
+        return null;
+    }
+
 }

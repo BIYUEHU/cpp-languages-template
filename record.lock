@@ -5,12 +5,17 @@ D:
 /usr/theme/default/admin/other.php
 /app/base/Controllers/Site/
 /app/base/Controllers/Other/
+/public/api
+/public/tool
+/public/res
 
 C:
 /config/database.php
 /config/theme.php
 /app/app.php
 /config/apicode.php
+/config/article.php
+/app/base/Views/article/website.html
 
 F:
 /config/theme.php

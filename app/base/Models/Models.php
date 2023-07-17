@@ -23,6 +23,7 @@ define('ControllerVerifyApikeyModel', "SELECT * FROM {$prefix}apikey WHERE api =
 define('PageIndexModel', "SELECT * FROM {$prefix}api ORDER BY id DESC");
 
 define('PageDocModel', "SELECT * FROM {$prefix}api WHERE idstr = ?");
+
 define('PageDocApikeyModel', "SELECT * FROM {$prefix}apikey WHERE account = ? AND api = ?");
 
 define('PageApiCheckModel', "SELECT * FROM {$prefix}apikey WHERE apikey = ? AND api = ?");
@@ -36,8 +37,6 @@ define('PageAdminAccounteditModel', "SELECT * FROM {$prefix}account WHERE id = ?
 define('PageAdminWebsafelogModel', "SELECT * FROM {$prefix}log ORDER BY id DESC");
 
 define('PageSiteInfoModel', "SELECT * FROM {$prefix}account WHERE website = ?");
-
-define('PageSiteNumModel', "SELECT * FROM {$prefix}account WHERE website != NULL");
 
 
 /* 登录 */
