@@ -15,7 +15,11 @@ C:
 /app/app.php
 /config/apicode.php
 /config/article.php
-/app/base/Views/article/website.html
+/app/base/Views/article/
+
+S:
+/usr/theme/default/header.php
+/usr/theme/default/footer.php
 
 F:
 /config/theme.php
