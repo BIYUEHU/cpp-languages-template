@@ -1,23 +1,17 @@
 D:
 /app/base/Controllers/Site
 /app/base/Controllers/Other
-/data/api/(S)
-/usr/theme/default/assets
-/usr/theme/default/user/website.php
-/usr/theme/default/admin/other.php
 /app/base/Views/article/
-/public/res/
+/data/api/(S)
+/data/account/
 /public/api
 /public/tool
+/public/res/
+/usr/theme/default/assets
 
 C:
 /config/database.php
 /config/article.php
-
-S:
-/usr/theme/default/
-/app/base/Views/about.htmlheader.php
-/usr/theme/default/footer.php
 
 ---------
 

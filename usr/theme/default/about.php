@@ -1,6 +1,7 @@
 <?php
 $title = '关于';
 include(__DIR__ . '/header.php');
+$file = $TYPE ? '/about.html' : '/c_about.html';
 ?>
 
 <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/friends.css">
@@ -12,7 +13,7 @@ include(__DIR__ . '/header.php');
                     <h2>关于</h2>
                 </div>
                 <div class="main-top-Brief">
-                <?php include(HULICORE_BASE_VIEW_PATH . '/about.html'); ?>
+                <?php include(HULICORE_BASE_VIEW_PATH . $file); ?>
                 <br>
                 </div>
             </div>

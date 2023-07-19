@@ -21,7 +21,7 @@ class IndexController extends Controller
     public function init()
     {
         $this->CONFIG = loadConfig('theme.php');
-        if (!file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+        if (!HULICORE_INFO_TYPE) {
             self::printResult(614);
         }
     }

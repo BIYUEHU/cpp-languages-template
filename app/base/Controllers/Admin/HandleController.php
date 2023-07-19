@@ -180,7 +180,7 @@ class HandleController extends Controller
                     'coin' => intval($val['coin']),
                     'reg_date' => $val['reg_date']
                 );
-                $arr = file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php') ? array_merge($arr, [
+                $arr = self::$data['TYPE'] ? array_merge($arr, [
                     'website' => $val['website'],
                     'nums' => count(self::$db->fetchAll(PageUserIndexModel, [$val['id']])),
                     'call' => intval(Stat::QueryTag('user_' . $val['id'] . ':total')),

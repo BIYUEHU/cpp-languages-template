@@ -176,7 +176,7 @@ Route::any('/demo', function () {
 });
 
 
-if (file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+if (HULICORE_INFO_TYPE) {
     /* 站点接入 */
     Route::get(APP_USER_PATH . '/website', 'User/IndexController@website');
 

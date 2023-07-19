@@ -87,6 +87,8 @@ final class Hulicore
     {
         /* Version */
         define('HULICORE_INFO_VERSION', '3.1.1');
+        /* Type */
+        define('HULICORE_INFO_TYPE', file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php'));
     }
 
 

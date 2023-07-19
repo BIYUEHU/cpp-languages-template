@@ -46,7 +46,8 @@ class Controller
             "THEME_PATH" => HULICORE_THEME_PATH,
             "THEME_INFO" => loadConfig('_manifest.php', HULICORE_THEME_PATH),
             "THEME_SET" => self::getSetData('theme_' . $web_info['theme']),
-            "VERIFY" => null
+            "VERIFY" => null,
+            "TYPE" => HULICORE_INFO_TYPE
         );
 
         // 地址参数
@@ -311,7 +312,7 @@ class Controller
      */
     public static function childSiteData()
     {
-        if (file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+        if (self::$data['TYPE']) {
             $siteData = self::$db->fetchAll(HandleAdminAccountModel);
             $website = [];
             foreach($siteData as $val) {

@@ -821,6 +821,12 @@ function account() {
         title: '名字'
     },
     {
+        title: '头像',
+        templet: d => {
+            return `<img style="max-width:45px;max-height:45px src="/sys/getaccountavatar?id=${d.id}"/>"` 
+        }
+    },
+    {
         field: 'email',
         title: '邮箱'
     },

@@ -2,7 +2,7 @@
 
 use function Core\Func\loadConfig;
 
-$TYPE = file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php');
+$TYPE = HULICORE_INFO_TYPE;
 $CONFIG = loadConfig('theme.php');
 $CONFIG['path'] = $TYPE ? '/index.php/assets' : $CONFIG['path'];
 $CONFIG['type'] = $TYPE ? 'HotaruCore' : 'HULICore';

@@ -4,7 +4,9 @@
  * @Blog: http://imlolicon.tk
  * @Date: 2023-01-15 16:23:32
  */
+
 use Base\Controllers\Controller;
+
 require_once(__DIR__ . "/function.php");
 
 !isset($_GET['open']) || setcookie('open', 'ok', time() + 60 * 60 * 24);
@@ -54,8 +56,7 @@ $DAT['visitor'] = Controller::visitorWebData();
     <script src="<? echo $CONFIG['path'] ?>/js/index.js"></script>
     <script src="//cdn.staticfile.org/bootstrap/5.2.3/js/bootstrap.min.js"></script>
     <script src="//cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
-    <script
-        src="//cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="//cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
     <script src="//cdn.staticfile.org/layui/2.8.7/layui.js"></script>
     <script src="//cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
     <script>
@@ -78,9 +79,7 @@ $DAT['visitor'] = Controller::visitorWebData();
                 <img src="/favicon.ico" width="30" height="30" />
                 <?php echo $WEB_INFO['webtitle']; ?>
             </a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -93,12 +92,12 @@ $DAT['visitor'] = Controller::visitorWebData();
                 </ul>
                 <div class="form-inline mt-2 mt-md-0">
                     <a target="_blank" href="<?php echo APP_USER_PATH ?>/">
-                    <?php if ($VERIFY['name']): ?>
-                        <span>User:<strong><? echo $VERIFY['name']; ?></strong></span>
-                        <img src="/sys/getaccountavatar" style="width:35px;height:35px;border-radius:50%;margin-bottom:3px;" />
-                    <? else: ?>
-                        <button class="btn btn-outline-info my-2 my-sm-0">Login</button>
-                    <? endif; ?>
+                        <?php if ($VERIFY['name']) : ?>
+                            <span>User:<strong><? echo $VERIFY['name']; ?></strong></span>
+                            <img src="/sys/getaccountavatar" style="width:35px;height:35px;border-radius:50%;margin-bottom:3px;" />
+                        <? else : ?>
+                            <button class="btn btn-outline-info my-2 my-sm-0">Login</button>
+                        <? endif; ?>
                     </a>
                 </div>
             </div>
@@ -110,17 +109,28 @@ $DAT['visitor'] = Controller::visitorWebData();
             <h3>
                 <?php echo $WEB_INFO['webdescr']; ?>
             </h3><br>
-            <span style="font-size:16px">This station provides a total of <strong>
-                    <?php echo $DAT['numApi']['total']; ?>
-                </strong> interfaces</h3><br>
-                URL ->
-                <?php echo $WEB_INFO['weburl']; ?><img width="13" height="13" src="/images/ico.png" alt="正版认证">
-                <br>
-            </span>
-            <span id=localtime></span>
-            <script type="text/javascript">
-                tick();
-            </script>
+            <? if ($TYPE) : ?>
+                <span style="font-size:16px">This station provides a total of <strong>
+                        <?php echo $DAT['numApi']['total']; ?>
+                    </strong> interfaces</h3><br>
+                    URL ->
+                    <?php echo $WEB_INFO['weburl']; ?><img width="13" height="13" src="/images/ico.png" alt="正版认证">
+                    <br>
+                </span>
+                <span id=localtime></span>
+                <script type="text/javascript">
+                    tick();
+                </script>
+            <? else : ?>
+                <span style="font-size:16px">总计<strong>
+                        <?php echo $DAT['numApi']['total']; ?>
+                    </strong> 个接口</h3><br>
+                    本站链接：
+                    <?php echo $WEB_INFO['weburl']; ?><img width="13" height="13" src="/images/ico.png" alt="正版认证">
+                    <br>
+                </span>
+                <span id=localtime></span>
+            <? endif; ?>
             <marquee scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()">
                 <?php echo $THEME_SET['openRoll']; ?>
             </marquee>
@@ -135,14 +145,14 @@ $DAT['visitor'] = Controller::visitorWebData();
 
         <!--广告位-->
         <div>
-            <?php if (!empty($THEME_SET['advert'])):
+            <?php if (!empty($THEME_SET['advert'])) :
                 $arr = explode('|', $THEME_SET['advert']);
-                foreach ($arr as $val):
-                    ?>
+                foreach ($arr as $val) :
+            ?>
                     <a class="link" href="<? echo $val; ?>" target="_blank" rel="noopener noreferrer nofollow">
-                        <img style="align:center;width:100%;max-width:700px;max-height:170px;" src="<? echo $val; ?>"
-                            alt="<? echo $val; ?>" />
+                        <img style="align:center;width:100%;max-width:700px;max-height:170px;" src="<? echo $val; ?>" alt="<? echo $val; ?>" />
                     </a>
-                <? endforeach; endif; ?>
+            <? endforeach;
+            endif; ?>
         </div>
     </section>

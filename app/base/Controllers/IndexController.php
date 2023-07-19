@@ -17,7 +17,7 @@ class IndexController extends Controller
     /* 主页相关 */
     public function index()
     {
-        if (!file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+        if (!self::$data['TYPE']) {
             $data = file_get_contents(self::$URL . 'site/info?website=' . $_SERVER['HTTP_HOST']);
             json_decode($data)->code == 500 || location('/help.html');
         }
@@ -133,7 +133,7 @@ class IndexController extends Controller
             if ($isExists) {
                 // 加载接口本体文件
                 include_once(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
-            } else if (!file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+            } else if (!self::$data['TYPE']) {
                 switch ($row['returnType']) {
                     case 'image':
                         header('Content-type: image/png');

@@ -12,7 +12,7 @@ class IndexController extends Controller
     {
         self::$data['VERIFY']['opgroup'] == 4 || location(APP_USER_PATH . '/login');
         
-        if (!file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+        if (!self::$data['TYPE']) {
             $data = file_get_contents(self::$URL . 'site/info?website=' . $_SERVER['HTTP_HOST']);
             json_decode($data)->code == 500 || location('/help.html');
         }
