@@ -77,7 +77,7 @@
         </div>
         <div class="copy-right">
             <?php echo APP_COPYRIGHT ?>
-            <? if (!$TYPE) : ?><br>本站使用<a href="http://github.com/biyuehu/hulicore">HULICORE</a>开源项目搭建<? endif; ?>
+            <? if (!$TYPE) : ?>本站使用<a href="http://github.com/biyuehu/hulicore">HULICORE</a>开源项目搭建<? endif; ?>
         </div>
     </footer>
 </section>
