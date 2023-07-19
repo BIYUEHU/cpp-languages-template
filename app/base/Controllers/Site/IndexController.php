@@ -47,7 +47,7 @@ class IndexController extends Controller
                 Stat::WriteTag('user_' . $verifyApikey['account'] . ':total', 1, false);
                 Stat::WriteTag('user_' . $verifyApikey['account'] . ':' . $row['idstr'] . '_' . Stat::StatName, 1, false);
             } else {
-                self::printResult(611);
+                self::printResult(612);
             }
             
             $da = self::$db->fetch(PageAdminAccounteditModel, [$verifyApikey['account']]);

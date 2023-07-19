@@ -140,7 +140,7 @@ class IndexController extends Controller
                     $params .= "&$key=$value";
                 }
                 $result =  file_get_contents(self::$URL . "/site/api/" . self::$val . "?verify=$verifyKey" . $params);
-                if (!(json_decode($result)['code'] >= 611)) {
+                if (!(json_decode($result)->code >= 611)) {
                     switch ($row['returnType']) {
                         case 'image':
                             header('Content-type: image/png');
