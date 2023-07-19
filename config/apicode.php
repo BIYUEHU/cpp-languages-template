@@ -12,8 +12,7 @@ return [
     511 => 'fail:known error',
     /* 功能 */
     611 => 'fail:apikey error or empty or expired',
-    // 612 => 'fail:child site apikey error or empty or expired, please call admin of website',
-    612 => '子站的APIKEY错误或为空或过期，请联系网站管理员检查是否接入成功！',
+    612 => 'fail:child site apikey error or empty or expired, please call admin of website',
     613 => 'fail:unauthorized website',
     614 => 'fail:be not master server'
 ];
