@@ -167,20 +167,20 @@ function admin_index() {
     fetch('/site/info').then(d => {
         if (d.status !== 200) {
             $.get(`${URL}/site/info`, {
-                website: `<? echo $_SERVER['HTTP_HOST']; ?>`
+                website: PHP_WEBSITE
             }, data => {
                 data && data.data && $('#site_notice').html(data.data.notice);
             });
 
             $.get(`${URL}/site/update`, {
-                version: `<? echo HULICORE_INFO_VERSION; ?>`
+                version: PHP_VERSION
             }, data => {
                 if (data.code == 500) return;
                 const layer = layui.layer;
                 console.log(data);
                 layer.open({
                     title: '更新提示',
-                    content: `最新版本：${data.data.version}<br>当前版本：<?php echo HULICORE_INFO_VERSION ?><br>${data.data.descr}`,
+                    content: `最新版本：${data.data.version}<br>当前版本：${PHP_VERSION}<br>${data.data.descr}`,
                     yes: function (index, layero) {
                         $.get("/?open");
                         layer.close(index);
