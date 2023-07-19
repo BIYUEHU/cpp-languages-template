@@ -3,7 +3,6 @@
 $msg = $_REQUEST['msg'];
 
 $format = $_REQUEST['format'];
-file_get_contents('https://api.imlolicon.tk/api/stat?name=sed_sp&op=write');
 
 class Sed
 {

@@ -2,6 +2,7 @@
 $_POST['view'] = true;
 if ($_POST['msg'] != null) {
     include(__DIR__ . '../../../../../data/api/sed.php');
+    file_get_contents('https://api.imlolicon.tk/api/stat?name=sed_sp&op=write');
     header('content-type:text/html');
 }
 

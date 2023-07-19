@@ -8,7 +8,7 @@ if (empty($navList)) {
         ['./coinpay', '金额充值', 'fa-bank'],
         ['../', '访问主页', 'fa-home', 1]
     ];
-    $CONFIG['type'] === 'HotaruCore' && array_push($navList, ['./website', '站点接入', 'fa-sitemap']);
+    $TYPE && array_push($navList, ['./website', '站点接入', 'fa-sitemap']);
 }
 ?>
 

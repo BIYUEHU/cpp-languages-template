@@ -2,8 +2,10 @@
 
 use function Core\Func\loadConfig;
 
-$CONFIG = loadConfig("theme.php");
-// $SITE = loadConfig("website.php");
+$TYPE = file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php');
+$CONFIG = loadConfig('theme.php');
+$CONFIG['path'] = $TYPE ? '/index.php/assets' : $CONFIG['path'];
+$CONFIG['type'] = $TYPE ? 'HotaruCore' : 'HULICore';
 
 function spawnViewOpgroup($code)
 {

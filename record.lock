@@ -1,29 +1,27 @@
 D:
+/app/base/Controllers/Site
+/app/base/Controllers/Other
 /data/api/(S)
-/usr/theme/default/assets/
+/usr/theme/default/assets
 /usr/theme/default/user/website.php
 /usr/theme/default/admin/other.php
-/app/base/Controllers/Site/
-/app/base/Controllers/Other/
+/app/base/Views/article/
+/public/res/
 /public/api
 /public/tool
-/public/res
 
 C:
 /config/database.php
-/config/theme.php
-/app/app.php
-/config/apicode.php
 /config/article.php
-/app/base/Views/article/
-/app/base/Views/about.html
 
 S:
-/usr/theme/default/header.php
+/usr/theme/default/
+/app/base/Views/about.htmlheader.php
 /usr/theme/default/footer.php
 
+---------
+
 F:
-/config/theme.php
 /Hulicore.php
 /app/base/Controllers/Controller.php
 /app/base/Controllers/IndexController.php
@@ -31,4 +29,4 @@ F:
 /app/base/Controllers/Admin/HandleController.php
 
 U:
-/config/theme.php
+/app/base/Controllers/Site

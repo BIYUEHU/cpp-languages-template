@@ -10,8 +10,6 @@ namespace Core;
 use function Core\Func\printDebug;
 use function Core\Func\loadConfig;
 use function Core\Func\location;
-use Base\Controllers\Controller;
-use Base\Controllers\IndexController;
 
 class Route
 {

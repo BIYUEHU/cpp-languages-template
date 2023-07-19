@@ -4,6 +4,9 @@
  * @Date: 2023-06-16 14:20:19
  */
 
+const URL = 'http://api.imlolicon.tk';
+// const URL = 'http://localhost';
+
 layui.use('form', 'table');
 const form = layui.form,
     table = layui.table,
@@ -155,6 +158,35 @@ function doRegister() {
                 break;
             default:
                 printError(d, data);
+        }
+    });
+}
+
+
+function admin_index() {
+    fetch('/site/info').then(d => {
+        if (d.status !== 200) {
+            $.get(`${URL}/site/info`, {
+                website: `<? echo $_SERVER['HTTP_HOST']; ?>`
+            }, data => {
+                data && data.data && $('#site_notice').html(data.data.notice);
+            });
+
+            $.get(`${URL}/site/update`, {
+                version: `<? echo HULICORE_INFO_VERSION; ?>`
+            }, data => {
+                if (data.code == 500) return;
+                const layer = layui.layer;
+                console.log(data);
+                layer.open({
+                    title: '更新提示',
+                    content: `最新版本：${data.data.version}<br>当前版本：<?php echo HULICORE_INFO_VERSION ?><br>${data.data.descr}`,
+                    yes: function (index, layero) {
+                        $.get("/?open");
+                        layer.close(index);
+                    }
+                });
+            });
         }
     });
 }
@@ -784,224 +816,132 @@ function apilist() {
 
 /* account */
 function account() {
-    tableDemo = table.render({
-        elem: '#demo',
-        url: './account',
-        method: 'post',
-        page: true,
-        limit: 10,
-        limits: [10, 20, 30],
-        parseData: (res) => {
-            return {
-                "code": 0,
-                "msg": "",
-                "count": res.data[0],
-                "data": res.data[1]
-            };
-        },
-        cols: [
-            [
+    let dataTemplate = [{
+        field: 'name',
+        title: '名字'
+    },
+    {
+        field: 'email',
+        title: '邮箱'
+    },
+    {
+        title: '权限',
+        width: 80,
+        sort: true,
+        templet: d => {
+            const list = [
+                null,
+                '<span style="color:black">封禁<span/>',
+                '<span style="color:glay">待验证<span/>',
+                '<span style="color:green">用户<span/>',
+                '<span style="color:orange">管理<span/>',
+                // '<span style="color:deepskyblue">超管<span/>'
+            ];
+            return list[d.opgroup] ?? '<span style="color:black">封禁<span/>';
+        }
+    },
+    {
+        field: 'ip',
+        title: 'IP地址',
+    },
+    {
+        field: 'coin',
+        title: '金额',
+        width: 90
+    }];
+    fetch('/site/info').then(d => {
+        if (d.status === 200) {
+            dataTemplate = [
+                ...dataTemplate,
                 {
-                    field: 'name', title: '名字'
+                    field: 'website',
+                    title: '站点'
                 },
                 {
-                    field: 'email', title: '邮箱'
+                    field: 'nums',
+                    title: '接口数量'
                 },
                 {
-                    title: '权限', width: 80, sort: true, templet: d => {
-                        const list = [
-                            null,
-                            '<span style="color:black">封禁<span/>',
-                            '<span style="color:glay">待验证<span/>',
-                            '<span style="color:green">用户<span/>',
-                            '<span style="color:orange">管理<span/>',
-                            // '<span style="color:deepskyblue">超管<span/>'
-                        ];
-                        return list[d.opgroup] ?? '<span style="color:black">封禁<span/>';
-                    }
+                    field: 'call',
+                    title: '调用次数'
+                }
+            ];
+        }
+        tableDemo = table.render({
+            elem: '#demo',
+            url: './account',
+            method: 'post',
+            page: true,
+            limit: 10,
+            limits: [10, 20, 30],
+            parseData: (res) => {
+                return {
+                    "code": 0,
+                    "msg": "",
+                    "count": res.data[0],
+                    "data": res.data[1]
+                };
+            },
+            cols: [[
+                ...dataTemplate,
+                {
+                    field: 'reg_date',
+                    title: '注册时间',
+                    width: 160,
+                    sort: true
                 },
                 {
-                    field: 'ip', title: 'IP地址',
-                },
-                {
-                    field: 'coin', title: '金额', width: 90
-                },
-                {
-                    field: 'reg_date', title: '注册时间', width: 160, sort: true
-                },
-                {
-                    title: '操作', width: 120, templet: () => {
+                    title: '操作',
+                    width: 120,
+                    templet: () => {
                         return `<button class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">编辑</button>
-                    <button class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删除</button>`;
+            <button class="layui-btn layui-btn-warm layui-btn-xs" lay-event="del">删除</button>`;
                     }
-                },
-            ]
-        ]
-    });
+                }
+            ]]
+        });
 
-    table.on('tool(nowline)', (obj) => {
-        switch (obj.event) {
-            case 'del':
-                layer.confirm("确定要删除?", {
-                    icon: 3,
-                    title: '提示'
-                }, index => {
-                    sendPostRequest('./accountdel', { id: obj.data.id }, d => {
-                        switch (d.code) {
-                            case 500:
-                                obj.del();
-                                layer.close(index);
-                                layer.msg('删除成功', { icon: 1 });
-                                break;
-                            default:
-                                printError(d, data);
+        table.on('tool(nowline)', (obj) => {
+            switch (obj.event) {
+                case 'del':
+                    layer.confirm("确定要删除?", {
+                        icon: 3,
+                        title: '提示'
+                    }, index => {
+                        sendPostRequest('./accountdel', {
+                            id: obj.data.id
+                        }, d => {
+                            switch (d.code) {
+                                case 500:
+                                    obj.del();
+                                    layer.close(index);
+                                    layer.msg('删除成功', {
+                                        icon: 1
+                                    });
+                                    break;
+                                default:
+                                    printError(d, data);
+                            }
+                        });
+                    })
+                    break;
+                case 'edit':
+                    layer.open({
+                        type: 2,
+                        title: '编辑',
+                        area: ['70%', '70%'],
+                        content: `./accountedit?id=${obj.data.id}`,
+                        yes: () => {
+                            layer.closeAll();
+                        },
+                        end: () => {
+                            tableDemo.reload();
                         }
                     });
-                })
-                break;
-            case 'edit':
-                layer.open({
-                    type: 2,
-                    title: '编辑',
-                    area: ['70%', '70%'],
-                    content: `./accountedit?id=${obj.data.id}`,
-                    yes: () => {
-                        layer.closeAll();
-                    },
-                    end: () => {
-                        tableDemo.reload();
-                    }
-                });
-                break
-        }
-    })
-}
-
-function accountadd_open() {
-    layer.open({
-        type: 2,
-        title: '添加',
-        area: ['70%', '75%'],
-        content: `./accountadd`,
-        yes: () => {
-            layer.closeAll();
-        },
-        end: () => {
-            tableDemo.reload();
-        }
-    });
-}
-
-function accountadd() {
-    form.on('submit(accountadd)', (obj) => {
-        objData = obj.field;
-
-        if (objData.name == '' || objData.email == '' || objData.password == '') {
-            layer.msg('必填项不能为空', { icon: 5 });
-            return;
-        }
-
-        const data = {
-            name: objData.name,
-            email: objData.email,
-            password: objData.password,
-            opgroup: parseInt(objData.opgroup),
-            ip: objData.ip,
-            coin: parseInt(objData.coin)
-        };
-
-        sendPostRequest('./accountadd', data);
-    });
-}
-
-function accountedit() {
-    form.on('submit(accountedit)', (obj) => {
-        objData = obj.field;
-
-        id = ((url) => {
-            const str = url.substr(url.indexOf('?') + 1);
-            const arr = str.split('&');
-            const result = {}
-            for (let i = 0; i < arr.length; i++) {
-                const item = arr[i].split('=')
-                result[item[0]] = item[1]
-            }
-            return result;
-        })(location.href)['id'];
-
-        if (objData.id == '' || objData.name == '' || objData.email == '') {
-            layer.msg('必填项不能为空', { icon: 5 });
-            return;
-        }
-
-
-        const data = {
-            id: id,
-            name: objData.name,
-            email: objData.email,
-            opgroup: parseInt(objData.opgroup),
-            coin: parseInt(objData.coin)
-        };
-
-        sendPostRequest('./accountedit', data, d => {
-            switch (d.code) {
-                case 500:
-                    layer.closeAll();
-                    layer.msg('编辑成功', { icon: 1 });
-                    break;
-                default:
-                    printError(d, data);
+                    break
             }
         });
-    });
-}
-
-
-/* websafe */
-function websafe() {
-    const data = {};
-    $("[id=sets]").each(function () {
-        data[$(this).attr('setval')] = $(this).val();
     })
-    sendPostRequest("./websafe", data);
-}
-
-function websafelog() {
-    tableDemo = table.render({
-        elem: '#demo',
-        url: './websafelog',
-        method: 'post',
-        page: true,
-        limit: 10,
-        limits: [10, 20, 30],
-        parseData: (res) => {
-            return {
-                "code": 0,
-                "msg": "",
-                "count": res.data[0],
-                "data": res.data[1]
-            };
-        },
-        cols: [
-            [
-                {
-                    field: 'ua', title: 'UA'
-                },
-                {
-                    field: 'url', title: '请求链接'
-                },
-                {
-                    field: 'request', title: '请求类型', width: 90
-                },
-                {
-                    field: 'ip', title: 'IP地址', width: 140
-                },
-                {
-                    field: 'date', title: '时间', width: 160, sort: true
-                },
-            ]
-        ]
-    });
 }
 
 

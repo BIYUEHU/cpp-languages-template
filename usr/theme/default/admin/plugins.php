@@ -27,7 +27,7 @@ include(__DIR__ . '/nav.php');
                         </div>
                         <div class="form-group">
                             <label class="control-label">账号</label>
-                            <input class="form-control" id="sets" setval="username" type="text" value="<?php echo $DATA['email']['username']; ?>" autocomplete="off">
+                            <input class="form-control" id="sets" setval="username" type="text" value="<?php echo $DATA['email']['username']; ?>" placeholder="xxx@qq.com" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="control-label">密钥</label>
@@ -39,7 +39,7 @@ include(__DIR__ . '/nav.php');
                         </div>
                         <div class="form-group">
                             <label class="control-label">发件人名字</label>
-                            <input class="form-control" id="sets" setval="fromname" type="text" value="<?php echo $DATA['email']['fromname']; ?>" placeholder="FoxHelperOne" autocomplete="off">
+                            <input class="form-control" id="sets" setval="fromname" type="text" value="<?php echo $DATA['email']['fromname']; ?>" placeholder="xxxx接口网站" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="control-label"><span style="color:#e60c0c">请确保已经开启了邮箱通讯服务</span></label>

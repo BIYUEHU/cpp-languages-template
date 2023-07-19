@@ -4,12 +4,14 @@
  * @Blog: http://imlolicon.tk
  * @Date: 2023-01-17 13:48:12
  */
+
 namespace App;
 
 use Core\Route;
 
 /* 页面 */
 /* 主页相关 */
+
 Route::any('/', 'IndexController@index');
 
 Route::get('/log', 'IndexController@log');
@@ -174,23 +176,24 @@ Route::any('/demo', function () {
 });
 
 
-/* D */
-/* 站点接入 */
-Route::get(APP_USER_PATH . '/website', 'User/IndexController@website');
+if (file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
+    /* 站点接入 */
+    Route::get(APP_USER_PATH . '/website', 'User/IndexController@website');
 
-Route::post(APP_USER_PATH . '/website', 'User/HandleController@website');
+    Route::post(APP_USER_PATH . '/website', 'User/HandleController@website');
 
-/* Site */
-Route::any(APP_SITE_PATH . '/api/{val}', 'Site/IndexController@api');
+    /* Site */
+    Route::any(APP_SITE_PATH . '/api/{val}', 'Site/IndexController@api');
 
-Route::any(APP_SITE_PATH . '/info', 'Site/IndexController@info');
+    Route::any(APP_SITE_PATH . '/info', 'Site/IndexController@info');
 
-Route::any(APP_SITE_PATH . '/update', 'Site/IndexController@update');
+    Route::any(APP_SITE_PATH . '/update', 'Site/IndexController@update');
 
-/* 扩展Other */
-Route::get(APP_ADMIN_PATH . '/other', 'Other/IndexController@index');
+    /* 扩展Other */
+    Route::get(APP_ADMIN_PATH . '/other', 'Other/IndexController@index');
 
-Route::post(APP_ADMIN_PATH . '/other/{val}', 'Other/HandleController@index');
+    Route::post(APP_ADMIN_PATH . '/other/{val}', 'Other/HandleController@index');
+}
 
 /* 404错误页渲染 */
 Route::error(404, 'IndexController@error404');

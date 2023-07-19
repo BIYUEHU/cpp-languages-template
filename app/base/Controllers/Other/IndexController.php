@@ -4,15 +4,13 @@
 namespace Base\Controllers\Other;
 
 use Base\Controllers\Controller;
-
-use function Core\Func\loadConfig;
 use function Core\Func\location;
 
 class IndexController extends Controller
 {
     public function init()
     {
-        if (loadConfig('theme.php')['type'] != 'HotaruCore') {
+        if (!file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
             self::printResult(614);
         }
     }

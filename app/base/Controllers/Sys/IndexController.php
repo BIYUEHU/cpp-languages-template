@@ -6,7 +6,6 @@ use Base\Controllers\Controller;
 use Lib\CaptchaImg;
 use function Core\Func\location;
 use function Base\Controllers\getAllThemes;
-use function Core\Func\loadConfig;
 
 class IndexController extends Controller
 {

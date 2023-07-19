@@ -21,7 +21,7 @@ class IndexController extends Controller
     public function init()
     {
         $this->CONFIG = loadConfig('theme.php');
-        if ($this->CONFIG['type'] != 'HotaruCore') {
+        if (!file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
             self::printResult(614);
         }
     }
@@ -63,7 +63,7 @@ class IndexController extends Controller
     public function info()
     {
         $this->init();
-        $_REQUEST['website'] && gethostbyname($_REQUEST['website']) == getUserIp() && self::$db->fetch(PageSiteInfoModel, [$_REQUEST['website']])  || self::printResult(613);
+        $_REQUEST['website'] && self::$db->fetch(PageSiteInfoModel, [$_REQUEST['website']])  || self::printResult(613);
         self::printResult(500, [
             'notice' => self::$data['WEB_INFO']['site_notice']
         ]);

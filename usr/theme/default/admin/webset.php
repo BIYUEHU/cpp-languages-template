@@ -69,7 +69,7 @@ include(__DIR__ . '/nav.php');
                                 <label>用户日志</label>
                                 <textarea class="form-control" id="sets" setval="log" rows="4" autocomplete="off"><?php echo $WEB_INFO['log']; ?></textarea>
                             </div>
-                            <? if ($CONFIG['type'] == 'HotaruCore') : ?>
+                            <? if ($TYPE) : ?>
                                 <div class="form-group">
                                     <label>子站公告</label>
                                     <textarea class="form-control" id="sets" setval="site_notice" rows='4' autocomplete="off"><?php echo $WEB_INFO['site_notice']; ?></textarea>

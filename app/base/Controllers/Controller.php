@@ -311,7 +311,7 @@ class Controller
      */
     public static function childSiteData()
     {
-        if (loadConfig('theme.php')['type'] == 'HotaruCore') {
+        if (file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php')) {
             $siteData = self::$db->fetchAll(HandleAdminAccountModel);
             $website = [];
             foreach($siteData as $val) {
