@@ -823,7 +823,7 @@ function account() {
     {
         title: '头像',
         templet: d => {
-            return `<img style="max-width:45px;max-height:45px src="/sys/getaccountavatar?id=${d.id}"/>"` 
+            return `<img style="max-width:33px;max-height:33px" src="/sys/getaccountavatar?id=${d.id}"/>` 
         }
     },
     {
