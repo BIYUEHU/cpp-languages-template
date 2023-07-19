@@ -21,7 +21,7 @@ class IndexController extends Controller
             $data = file_get_contents(self::$URL . 'site/info?website=' . $_SERVER['HTTP_HOST']);
             json_decode($data)->code == 500 || location('/help.html');
         }
-        
+
         // 计入网站访问统计
         Stat::WriteTag('web_visit_' . Stat::StatName, 1, false);
 
@@ -134,18 +134,22 @@ class IndexController extends Controller
                 // 加载接口本体文件
                 include_once(HULICORE_DATA_PATH . '/api/' . self::$val . '.php');
             } else if (!self::$data['TYPE']) {
-                switch ($row['returnType']) {
-                    case 'image':
-                        header('Content-type: image/png');
-                        break;
-                    default:
-                        header('Content-type: ' . ($row['returnType'] ? $row['returnType'] : 'application/json'));
-                }
+                header('Content-type: application');
                 $params = '';
                 foreach ($_REQUEST as $key => $value) {
                     $params .= "&$key=$value";
                 }
-                echo file_get_contents(self::$URL . "/site/api/" . self::$val . "?verify=$verifyKey" . $params);
+                $result =  file_get_contents(self::$URL . "/site/api/" . self::$val . "?verify=$verifyKey" . $params);
+                if (!(json_decode($result)->code >= 611)) {
+                    switch ($row['returnType']) {
+                        case 'image':
+                            header('Content-type: image/png');
+                            break;
+                        default:
+                            header('Content-type: ' . ($row['returnType'] ? $row['returnType'] : 'application/json'));
+                    }
+                }
+                echo $result;
             } else {
                 self::error404();
             }

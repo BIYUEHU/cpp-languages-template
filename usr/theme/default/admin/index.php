@@ -82,7 +82,7 @@ $DAT['childSite'] = Controller::childSiteData();
                 </div>
             </div>
         <? endif; ?>
-        <div class="col-md-<? echo (!$TYPE ? 7 : 5) ?> ptch-index-info">
+        <div class="col-md-<? echo ($TYPE ? 7 : 5) ?> ptch-index-info">
             <div class="layui-card ptch-overflow-y" style="height: auto">
                 <div class="layui-card-header" style="color:darkblue">
                     使用须知
@@ -99,7 +99,7 @@ $DAT['childSite'] = Controller::childSiteData();
             </div>
         </div>
 
-        <div class="col-md-<? echo (!$TYPE ? 5 : 3) ?> ptch-index-info">
+        <div class="col-md-<? echo ($TYPE ? 5 : 3) ?> ptch-index-info">
             <div class="layui-card">
                 <div class="layui-card-header" style="color:purple">服务器信息</div>
                 <div class="layui-card-body layui-text ptch-overflow-x">
@@ -217,6 +217,8 @@ $DAT['childSite'] = Controller::childSiteData();
     include(__DIR__ . '.../../user/footer.php');
     ?>
     <script>
+        const PHP_WEBSITE = `<? echo $_SERVER['HTTP_HOST']; ?>`;
+        const PHP_VERSION = `<? echo HULICORE_INFO_VERSION; ?>`;
         admin_index();
     </script>
     <script src="//cdn.staticfile.org/echarts/5.4.2/echarts.min.js"></script>
