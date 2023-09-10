@@ -19,7 +19,7 @@ $name = $_GET["name"] ?: "ISLA";
 
 /* IP地址处理 */
 $ip = $_SERVER["REMOTE_ADDR"];
-$area = json_decode(file_get_contents("http://opendata.baidu.com/api.php?query={$ip}&co=&resource_id=6006&oe=utf8"), 256)['data'][0]['location'];
+$area = $_GET['area'] ? $_GET['area'] : json_decode(file_get_contents("http://opendata.baidu.com/api.php?query={$ip}&co=&resource_id=6006&oe=utf8"), 256)['data'][0]['location'];
 
 
 $weekList = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
@@ -56,7 +56,7 @@ imagedestroy($im);
 /* 糊狸一言 */
 function getHitokoto()
 {
-	return file_get_contents('http://imlolicon.tk/api/hitokoto/v2/?format=text');
+	return file_get_contents('http://hotaru.icu/api/hitokoto/v2/?format=text');
 }
 
 

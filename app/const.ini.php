@@ -1,7 +1,7 @@
 <?php
 /*
  * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
+ * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 13:36:45
  */
 
@@ -23,4 +23,4 @@ define('APP_USER_PATH', '/user');
 define('APP_SITE_PATH', '/site');
 
 /* 版权 */
-define('APP_COPYRIGHT', 'Copyright © 2021-2023 <a style="color:#00FFFF" href="http://imlolicon.tk">Biyuehu</a>');
+define('APP_COPYRIGHT', 'Copyright © 2021-2023 <a style="color:#00FFFF" href="http://hotaru.icu">Biyuehu</a>');

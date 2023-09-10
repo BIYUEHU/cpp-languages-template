@@ -1,7 +1,7 @@
 <?php
 /*
  * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
+ * @Blog: http://hotaru.icu
  * @Date: 2023-07-17 11:05:45
  */
 

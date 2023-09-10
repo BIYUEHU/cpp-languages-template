@@ -1,7 +1,7 @@
 <?php
 /*
  * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
+ * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 13:36:45
  */
 
@@ -86,7 +86,7 @@ function renderParTable($parArray, $col = 2)
  */
 function statement()
 {
-    consolelog('`%c欢迎访问HULIAPI %chttp://api.imlolicon.tk`, `color:yellow; background:RGB(45,238,241); font-size:25px;`, `background:RGB(247,247,247); font-size:25px`');
+    consolelog('`%c欢迎访问HULIAPI %chttp://api.hotaru.icu`, `color:yellow; background:RGB(45,238,241); font-size:25px;`, `background:RGB(247,247,247); font-size:25px`');
     consolelog('`
     _______                   _______   ______  __      __  __    __  ________  __    __  __    __ 
     /       \                 /       \ /      |/  \    /  |/  |  /  |/        |/  |  /  |/  |  /  |

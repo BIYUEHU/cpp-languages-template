@@ -142,7 +142,7 @@ class Sed
 
     public function ToIdcard()
     {
-        $temp = file_get_contents("https://api.imlolicon.tk/api/idcard?msg={$this->message}");
+        $temp = file_get_contents("https://api.hotaru.icu/api/idcard?msg={$this->message}");
         if (!empty($temp)) {
             $temp = json_decode($temp);
             if ($temp->code == 500) {

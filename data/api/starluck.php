@@ -1,7 +1,7 @@
 <?php
 /*
  * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
+ * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 21:03:19
  */
 header('Content-type: application/json');
@@ -27,7 +27,7 @@ $data = [];
 if (empty($msg)) {
     $code = 501;
 } else {
-    $res = file_get_contents('https://www.xzw.com/fortune/aries');
+    $res = file_get_contents('https://www.xzw.com/fortune/' . $msg);
 
     preg_match_all('/健康指数：<\/label>(.*?)</', $res, $info1);
     preg_match_all('/商谈指数：<\/label>(.*?)</', $res, $info2);

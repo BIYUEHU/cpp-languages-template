@@ -1,5 +1,5 @@
 <?php
 return [
-    'path' => 'https://api.imlolicon.tk/index.php/assets',
+    'path' => 'https://api.hotaru.icu/index.php/assets',
     'repo' => 'https://github.com/biyuehu/hulicore'
 ];
