@@ -157,7 +157,7 @@ CREATE TABLE `huliapi_set` (
 --
 
 INSERT INTO `huliapi_set` (`id`, `set_key`, `set_val`, `set_type`) VALUES
-(1, 'weburl', 'https://api.imlolicon.tk', 'webinfo'),
+(1, 'weburl', 'https://api.hotaru.icu', 'webinfo'),
 (2, 'webtitle', 'HULIAPI', 'webinfo'),
 (3, 'websubtitle', '接口站点', 'webinfo'),
 (4, 'webdescr', '提供高效、快速、稳定的API接口', 'webinfo'),
@@ -167,7 +167,7 @@ INSERT INTO `huliapi_set` (`id`, `set_key`, `set_val`, `set_type`) VALUES
 (8, 'createTime', '2021-6-19', 'webinfo'),
 (9, 'theme', 'default', 'webinfo'),
 (43, 'mainColor', 'pink', 'theme_default'),
-(44, 'headUrl', 'Links,/friends|Blog,http://imlolicon.tk,1', 'theme_default'),
+(44, 'headUrl', 'Links,/friends|Blog,http://hotaru.icu,1', 'theme_default'),
 (45, 'tips', 'Full use of https!', 'theme_default'),
 (46, 'openEjct', '<strong>HULICore(接口管理核心系统)</strong>已开源至<a href=\"https://github.com/BIYUEHU/hulicore\" target=\"_blank\">Github-></a>，快去给糊狸点个star吧~', 'theme_default'),
 (47, 'openRoll', '滚动公告', 'theme_default'),
@@ -176,7 +176,7 @@ INSERT INTO `huliapi_set` (`id`, `set_key`, `set_val`, `set_type`) VALUES
 (50, 'bottom2', '<div style=\"color:red\">网站描述</div>', 'theme_default'),
 (51, 'codeHead', '', 'theme_default'),
 (52, 'codeFoot', '', 'theme_default'),
-(53, 'friends', 'http://imlolicon.tk,BiyuehuBlog,糊狸的小破站,https://imlolicon.tk/favicon.ico|https://tool.imlolicon.tk,糊狸工具箱,https://biyuehu.github.io/ico/png/tool.png', 'theme_default'),
+(53, 'friends', 'http://hotaru.icu,BiyuehuBlog,糊狸的小破站,https://hotaru.icu/favicon.ico|https://tool.hotaru.icu,糊狸工具箱,https://biyuehu.github.io/ico/png/tool.png', 'theme_default'),
 (54, 'host', 'smtp.qq.com', 'plugins_email'),
 (55, 'port', '465', 'plugins_email'),
 (56, 'username', '', 'plugins_email'),

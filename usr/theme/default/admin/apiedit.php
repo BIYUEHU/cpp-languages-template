@@ -37,7 +37,7 @@ include(__DIR__ . '../../user/head.php');
     "code": 500,
     "msg": "success",
     "data": {
-        "url": "http://imlolicon.tk"
+        "url": "http://hotaru.icu"
     }
 }' autocomplete="off"><?php echo $DATA['returnTemp']; ?></textarea>
                         </div>

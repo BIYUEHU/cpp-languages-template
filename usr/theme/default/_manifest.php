@@ -12,6 +12,6 @@ return [
 	"info" => [
 		"author" => "Biyuehu",
 		"license" => "",
-		"url" => "http://imlolicon.tk"
+		"url" => "http://hotaru.icu"
 	]
 ];

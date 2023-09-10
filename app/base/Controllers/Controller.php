@@ -1,7 +1,7 @@
 <?php
 /*
  * @Author: Biyuehu biyuehuya@gmail.com
- * @Blog: http://imlolicon.tk
+ * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 13:36:45
  */
 
@@ -25,7 +25,7 @@ class Controller
     protected static $val;
     // 统一状态码列表
     protected static $errorCode;
-    protected static $URL = 'http://api.imlolicon.tk/';
+    protected static $URL = 'http://api.hotaru.icu/';
 
     public function __construct()
     {

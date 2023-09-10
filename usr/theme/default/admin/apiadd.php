@@ -59,7 +59,7 @@ include(__DIR__ . '/nav.php');
     "code": 500,
     "msg": "success",
     "data": {
-        "url": "http://imlolicon.tk"
+        "url": "http://hotaru.icu"
     }
 }' autocomplete="off"></textarea>
                             </div>
