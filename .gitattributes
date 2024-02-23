@@ -11,10 +11,10 @@ data/api/riddle.php            linguist-detectable=false
 data/api/qrcode.php            linguist-detectable=false
 data/api/tieba.php            linguist-detectable=false
 data/api/weather.php             linguist-detectable=false
-usr/plugins/email/PHPMailer/*.php            linguist-detectable=false
-usr/theme/default/assets/*.css            linguist-detectable=false
-usr/theme/default/assets/*.js            linguist-detectable=false
-usr/theme/default/assets/css/index.css            text
-usr/theme/default/assets/js/index.js            text
-usr/theme/default/assets/js/user/index.js            text
-public/tool/*            linguist-detectable=false
+usr/plugins/email/PHPMailer/**/*.php            linguist-detectable=false
+usr/theme/default/assets/**/*.css            linguist-detectable=false
+usr/theme/default/assets/**/*.js            linguist-detectable=false
+usr/theme/default/assets/css/index.css            linguist-detectable=true
+usr/theme/default/assets/js/index.js            linguist-detectable=true
+usr/theme/default/assets/js/user/index.js            linguist-detectable=true
+public/tool/**/*            linguist-detectable=false
