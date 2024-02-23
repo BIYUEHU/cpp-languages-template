@@ -5,16 +5,12 @@ var_dump($result);
 ?>
 </code>
 JavaScript:
-<code class="javascript">let httpRequest = new XMLHttpRequest();
-let url = "<?php echo $url; ?>";
-httpRequest.open('GET', url, true);
-httpRequest.send();
-httpRequest.onreadystatechange = function () {
-    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-        let result = httpRequest.responseText;
-        console.log(result);
-    }
-}
+<code class="javascript">const url = "<?php echo $url; ?>";
+fetch(url)
+  .then(res => res.json)
+  .(res => {
+    console.log(res);
+  });
 </code>
 Python:
 <code class="python">import requests

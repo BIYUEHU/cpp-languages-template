@@ -1,26 +1,31 @@
-![license](https://camo.githubusercontent.com/8addc1e46efd92165de0d5fa6d5fd6a3817251a50a45544710ae4eaf486e3fe5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f626979756568752f6b6f746f72692d626f743f636f6c6f723d64656570677265656e)
+# Hulicore
+
 ![stars](https://img.shields.io/github/stars/biyuehu/hulicore)
 ![commits](https://img.shields.io/github/commit-activity/t/biyuehu/hulicore)
+[![wakatime](https://wakatime.com/badge/user/018dc603-712a-4205-a226-d4c9ccd0d02b/project/018dd427-9f87-44a1-a59d-cfdce0bda071.svg)](https://wakatime.com/badge/user/018dc603-712a-4205-a226-d4c9ccd0d02b/project/018dd427-9f87-44a1-a59d-cfdce0bda071)
 
-**HULICore**(接口管理核心系统)是基于原生 PHP 制造一整套框架，主要封装了数据库操作、伪静态路由、功能函数等功能，框架遵守 MVC 架构，应用实例由 Controller 控制器、Model 模型、View 视图三部分组成，并在一定基础上参考了 typecho，由着网站主题 Theme 与插件 Plugin 两样用户级的功能
+HULICore（接口管理核心系统）是基于原生 PHP 制造一整套框架，主要封装了数据库操作、伪静态路由、功能函数等功能，框架遵守 MVC 架构，应用实例由 Controller 控制器、Model 模型、View 视图三部分组成，并在一定基础上参考了 typecho，有着主题 `Theme` 与插件 `Plugin` 两样用户级功能
 
-> 使用 HULICore 运行的网站:[HULIAPI](https://api.hotaru.icu)
+> 使用 HULICore 运行的网站:[HotaruAPI](https://api.hotaru.icu)
 
 其它文档懒得写了，自己研究，由于前后端不分离，所以可能性能有点不好
 
 ## 环境要求
 
-**Os:** Windows 或 Linux(CentOs, Ubuntu...)
-**Server:** Nginx 或 Apache
-**PHP:** 已知可稳定运行版本 7.3.4~7.4.3
+- Os：Windows 或 Linux（CentOs, Ubuntu...）
+- Server： Nginx 或 Apache
+- PHP：已知可稳定运行版本 `7.3.4~7.4.3`
 
 ## 安装
 
-- 先创建数据库,然后导入`sql/database.sql`
-- 配置好`config/database.php`的数据库配置文件
+- 先创建数据库,然后导入 `sql/database.sql`
+- 配置好 `config/database.php` 数据库配置文件
 - 创建站点，选择符合要求的 PHP 版本
 - 设置伪静态
-  Nginx
+
+---
+
+- Nginx
 
 ```nginx
 location / {
@@ -30,14 +35,14 @@ location / {
 }
 ```
 
-Apache
+- Apache
 
 ```apache
 RewriteRule '^(.*)$$' /index.php; [L]
 ```
 
-- 根据地址访问/user/login 目录
-- 默认管理员账号: `admin@qq.com` 密码:`123456`
+- 根据地址访问 `user/login` 目录
+- 默认管理员账号：`admin@qq.com` 密码：`123456`
 
 ## 目录结构
 
