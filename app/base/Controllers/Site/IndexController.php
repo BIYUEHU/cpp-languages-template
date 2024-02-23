@@ -49,7 +49,7 @@ class IndexController extends Controller
             } else {
                 self::printResult(612);
             }
-            
+
             $da = self::$db->fetch(PageAdminAccounteditModel, [$verifyApikey['account']]);
             $da['website'] && gethostbyname($da['website']) == getUserIp() || self::printResult(613);
 

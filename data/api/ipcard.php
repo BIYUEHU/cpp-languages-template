@@ -124,7 +124,8 @@ header("Content-type: image/jpeg");
 
 $imgNum = intval($_GET['img']);
 $imgNum = empty($_GET['img']) || $imgNum < 1 || $imgNum > 11 ? rand(1, 11) : $imgNum;
-$imgList = ['', 'Nagisa', 'Chino', 'Kanade', 'Atri', 'Kotori', 'Mashiro', 'Miku', 'Reimu', 'Rin', 'Saber', 'Mitsuha',
+$imgList = [
+    '', 'Nagisa', 'Chino', 'Kanade', 'Atri', 'Kotori', 'Mashiro', 'Miku', 'Reimu', 'Rin', 'Saber', 'Mitsuha',
 ];
 $img = imagecreatefromjpeg(__DIR__ . '/res/ipcard/' . $imgList[$imgNum] . ".jpg");
 

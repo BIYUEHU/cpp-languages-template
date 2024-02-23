@@ -3,14 +3,16 @@ header('Content-Type: application/json');
 $op = intval($_REQUEST['op']);
 $code = $_REQUEST['code'];
 
-function encode($code){
-    $code = str_replace(array('<?php','?>','<?PHP'),array('','',''),$code);
+function encode($code)
+{
+    $code = str_replace(array('<?php', '?>', '<?PHP'), array('', '', ''), $code);
     $encode = base64_encode(gzdeflate($code));
-    $encode = '<?php /* @By Biyuehu @Blog: http://hotaru.icu */ '."eval(gzinflate(base64_decode("."'".$encode."'".")));\n?>";
+    $encode = '<?php /* @By Biyuehu @Blog: http://hotaru.icu */ ' . "eval(gzinflate(base64_decode(" . "'" . $encode . "'" . ")));\n?>";
     return $encode;
 }
-    
-function decode($code){
+
+function decode($code)
+{
     $maxTimes = 1000; //最大循环解密次数
     $matches = [];
     $decode = '';
@@ -20,7 +22,7 @@ function decode($code){
         foreach ($arr as $s) {
             if (preg_match('/eval\((gzinflate\(base64_decode\([\'\"]([\w\/=+]+)[\'\"]\)\))\)/', $s, $matches)) {
                 ob_start();
-                eval('echo '.$matches[1].';');
+                eval('echo ' . $matches[1] . ';');
                 $decode = '<?php ' . trim(ob_get_clean()) . '?>';
                 $match = true;
                 break;

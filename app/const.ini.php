@@ -8,6 +8,7 @@
 namespace App;
 
 /* 文档路径名 */
+
 define('APP_DOC_PATH', '/iluh');
 
 /* API路径 */
@@ -23,4 +24,4 @@ define('APP_USER_PATH', '/user');
 define('APP_SITE_PATH', '/site');
 
 /* 版权 */
-define('APP_COPYRIGHT', 'Copyright © 2021-2023 <a style="color:#00FFFF" href="http://hotaru.icu">Biyuehu</a>');
+define('APP_COPYRIGHT', 'Copyright © 2021-2024 <a style="color:#00FFFF" href="http://hotaru.icu">Hotaru</a>');

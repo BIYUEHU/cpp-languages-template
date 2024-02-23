@@ -51,49 +51,50 @@ function curlSuper($args = [])
     }
 }
 function get_curl($url, $post = 0, $referer = 0, $cookie = 0, $header = 0, $ua = 0, $nobaody = 0)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $httpheader[] = "Accept:*/*";
-        $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
-        $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
-        $httpheader[] = "Connection:close";
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
-        if ($post) {
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-        }
-        if ($header) {
-            curl_setopt($ch, CURLOPT_HEADER, true);
-        }
-        if ($cookie) {
-            curl_setopt($ch, CURLOPT_COOKIE, $cookie);
-        }
-        if ($referer) {
-            if ($referer == 1) {
-                curl_setopt($ch, CURLOPT_REFERER, 'http://bilibili.com/');
-            } else {
-                curl_setopt($ch, CURLOPT_REFERER, $referer);
-            }
-        }
-        if ($ua) {
-            curl_setopt($ch, CURLOPT_USERAGENT, $ua);
-        } else {
-            curl_setopt($ch, CURLOPT_USERAGENT, "MQQBrowser/Mini3.1 (Nokia3050/MIDP2.0)");
-        }
-        if ($nobaody) {
-            curl_setopt($ch, CURLOPT_NOBODY, 1);
-        }
-        curl_setopt($ch, CURLOPT_ENCODING, "gzip");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $ret = curl_exec($ch);
-        curl_close($ch);
-        return $ret;
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $httpheader[] = "Accept:*/*";
+    $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
+    $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
+    $httpheader[] = "Connection:close";
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+    if ($post) {
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     }
+    if ($header) {
+        curl_setopt($ch, CURLOPT_HEADER, true);
+    }
+    if ($cookie) {
+        curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    }
+    if ($referer) {
+        if ($referer == 1) {
+            curl_setopt($ch, CURLOPT_REFERER, 'http://bilibili.com/');
+        } else {
+            curl_setopt($ch, CURLOPT_REFERER, $referer);
+        }
+    }
+    if ($ua) {
+        curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+    } else {
+        curl_setopt($ch, CURLOPT_USERAGENT, "MQQBrowser/Mini3.1 (Nokia3050/MIDP2.0)");
+    }
+    if ($nobaody) {
+        curl_setopt($ch, CURLOPT_NOBODY, 1);
+    }
+    curl_setopt($ch, CURLOPT_ENCODING, "gzip");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $ret = curl_exec($ch);
+    curl_close($ch);
+    return $ret;
+}
 
 
-class Component {
+class Component
+{
     private static $UID;
     private static $FORMAT;
     private static $TEXT;
@@ -128,7 +129,7 @@ class Component {
         self::$defaultTag = $tempData[1];
         // self::$TEXT = file_get_contents('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
         echo get_curl('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?offset=&host_mid=293767574&timezone_offset=-480&features=itemOpusStyle');
-        
+
         // self::$TEXT = \Core\Func\get_url('https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid=' . self::$UID);
         exit();
         // return self::handel();
@@ -162,7 +163,7 @@ class Component {
         $result = $isof = false;
         $html = '<span id="huli">';
         foreach (self::$captor as $val) {
-            
+
             $isof = false;
             $captorName = $val[0];
             $arr = $val[1] ?? '#000000';
@@ -201,7 +202,8 @@ class Component {
         return 500;
     }
 
-    private function definedData() {
+    private function definedData()
+    {
         $threeList = [
             ["【 传奇 | 三相之力】", "原神&明日方舟&王者荣耀", "#FFD700"],
             ["【 史诗 | 二刺螈双象限】", "原神&明日方舟&!王者荣耀", "#FF0000"],
@@ -211,7 +213,7 @@ class Component {
             ["【 稀有 | 粥畜】", "!原神&明日方舟&王者荣耀", "#6600CC"],
             ["【 稀有 | 农批】", "!原神&!明日方舟&王者荣耀", "#6600CC"]
         ];
-    
+
         $vtuberList = [
             ["嘉心糖", "嘉然", "#E799B0"],
             ["雏草姬", "塔菲", "#FF00CC"],
@@ -225,12 +227,12 @@ class Component {
             ["小星星", "星瞳", "#E0E0E0"],
             ["小孩梓", "梓", "#9900FF"]
         ];
-    
+
         $vocaloadList = [
             ["骑士团", "初音|miku|MIKU", "#00CC99"],
             ["洛天依", "天依", "#33CCFF"]
         ];
-    
+
         $igameList = [
             ["仙剑"],
             ["古剑"],
@@ -238,13 +240,13 @@ class Component {
             ["诛仙世界"],
             ["剑网"]
         ];
-    
+
         $cgameList = [
             ["黑神话"],
             ["LOL", "英雄联盟|LOL"],
             ["COD", "使命召唤"]
         ];
-    
+
         $ecygameList = [
             ["幻塔", null, "#FFCC66"],
             ["战双"],
@@ -258,24 +260,24 @@ class Component {
             ["公主", "公主连结", "#CCFF99"],
             ["车万人", "东方project|灵梦|芙兰朵露|魔理沙"]
         ];
-    
+
         $zgameList = [
             ["塞尔达"],
             ["怪猎", "怪物猎人"]
         ];
-    
+
         $ogameList = [
             ["安慕希", "MINECRAFT|Minecraft|我的世界", "#006600"],
             ["传说之下", "UNDERTALE|undertale|Undertale|传说之下", "#333366"],
             ["SCP", null, "#330000"]
         ];
-    
+
         $otherList = [
             ["【 隐藏 | 动态抽奖】", "抽奖", "#254680"]
         ];
-    
+
         $defaultTag = ["【 普通 |  纯良】", "#11DD77"];
-    
+
         // 不需要显示的注释即可
         $captor = [
             ['Vtuber', $vtuberList],

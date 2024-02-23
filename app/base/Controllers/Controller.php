@@ -69,16 +69,15 @@ class Controller
             // 验证登录
             self::verifyLogin();
         }
-    
+
         // 跨域请求
         self::$data['WEB_SAFE']['crossdomain'] != 'on' || header('Access-Control-Allow-Origin: *');
-    
+
         // 访客数记录
         if (!isset($_COOKIE['visitor'])) {
-            setcookie('visitor', 'ok', time() + 60*60*24*356);
+            setcookie('visitor', 'ok', time() + 60 * 60 * 24 * 356);
             Stat::WriteTag('web_visitor_' . Stat::StatName, 1, false);
         }
-
     }
 
 
@@ -122,7 +121,8 @@ class Controller
      * @param string $set_type 设置类型值
      * @return array 返回键值对数组
      */
-    public static function getSetData($set_type) {
+    public static function getSetData($set_type)
+    {
         $rows = self::$db->fetchAll(ControllerSetModel, [$set_type]);
         $result = array();
         foreach ($rows as $val) {
@@ -172,7 +172,8 @@ class Controller
     /**
      * 写入网站安全日志
      */
-    public function logWrite() {
+    public function logWrite()
+    {
         return self::$db->exec(ControllerLogWriteModel, [
             $_SERVER['HTTP_USER_AGENT'], $_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'], getUserIp()
         ]);
@@ -182,7 +183,8 @@ class Controller
     /**
      * 调用次数限制
      */
-    public function callLimit() {
+    public function callLimit()
+    {
         $nowtime = time();
         // 判断SESSION是否被设置以区分是否为第一次访问
         if (isset($_SESSION['callinfo'])) {
@@ -223,7 +225,8 @@ class Controller
     /**
      * 载入视图(简化大量重复传参用的)
      */
-    public function loadView($file) {
+    public function loadView($file)
+    {
         loadView($file, self::$data);
     }
 
@@ -315,7 +318,7 @@ class Controller
         if (self::$data['TYPE']) {
             $siteData = self::$db->fetchAll(HandleAdminAccountModel);
             $website = [];
-            foreach($siteData as $val) {
+            foreach ($siteData as $val) {
                 empty($val['website']) || array_push($website, $val['website']);
             }
             return array(
@@ -325,5 +328,4 @@ class Controller
         }
         return null;
     }
-
 }

@@ -3,7 +3,7 @@ return [
     /* 数据库前缀 */
     'prefix' => 'huliapi_',
     /* 数据库地址 */
-    'host' => 'api.hotaru.icu',
+    'host' => '69.176.89.123',
     /* 数据库端口 */
     'port' => 3306,
     /* 数据库名字 */

@@ -10,7 +10,8 @@ namespace Lib;
 use Core\Common;
 use function Core\Func\loadConfig;
 
-class Stat {
+class Stat
+{
     private static $result = null;
     private static $db;
     private static $prefix;
@@ -42,11 +43,13 @@ class Stat {
         return self::$db->exec("UPDATE " . self::$prefix . "lib_stat SET result = ? WHERE sign = ? AND type_ = ?", [$step, $tag, $type]);
     }
 
-    private static function dbDelData($tag) {
+    private static function dbDelData($tag)
+    {
         return self::$db->exec("DELETE FROM " . self::$prefix . "lib_stat WHERE sign = ?", [$tag]);
     }
 
-    private static function existsTag($data) {
+    private static function existsTag($data)
+    {
         if (empty($data['sign'])) {
             self::$errorCode = 502;
             return false;
@@ -56,7 +59,8 @@ class Stat {
     }
 
 
-    public static function AddTag($tag) {
+    public static function AddTag($tag)
+    {
         $data = self::dbGetData($tag);
         if (!self::existsTag($data)) {
             self::dbAddData($tag);
@@ -68,7 +72,8 @@ class Stat {
     }
 
 
-    public static function DelTag($tag) {
+    public static function DelTag($tag)
+    {
         $data = self::dbGetData($tag);
         if (self::existsTag($data)) {
             self::dbDelData($tag);
@@ -79,7 +84,8 @@ class Stat {
     }
 
 
-    public static function WriteTag($tag, $step = 1, $isadd = true) {
+    public static function WriteTag($tag, $step = 1, $isadd = true)
+    {
         $data = self::dbGetData($tag);
         if (self::existsTag($data)) {
             $val = intval($data['result']);
@@ -101,7 +107,8 @@ class Stat {
     }
 
 
-    public static function QueryTag($tag) {
+    public static function QueryTag($tag)
+    {
         // 判断tag是否为stat接口自己 是则作为api_call_处理
         $tag = $tag == 'stat_' . self::StatName ? 'api_call_' . self::StatName : $tag;
         $data = self::dbGetData($tag);
@@ -114,7 +121,8 @@ class Stat {
     }
 
 
-    public static function QueryDayTag($tag, $step = 0) {
+    public static function QueryDayTag($tag, $step = 0)
+    {
         $tag = $tag == 'stat_' . self::StatName ? 'api_call_' . self::StatName : $tag;
         $data = self::dbGetData($tag);
         if (self::existsTag($data)) {
@@ -130,12 +138,14 @@ class Stat {
     }
 
 
-    protected static function BackTag() {
+    protected static function BackTag()
+    {
         // ?
     }
 
 
-    public function Result() {
+    public function Result()
+    {
         return array(
             'code' => self::$errorCode,
             'message' => self::ErrorCodes[self::$errorCode],

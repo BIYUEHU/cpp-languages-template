@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: text/plain');
 
 class Lunar
 {
@@ -109,7 +108,7 @@ class Lunar
         $sky = array('庚', '辛', '壬', '癸', '甲', '乙', '丙', '丁', '戊', '己');
         $earth = array('申', '酉', '戌', '亥', '子', '丑', '寅', '卯', '辰', '巳', '午', '未');
         // $year = $year . '';
-        return $sky[$year] . $earth[$year % 12];
+        return $sky[$year % 10] . $earth[$year % 12];
     }
 
     /**
@@ -418,9 +417,28 @@ class Lunar
 
 $lunar = new Lunar();
 $today = $lunar->convertSolarToLunar(date('Y'), date('m'), date('d'));
-$month = $lunar->getJieQi(date('Y'), date('m'), date('d')); //获取当前节气
+$jieqi = $lunar->getJieQi(date('Y'), date('m'), date('d'))['name2'];
+$hour = $lunar->getTheHour(date('h'));
 
-$str = "今天是公元" . date('Y') . "年" . date('m') . "月" . date('d') . "日";
-$str .= "\n农历" . $today[3] . "年 " . $today[1] . "" . $today[2] . " " . $today[6] . "年$return";
-$str .= "\n节气：" . $month['name2'];
-echo $str;
+if ($_REQUEST['format'] === 'text') {
+header('Content-Type: text/plain');
+$result = "现在是公元" . date('Y') . "年" . date('m') . "月" . date('d') . "日";
+$result .= "\n农历" . $today[3] . "（" . $today[6] . "）年 " . $today[1] . "" . $today[2] . " " . $hour;
+$result .= "\n节气：" . $jieqi;
+} else {
+    header('Content-Type: application/json');
+    $result = array(
+        "code" => 500,
+        "message" => "success",
+        "data" => array(
+            "year" => $today[3] . '年',
+            "month" => $today[1],
+            "day" => $today[2],
+            "zodiac" => $today[6],
+            "jieqi" => $jieqi,
+            "hour" => $hour,
+        )
+    );
+    $result = stripslashes(urldecode(json_encode($result, 256)));
+}
+echo $result;

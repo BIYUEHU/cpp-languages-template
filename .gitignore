@@ -1,2 +1,2 @@
-.well-known/acme-challenge
-public/.well-known
+.well-known
+/vendor/

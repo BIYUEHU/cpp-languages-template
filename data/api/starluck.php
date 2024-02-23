@@ -35,7 +35,7 @@ if (empty($msg)) {
     preg_match_all('/幸运数字：<\/label>(.*?)</', $res, $info4);
     preg_match_all('/速配星座：<\/label>(.*?)</', $res, $info5);
     preg_match_all('/短评：<\/label>(.*?)</', $res, $info6);
-    
+
     preg_match_all('/综合运势<\/strong><span>(.*?)</', $res, $index1);
     preg_match_all('/爱情运势<\/strong><span>(.*?)</', $res, $index2);
     preg_match_all('/事业学业<\/strong><span>(.*?)</', $res, $index3);

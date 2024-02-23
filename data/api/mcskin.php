@@ -2,6 +2,7 @@
 error_reporting(0);
 // namespace Mcskin;
 
+header('Content-type: application/json');
 use function Core\Func\loadConfig;
 
 class Mcskin

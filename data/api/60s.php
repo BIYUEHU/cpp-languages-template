@@ -56,7 +56,7 @@ imagedestroy($im);
 /* 糊狸一言 */
 function getHitokoto()
 {
-	return file_get_contents('http://hotaru.icu/api/hitokoto/v2/?format=text');
+	return file_get_contents('https://hotaru.icu/api/hitokoto/v2/?format=text');
 }
 
 

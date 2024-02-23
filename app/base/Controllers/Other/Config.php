@@ -1,6 +1,6 @@
 <?php
 return [
-    'host' => 'api.hotaru.icu',
+    'host' => 'localhost',
     'port' => 3306,
     'dbName' => 'ialcore',
     'userName' => 'ialcore',

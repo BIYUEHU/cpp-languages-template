@@ -7,8 +7,9 @@ class CaptchaImg
     public static $num = 4;
     public static $width = 100;
     public static $height = 30;
-    
-    public static function spawn() {
+
+    public static function spawn()
+    {
         session_start();
 
         $Code = '';
@@ -61,4 +62,3 @@ class CaptchaImg
         imagedestroy($img);
     }
 }
-

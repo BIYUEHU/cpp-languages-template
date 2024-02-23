@@ -68,7 +68,7 @@ class Route
     }
 
 
-    /** 
+    /**
      * Post请求方法
      * @param string $rule 地址规则
      * @param string|callback $method 方法
@@ -95,8 +95,8 @@ class Route
     }
 
 
-    
-    /** 
+
+    /**
      * 其它请求方法
      * @param string $rule 地址规则
      * @param string|callback $method 方法
@@ -148,7 +148,7 @@ class Route
     {
         $allowd = false;
         $allowdArr = loadConfig('method.php');
-        foreach($allowdArr as $val ) {
+        foreach ($allowdArr as $val) {
             $val != $_SERVER['REQUEST_METHOD'] || $allowd = true;
         }
         if ($allowd !== true) {
@@ -173,7 +173,7 @@ class Route
             $url = substr($url, 10);
         }
 
-/*         if (substr($url, -1) == '/' && $url != '/') {
+        /*         if (substr($url, -1) == '/' && $url != '/') {
             $url = substr($url, 0, -1);
         } */
 

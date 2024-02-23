@@ -93,4 +93,3 @@ define('HandleAdminAccountaddExecModel', "INSERT INTO {$prefix}account(name, ema
 define('HandleAdminAccounteditCheckModel', "SELECT * FROM {$prefix}account WHERE (name = ? OR email = ?) AND id != ?");
 
 define('HandleAdminAccounteditExecModel', "UPDATE {$prefix}account SET name = ?, email = ?, opgroup = ?, coin = ? WHERE id = ?");
-
