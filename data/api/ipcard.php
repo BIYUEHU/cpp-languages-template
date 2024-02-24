@@ -122,26 +122,26 @@ function getOs()
 
 header("Content-type: image/jpeg");
 
+$king = 9;
 $imgNum = intval($_GET['img']);
-$imgNum = empty($_GET['img']) || $imgNum < 1 || $imgNum > 11 ? rand(1, 11) : $imgNum;
+$imgNum = empty($_GET['img']) || $imgNum < 1 || $imgNum > $king ? rand(1, $king) : $imgNum;
 $imgList = [
-    '', 'Nagisa', 'Chino', 'Kanade', 'Atri', 'Kotori', 'Mashiro', 'Miku', 'Reimu', 'Rin', 'Saber', 'Mitsuha',
+    '', 'Kafuu Chino', 'Furukawa Nagisa', 'Natsume Rin', 'Kanbe Kotori', 'Kazamata Neri', 'Hakurei Reimu', 'Himeno Sena', 'Minakami Yuki', 'Tsukiyashiro Kisaki',
 ];
-$img = imagecreatefromjpeg(__DIR__ . '/res/ipcard/' . $imgList[$imgNum] . ".jpg");
+$img = imagecreatefrompng(__DIR__ . '/res/ipcard/' . $imgList[$imgNum] . ".png");
 
 $ip = $_GET['ip'] ?? $_SERVER["REMOTE_ADDR"];
 $city = json_decode(file_get_contents("http://opendata.baidu.com/api.php?query={$ip}&co=&resource_id=6006&oe=utf8"), 256)['data'][0]['location'];
 
 // 独立什么的最好きです了
-// 小pink们别急🤣🤣🤣🤣
+// 支那猪我知道你们虽然很急😄，但我也没办法啊😭
+if ($city == '日本') $city = '家乡';
 if ($city == '台湾省' || strstr($city, '台湾')) $city = '中华民国';
 if ($city == '香港特别行政区' || strstr($city, '香港')) $city = '英属香港';
 if ($city == '澳门特别行政区' || strstr($city, '澳门')) $city = '葡属澳门';
 if (strstr($city, '新疆')) $city = '东突厥斯坦伊斯兰共和国';
 if (strstr($city, '内蒙古')) $city = '南蒙古国';
 if (strstr($city, '西藏')) $city = '西藏喜乐宫胜十方政府';
-// 这个面子必须给
-if ($city == '日本') $city = '家乡';
 
 $weekArray = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
@@ -151,11 +151,11 @@ $black2 = ImageColorAllocate($img, 0, 0, 5); //红色
 $font = __DIR__ . '/res/font.ttf'; //加载字体
 
 //输出
-imagettftext($img, 14, 0, 40, 40, $black, $font, 'とし: ' . $city . '');
-imagettftext($img, 14, 0, 40, 72, $black, $font, date('Y') . '年' . date('m') . '月' . date('d') . '日 ' . $weekArray[date("w")]); //当前时间添加到图片
-imagettftext($img, 14, 0, 40, 104, $black, $font, 'IP: ' . $ip); //ip
-imagettftext($img, 14, 0, 40, 140, $black, $font, 'システム: ' . getOs() . '');
-imagettftext($img, 14, 0, 40, 175, $black, $font, 'エクスプローラ: ' . getBrowser());
-imagettftext($img, 12, 0, 330, 200, $black2, $font, '-HULICore By Biyuehu');
+imagettftext($img, 28, 0, 80, 80, $black, $font, 'とし: ' . $city . '');
+imagettftext($img, 28, 0, 80, 144, $black, $font, date('Y') . '年' . date('m') . '月' . date('d') . '日 ' . $weekArray[date("w")]); //当前时间添加到图片
+imagettftext($img, 24, 0, 80, 208, $black, $font, 'IP: ' . $ip); //ip
+imagettftext($img, 24, 0, 80, 280, $black, $font, 'システム: ' . getOs() . '');
+imagettftext($img, 24, 0, 80, 350, $black, $font, 'エクスプローラ: ' . getBrowser());
+imagettftext($img, 24, 0, 770, 400, $black2, $font, '——By Hotaru');
 ImageGif($img);
 ImageDestroy($img);
