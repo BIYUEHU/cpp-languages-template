@@ -10,7 +10,6 @@ data/api/netease.php            linguist-detectable=false
 data/api/riddle.php            linguist-detectable=false
 data/api/qrcode.php            linguist-detectable=false
 data/api/tieba.php            linguist-detectable=false
-data/api/weather.php             linguist-detectable=false
 usr/plugins/email/PHPMailer/**/*.php            linguist-detectable=false
 usr/theme/default/assets/**/*.js            linguist-detectable=false
 usr/theme/default/assets/**/*.css            linguist-detectable=false
