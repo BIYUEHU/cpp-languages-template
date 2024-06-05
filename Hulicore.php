@@ -86,9 +86,10 @@ final class Hulicore
     private function _set_const_usr()
     {
         /* Version */
-        define('HULICORE_INFO_VERSION', '3.2.0');
+        define('HULICORE_INFO_VERSION', '3.2.1');
         /* Type */
-        define('HULICORE_INFO_TYPE', file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php'));
+        define('HULICORE_INFO_TYPE', false);
+        // define('HULICORE_INFO_TYPE', file_exists(HULICORE_BASE_CONTROLLER_PATH . '/Site/IndexController.php'));
     }
 
 
