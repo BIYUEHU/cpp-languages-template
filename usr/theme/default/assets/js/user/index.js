@@ -697,6 +697,7 @@ function apiadd_parsDel(val) {
 function apiedit() {
   form.on("submit(apiedit)", (obj) => {
     objData = obj.field;
+    console.log(objData);
 
     id = ((url) => {
       const str = url.substr(url.indexOf("?") + 1);
@@ -709,12 +710,7 @@ function apiedit() {
       return result;
     })(location.href)["id"];
 
-    if (
-      objData.id == "" ||
-      objData.name == "" ||
-      objData.email == "" ||
-      objData.opgroup == ""
-    ) {
+    if (!objData.title) {
       layer.msg("必填项不能为空", { icon: 5 });
       return;
     }
@@ -1078,6 +1074,60 @@ function account() {
           break;
       }
     });
+  });
+}
+
+/* accountedit */
+function accountedit() {
+  form.on("submit(accountedit)", (obj) => {
+    objData = obj.field;
+
+    id = ((url) => {
+      const str = url.substr(url.indexOf("?") + 1);
+      const arr = str.split("&");
+      const result = {};
+      for (let i = 0; i < arr.length; i++) {
+        const item = arr[i].split("=");
+        result[item[0]] = item[1];
+      }
+      return result;
+    })(location.href)["id"];
+
+    if (!objData.name || !objData.email || !objData.opgroup) {
+      layer.msg("必填项不能为空", { icon: 5 });
+      return;
+    }
+
+    try {
+      objData.returntype != "application/json" ||
+        JSON.parse(objData.returntemp);
+
+      const coin = Number(objData.coin);
+      if (coin < 0) {
+        layer.msg("金额不能小于0", { icon: 5 });
+        return;
+      }
+
+      const data = {
+        ...objData,
+        id: id,
+        coin,
+      };
+
+      sendPostRequest("./accountedit", data, (d) => {
+        switch (d.code) {
+          case 500:
+            layer.closeAll();
+            layer.msg("编辑成功", { icon: 1 });
+            break;
+          default:
+            printError(d, data);
+        }
+      });
+    } catch (err) {
+      layer.msg(`错误:${err}`, { icon: 0 });
+      return;
+    }
   });
 }
 

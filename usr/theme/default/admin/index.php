@@ -89,7 +89,7 @@ $DAT['childSite'] = Controller::childSiteData();
                     <i class="layui-icon layui-icon-tips" lay-offset="5"></i>
                 </div>
                 <div class="layui-card-body layui-text layadmin-text">
-                    <p>欢迎使用HULICore核心系统,为半开源项目 由Biyuehu(糊理)制作 <a href="http://hotaru.icu" target="_blank">博客-></a> 欢迎打赏</p>
+                    <p>欢迎使用HULICore核心系统,为半开源项目 由Hotaru(糊理)制作 <a href="http://hotaru.icu" target="_blank">博客-></a> 欢迎打赏</p>
                     <p>1.核心设置谨慎更改;网站设置可设置大部分网站信息与其他选项</p>
                     <p>2.接口添加<-前往此处;查看现有接口或更改或删除接口->接口列表</p>
                     <p>3.功能设置包括邮箱配置、网站主题、第三方功能,支持自行开发更多主题、第三方功能</p>

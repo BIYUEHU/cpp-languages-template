@@ -16,3 +16,4 @@ usr/theme/default/assets/**/*.js            linguist-detectable=false
 usr/theme/default/assets/**/*.css            linguist-detectable=false
 public/tool/**/*.js            linguist-detectable=false
 public/tool/**/*.css            linguist-detectable=false
+public/tool/**/*.php            linguist-detectable=false

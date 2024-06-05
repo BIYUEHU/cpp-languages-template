@@ -53,7 +53,7 @@
             <p> 公告:输入手机号即可！接口后续会增加！请勿泛滥！</p>
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 center-block" style="float: none;">
                 <div class="panel-infol">
-                    <p style="text-align:center"><br>ByBiyuehu</p>
+                    <p style="text-align:center"><br>ByHotaru</p>
                 </div>
             </div>
         </div>

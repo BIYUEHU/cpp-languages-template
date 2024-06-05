@@ -94,7 +94,7 @@ include("ini.php");
                 <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#lxkf-1"><span class="glyphicon glyphicon-user"></span> 客服</button>
                 <a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span> 反馈</a>
             </div>
-            <p style="text-align:center"><br>ByBiyuehu</p>
+            <p style="text-align:center"><br>ByHotaru</p>
         </div>
     </div>
 </body>

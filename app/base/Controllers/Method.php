@@ -1,6 +1,6 @@
 <?php
 /*
- * @Author: Biyuehu biyuehuya@gmail.com
+ * @Author: Hotaru biyuehuya@gmail.com
  * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 13:36:45
  */
@@ -101,7 +101,7 @@ function statement()
             $$    $$/                                                                             
             $$$$$$/                                                                              
     `');
-    consolelog('`欢迎使用HULICore核心系统 作者:Biyuehu 版本:' . HULICORE_INFO_VERSION . '\n网站主题:' . Controller::$data['WEB_INFO']['theme'] . ' 作者:' . Controller::$data['THEME_INFO']['info']['author'] . '`');
+    consolelog('`欢迎使用HULICore核心系统 作者:Hotaru 版本:' . HULICORE_INFO_VERSION . '\n网站主题:' . Controller::$data['WEB_INFO']['theme'] . ' 作者:' . Controller::$data['THEME_INFO']['info']['author'] . '`');
 }
 
 
