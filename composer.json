@@ -1,7 +1,7 @@
 {
   "name": "hotaru/hulicore",
   "description": "Develop a complete framework based on native PHP, which mainly encapsulates database operations, pseudo-static routing, functional functions and other features. The framework follows the MVC architecture.",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "type": "project",
   "autoload": {
     "psr-4": {
