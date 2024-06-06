@@ -10,6 +10,11 @@ function handelStr($str)
     return $str;
 }
 
+function containsEnglishLetter($str)
+{
+    return;
+}
+
 $msg = intval($_REQUEST['msg']);
 $msg = $msg < 1 || $msg > 16 || empty($msg) ? rand(1, 16) : $msg;
 $format = $_REQUEST['format'];
@@ -39,6 +44,10 @@ $rand = rand(1, $fileCount);
 
 $text = handelStr($file[$rand], 256);
 
+if ($msg == 15) {
+    $text = preg_match('/[a-zA-Z]/', $text) ? $text . "\n" . handelStr($file[$rand - 1], 256) : handelStr($file[$rand + 1], 256) . "\n" . $text;
+}
+
 if ($format == 'text') {
     header('Content-type: text/plain');
     echo $text;
@@ -52,5 +61,5 @@ if ($format == 'text') {
         )
     );
 
-    echo stripslashes(urldecode(json_encode($result, 256)));
+    echo json_encode($result, 256);
 }
