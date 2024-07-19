@@ -1,10 +1,11 @@
 *.php            linguist-language=TypeScript
+*.html            linguist-language=C
 
-data/api/src/**/*.php            linguist-language=CPP
-data/api/60s.php            linguist-language=CPP
-data/api/idcard.php            linguist-language=CPP
-data/api/lunar.php            linguist-language=CPP
-data/api/motd.php            linguist-language=CPP
+data/api/src/**/*.php            linguist-language=Go
+data/api/60s.php            linguist-language=TypeScript
+data/api/idcard.php            linguist-language=TypeScript
+data/api/lunar.php            linguist-language=Go
+data/api/motd.php            linguist-language=TypeScript
 data/api/motdbe.php            linguist-language=C
 data/api/mcskin.php            linguist-language=C
 data/api/nameidcard.php            linguist-language=C
@@ -16,5 +17,5 @@ usr/plugins/email/PHPMailer/**/*.php            linguist-language=C#
 usr/theme/default/assets/**/*.js            linguist-language=Kotlin
 usr/theme/default/assets/**/*.css            linguist-language=Kotlin
 public/tool/**/*.js            linguist-language=Kotlin
-public/tool/**/*.css            linguist-language=go
-public/tool/**/*.php            linguist-language=go
+public/tool/**/*.css            linguist-language=CPP
+public/tool/**/*.php            linguist-language=CPP
