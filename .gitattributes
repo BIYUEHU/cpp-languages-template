@@ -1,5 +1,21 @@
-# *.php            linguist-language=C#
-# *.html            linguist-language=Kotlin
+data/api/src/**/*.php            linguist-detectable=false
+data/api/60s.php            linguist-detectable=false
+data/api/idcard.php            linguist-detectable=false
+data/api/lunar.php            linguist-detectable=false
+data/api/motd.php            linguist-detectable=false
+data/api/motdbe.php            linguist-detectable=false
+data/api/mcskin.php            linguist-detectable=false
+data/api/nameidcard.php            linguist-detectable=false
+data/api/netease.php            linguist-detectable=false
+data/api/riddle.php            linguist-detectable=false
+data/api/qrcode.php            linguist-detectable=false
+data/api/tieba.php            linguist-detectable=false
+usr/plugins/email/PHPMailer/**/*.php            linguist-detectable=false
+usr/theme/default/assets/**/*.js            linguist-detectable=false
+usr/theme/default/assets/**/*.css            linguist-detectable=false
+public/tool/**/*.js            linguist-detectable=false
+public/tool/**/*.css            linguist-detectable=false
+public/tool/**/*.php            linguist-detectable=false
 
 # data/api/src/**/*.php            linguist-language=Go
 # data/api/60s.php            linguist-language=C#
