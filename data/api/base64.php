@@ -7,7 +7,7 @@ function encode($code)
 {
     $code = str_replace(array('<?php', '?>', '<?PHP'), array('', '', ''), $code);
     $encode = base64_encode(gzdeflate($code));
-    $encode = '<?php /* @By Hotaru @Blog: http://hotaru.icu */ ' . "eval(gzinflate(base64_decode(" . "'" . $encode . "'" . ")));\n?>";
+    $encode = '<?php /* @By Biyuehu @Blog: http://hotaru.icu */ ' . "eval(gzinflate(base64_decode(" . "'" . $encode . "'" . ")));\n?>";
     return $encode;
 }
 

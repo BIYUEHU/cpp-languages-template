@@ -10,9 +10,8 @@ function handelStr($str)
     return $str;
 }
 
-function containsEnglishLetter($str)
-{
-    return;
+function containsEnglishLetter($str) {
+    return ;
 }
 
 $msg = intval($_REQUEST['msg']);

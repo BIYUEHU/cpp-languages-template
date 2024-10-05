@@ -1,6 +1,6 @@
 <?php
 /*
- * @Author: Hotaru biyuehuya@gmail.com
+ * @Author: Biyuehu biyuehuya@gmail.com
  * @Blog: http://hotaru.icu
  * @Date: 2023-06-26 11:43:06
  */
@@ -126,7 +126,7 @@ $king = 9;
 $imgNum = intval($_GET['img']);
 $imgNum = empty($_GET['img']) || $imgNum < 1 || $imgNum > $king ? rand(1, $king) : $imgNum;
 $imgList = [
-    '', 'Kafuu Chino', 'Furukawa Nagisa', 'Natsume Rin', 'Kanbe Kotori', 'Kazamata Neri', 'Hakurei Reimu', 'Himeno Sena', 'Minakami Yuki', 'Tsukiyashiro Kisaki',
+    '', 'Kafuu Chino', 'Furukawa Nagisa', 'Natsume Rin', 'Kanbe Kotori', 'Kazamata Neri', 'Hakurei Reimu', 'Himeno Sena' , 'Minakami Yuki', 'Tsukiyashiro Kisaki',
 ];
 $img = imagecreatefrompng(__DIR__ . '/res/ipcard/' . $imgList[$imgNum] . ".png");
 
