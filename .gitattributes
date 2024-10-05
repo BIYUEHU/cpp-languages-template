@@ -17,7 +17,7 @@ public/tool/**/*.js            linguist-detectable=false
 public/tool/**/*.css            linguist-detectable=false
 public/tool/**/*.php            linguist-detectable=false
 public/tool/**/*.html            linguist-detectable=false
-app/Views/*.html            linguist-detectable=false
+*.html            linguist-detectable=false
 
 
 # data/api/src/**/*.php            linguist-language=Go
