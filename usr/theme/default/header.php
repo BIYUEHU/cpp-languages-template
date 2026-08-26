@@ -1,6 +1,6 @@
 <?php
 /*
- * @Author: Hotaru biyuehuya@gmail.com
+ * @Author: Biyuehu biyuehuya@gmail.com
  * @Blog: http://hotaru.icu
  * @Date: 2023-01-15 16:23:32
  */
@@ -51,14 +51,14 @@ $DAT['visitor'] = Controller::visitorWebData();
     <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/site.min.css">
     <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/oneui.css">
     <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/index.css">
-    <link rel="stylesheet" href="//cdn.staticfile.org/layui/2.8.7/css/layui.css">
-    <link rel="stylesheet" href="//cdn.staticfile.org/highlight.js/11.8.0/styles/base16/dracula.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/layui@2.8.7/dist/css/layui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/base16/dracula.min.css">
     <script src="<? echo $CONFIG['path'] ?>/js/index.js"></script>
-    <script src="//cdn.staticfile.org/bootstrap/5.2.3/js/bootstrap.min.js"></script>
-    <script src="//cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
-    <script src="//cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-    <script src="//cdn.staticfile.org/layui/2.8.7/layui.js"></script>
-    <script src="//cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+    <script src="https://unpkg.com/layui@2.8.7/dist/layui.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.0/dist/jquery.min.js"></script>
     <script>
         hljs.highlightAll();
         hljs.initLineNumbersOnLoad({

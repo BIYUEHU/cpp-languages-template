@@ -199,9 +199,14 @@ class HandleController extends Controller
     public function website()
     {
         self::$data['VERIFY']['opgroup'] >= 3 || self::printResult(509);
-
+        
         $website = $_POST['website'];
         self::$db->exec(HandleUserWebsiteModel, [$website, self::$data['VERIFY']['id']]);
+        if (!empty(($website))) {
+            $message = "新的站点接入："  . $website .  "，来自用户：" . self::$data['VERIFY']['name'] . "（" . self::$data['VERIFY']['id'] . "）";
+            require_once(HULICORE_USR_PATH . '/plugins/email/index.php');
+            $result = sendMail('biyuehuya@qq.com', '站点接入通知', $message, true, self::getSetData('plugins_email'));
+        }
         self::printResult();
     }
 

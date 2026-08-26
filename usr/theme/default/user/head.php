@@ -22,8 +22,8 @@ require_once(__DIR__ . '../../function.php');
             --set-accent-color: <?php echo $THEME_SET['accentColor'] ?>;
         }
     </style>
-    <link rel="stylesheet" href="//cdn.staticfile.org/layui/2.8.7/css/layui.css">
-    <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://unpkg.com/layui@2.8.7/dist/css/layui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/user/font_1332398_z4m8t7izbwk.css">
     <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/index.css">
     <link rel="stylesheet" href="<? echo $CONFIG['path'] ?>/css/user/main.css">

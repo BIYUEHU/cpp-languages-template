@@ -1,6 +1,6 @@
 <?php
 /*
- * @Author: Hotaru biyuehuya@gmail.com
+ * @Author: Biyuehu biyuehuya@gmail.com
  * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 13:36:45
  */
@@ -68,7 +68,7 @@ class Route
     }
 
 
-    /**
+    /** 
      * Post请求方法
      * @param string $rule 地址规则
      * @param string|callback $method 方法
@@ -96,7 +96,7 @@ class Route
 
 
 
-    /**
+    /** 
      * 其它请求方法
      * @param string $rule 地址规则
      * @param string|callback $method 方法

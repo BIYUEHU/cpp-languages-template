@@ -67,8 +67,8 @@ include(__DIR__ . '/head.php');
             </button>
         </div> -->
     </section>
-    <script src="//cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
-    <script src="//cdn.staticfile.org/layui/2.8.7/layui.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/layui@2.8.7/dist/layui.js"></script>
     <script src="<? echo $CONFIG['path'] ?>/js/user/index.js"></script>
     <!-- Geetest -->
 <!--     <style>

@@ -71,7 +71,7 @@ include(__DIR__ . '/nav.php');
     <?php
     include(__DIR__ . '/footer.php');
     ?>
-    <script src="//cdn.staticfile.org/marked/5.1.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@5.1.0/lib/marked.umd.min.js"></script>
     <script>
         let value = `<? echo $WEB_INFO['log']; ?>`;
         value = marked.parse(value);

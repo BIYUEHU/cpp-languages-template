@@ -36,7 +36,7 @@ class Netease
         return $radio_songs;
     }
 
-    private static function getLyric($songid)
+    public static function getLyric($songid)
     {
         $radio_lrc_url = [
             'method'        => 'POST',
@@ -110,7 +110,15 @@ class Netease
     }
 }
 
+
+$id = $_REQUEST['id'];
+if (!empty($id)) {
+    echo Netease::getLyric($id);
+    exit();
+}
+
 header('Content-type: application/json');
+
 $name = $_REQUEST['name'];
 $codelist = \Core\Func\loadConfig('apicode.php');
 $code = 501;

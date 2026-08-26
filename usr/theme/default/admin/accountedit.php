@@ -45,7 +45,7 @@ include(__DIR__ . '../../user/head.php');
     </div>
     </div>
 
-    <script src="//cdn.staticfile.org/layui/2.8.7/layui.js"></script>
+    <script src="https://unpkg.com/layui@2.8.7/dist/layui.js"></script>
     <script src="<? echo $CONFIG['path'] ?>/js/user/index.js"></script>
     <script>
         accountedit();

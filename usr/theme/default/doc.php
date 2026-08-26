@@ -117,7 +117,7 @@ if ($returntype == 'application/json') {
 include(__DIR__ . '/footer.php');
 ?>
 
-    <script src="//cdn.staticfile.org/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
     <script>
         layui.use(() => {
             layui.code();

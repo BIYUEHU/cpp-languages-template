@@ -10,7 +10,7 @@ return [
 		"version" => "1.0.0"
 	],
 	"info" => [
-		"author" => "Hotaru",
+		"author" => "Biyuehu",
 		"license" => "",
 		"url" => "http://hotaru.icu"
 	]

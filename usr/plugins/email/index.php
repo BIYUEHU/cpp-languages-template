@@ -1,14 +1,14 @@
 <?php
 /*
- * @Author: Hotaru biyuehuya@gmail.com
+ * @Author: Biyuehu biyuehuya@gmail.com
  * @Blog: http://hotaru.icu
  * @Date: 2023-01-17 13:36:45
  */
 function sendMail($reveuser, $title, $message, $isHTML = true, $config)
 {
 
-    require(__DIR__ . '/PHPMailer/class.phpmailer.php');
-    require(__DIR__ . '/PHPMailer/class.smtp.php');
+    require_once(__DIR__ . '/PHPMailer/class.phpmailer.php');
+    require_once(__DIR__ . '/PHPMailer/class.smtp.php');
 
     $mail = new PHPMailer();
     $mail->SMTPDebug = $config['debug'];

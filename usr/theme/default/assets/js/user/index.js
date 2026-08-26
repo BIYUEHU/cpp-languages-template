@@ -1,5 +1,5 @@
 /***
- * @Author: Hotaru biyuehuya@gmail.com
+ * @Author: Biyuehu biyuehuya@gmail.com
  * @Blog: http://hotaru.icu
  * @Date: 2023-06-16 14:20:19
  */
@@ -697,7 +697,7 @@ function apiadd_parsDel(val) {
 function apiedit() {
   form.on("submit(apiedit)", (obj) => {
     objData = obj.field;
-    console.log(objData);
+    console.log(objData)
 
     id = ((url) => {
       const str = url.substr(url.indexOf("?") + 1);
@@ -710,7 +710,9 @@ function apiedit() {
       return result;
     })(location.href)["id"];
 
-    if (!objData.title) {
+    if (
+      !objData.title
+    ) {
       layer.msg("必填项不能为空", { icon: 5 });
       return;
     }
@@ -1093,7 +1095,11 @@ function accountedit() {
       return result;
     })(location.href)["id"];
 
-    if (!objData.name || !objData.email || !objData.opgroup) {
+    if (
+      !objData.name ||
+      !objData.email ||
+      !objData.opgroup
+    ) {
       layer.msg("必填项不能为空", { icon: 5 });
       return;
     }
@@ -1111,7 +1117,7 @@ function accountedit() {
       const data = {
         ...objData,
         id: id,
-        coin,
+        coin
       };
 
       sendPostRequest("./accountedit", data, (d) => {
