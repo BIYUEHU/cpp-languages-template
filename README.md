@@ -1,16 +1,15 @@
 # HuliCore
 
 > [!CAUTION]
-> 项目已全面过时，以下内容不保证时效性。
+> The project is completely outdated, and the following content may not be up to date.
 
 ---
 
 > [!IMPORTANT]
-> [项目分析报告](./ARCHIVED-ANALYSIS.md) 已生成。
+> [The Project Analysis Report](./ARCHIVED-ANALYSIS.md) has been generated。
 
 ---
 
-![license](https://camo.githubusercontent.com/8addc1e46efd92165de0d5fa6d5fd6a3817251a50a45544710ae4eaf486e3fe5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f626979756568752f6b6f746f72692d626f743f636f6c6f723d64656570677265656e)
 ![stars](https://img.shields.io/github/stars/biyuehu/hulicore)
 ![commits](https://img.shields.io/github/commit-activity/t/biyuehu/hulicore)
 
